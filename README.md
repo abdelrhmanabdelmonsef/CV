@@ -44,6 +44,11 @@ Demonstrated strong problem-solving abilities and attention to detail in identif
 # Certificates
 <a href="certificates/mlang_enCourse_Certificate_Enmlangmlang_ar___mlang.pdf">Red Hat System Administration I</a>
 
+<a href="certificates/Coursera 62QY3G5YL8MZ.pdf">Google certificate - Foundations of Cybersecurity</a><br>
+<a href="certificates/Coursera M7NZDA9943MN.pdf">Google certificate - Play It Safe: Manage Security Risks</a><br>
+<a href="certificates/Coursera M4T8D89EFANG.pdf">Google certificate - Connect and Protect: Networks and Network Security</a><br>
+<a href="certificates/Coursera VKAPSSTPLL5W.pdf">Google certificate - Tools of the Trade: Linux and SQL</a><br>
+
 # Skills :
 
 ### Technical Skills:
