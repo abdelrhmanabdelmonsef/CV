@@ -42,7 +42,8 @@ Participated in team meetings and training sessions to enhance technical skills 
 Demonstrated strong problem-solving abilities and attention to detail in identifying and resolving security issues.<br>
 
 # Certificates
-![](certificates/Attendance_Certificate.pdf)
+<a href="certificates/mlang_enCourse_Certificate_Enmlangmlang_ar___mlang.pdf">Red Hat System Administration I</a>
+
 # Skills :
 
 ### Technical Skills:
