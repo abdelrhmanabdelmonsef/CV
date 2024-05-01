@@ -41,29 +41,39 @@ Contributed to the analysis of test results and preparation of detailed reports 
 Participated in team meetings and training sessions to enhance technical skills and knowledge in cybersecurity best practices.
 Demonstrated strong problem-solving abilities and attention to detail in identifying and resolving security issues.<br>
 
-
+# Certificates
+![](certificates/Attendance_Certificate.pdf)
 # Skills :
 
 ### Technical Skills:
 
 Networking: Intermediate<br>
+
 Operating Systems (Windows, Linux): Intermediate<br>
+
 Object-Oriented Programming (Java): Basic<br>
+
 Scripting Languages (JavaScript, Python, Bash): Basic<br>
+
 Database Management (MySQL): Basic<br>
+
 Web Application Security:<br>
- Penetration Testing: Intermediate<br>
- Reconnaissance<br>
- Port Scanning<br>
- Host Discovery<br>
- Service Enumeration<br>
-Tools: <br>Nmap, Burp Suite, Metasploit, OWASP ZAP
+&emsp; Penetration Testing: Intermediate<br>
+&emsp; Reconnaissance<br>
+&emsp; Port Scanning<br>
+&emsp; Host Discovery<br>
+&emsp; Service Enumeration<br>
+Tools:<br>
+&emsp;Nmap, Burp Suite, Metasploit, OWASP ZAP
 
 ### Soft Skills:
 
 Adaptability: Intermediate<br>
+
 Communication Skills: Intermediate<br>
+
 Problem Solving: Intermediate<br>
+
 Teamwork: Intermediate<br>
 
 
