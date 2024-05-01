@@ -40,3 +40,46 @@ Assisted in performing reconnaissance, vulnerability scanning, and exploitation 
 Contributed to the analysis of test results and preparation of detailed reports outlining findings and recommendations for remediation.<br>
 Participated in team meetings and training sessions to enhance technical skills and knowledge in cybersecurity best practices.
 Demonstrated strong problem-solving abilities and attention to detail in identifying and resolving security issues.<br>
+
+
+# Skills :
+
+### Technical Skills:
+
+Networking: Intermediate<br>
+Operating Systems (Windows, Linux): Intermediate<br>
+Object-Oriented Programming (Java): Basic<br>
+Scripting Languages (JavaScript, Python, Bash): Basic<br>
+Database Management (MySQL): Basic<br>
+Web Application Security:<br>
+Penetration Testing: Intermediate<br>
+Reconnaissance<br>
+Port Scanning<br>
+Host Discovery<br>
+Service Enumeration<br>
+Tools: <br>Nmap, Burp Suite, Metasploit, OWASP ZAP
+
+### Soft Skills:
+
+Adaptability: Intermediate<br>
+Communication Skills: Intermediate<br>
+Problem Solving: Intermediate<br>
+Teamwork: Intermediate<br>
+
+
+# Additional Sections:
+
+Volunteer Experience:
+
+<br>Member, Java Team, AZ-SEnCS Al-Azhar University
+<br>Collaborated with team members to develop Java-based projects and applications.
+
+<br>Vice-Head, Cybersecurity Team, AZ-SEnCS Al-Azhar University
+<br>Assisted in organizing cybersecurity workshops and events, and contributed to team projects.
+<br>Vice-Head, Cybersecurity Team, Google Developer Students Club (GDSC), Al-Azhar University<br>
+Coordinated cybersecurity initiatives and activities within the GDSC community.<br>
+
+Languages:<br>
+
+English: Level 7 (CEFR B1.3)<br>
+Arabic: Native Speaker
