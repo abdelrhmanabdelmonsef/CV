@@ -52,11 +52,11 @@ Object-Oriented Programming (Java): Basic<br>
 Scripting Languages (JavaScript, Python, Bash): Basic<br>
 Database Management (MySQL): Basic<br>
 Web Application Security:<br>
-Penetration Testing: Intermediate<br>
-Reconnaissance<br>
-Port Scanning<br>
-Host Discovery<br>
-Service Enumeration<br>
+ Penetration Testing: Intermediate<br>
+ Reconnaissance<br>
+ Port Scanning<br>
+ Host Discovery<br>
+ Service Enumeration<br>
 Tools: <br>Nmap, Burp Suite, Metasploit, OWASP ZAP
 
 ### Soft Skills:
@@ -76,6 +76,7 @@ Volunteer Experience:
 
 <br>Vice-Head, Cybersecurity Team, AZ-SEnCS Al-Azhar University
 <br>Assisted in organizing cybersecurity workshops and events, and contributed to team projects.
+
 <br>Vice-Head, Cybersecurity Team, Google Developer Students Club (GDSC), Al-Azhar University<br>
 Coordinated cybersecurity initiatives and activities within the GDSC community.<br>
 
