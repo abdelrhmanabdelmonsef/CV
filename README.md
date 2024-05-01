@@ -42,8 +42,7 @@ Participated in team meetings and training sessions to enhance technical skills 
 Demonstrated strong problem-solving abilities and attention to detail in identifying and resolving security issues.<br>
 
 # Certificates
-<a href="certificates/mlang_enCourse_Certificate_Enmlangmlang_ar___mlang.pdf">Red Hat System Administration I</a>
-
+<a href="certificates/mlang_enCourse_Certificate_Enmlangmlang_ar___mlang.pdf">Red Hat System Administration I</a><br>
 <a href="certificates/Coursera 62QY3G5YL8MZ.pdf">Google certificate - Foundations of Cybersecurity</a><br>
 <a href="certificates/Coursera M7NZDA9943MN.pdf">Google certificate - Play It Safe: Manage Security Risks</a><br>
 <a href="certificates/Coursera M4T8D89EFANG.pdf">Google certificate - Connect and Protect: Networks and Network Security</a><br>
