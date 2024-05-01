@@ -1,2 +1,2 @@
 # Abdel-Raman Abdel-Monsef Mohammed
-![personal picture](photo/pic.jpg)
+<img src="photo/pic.jpg" alt="Personal Picture" width="300" height="200">
