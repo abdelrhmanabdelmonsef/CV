@@ -23,22 +23,20 @@ Additionally, actively participating in the McKinsey Forward Program to enhance 
 
 # Education :
 
-Bachelor of Science in Computers and Systems Engineering
-Al-Azhar University, Faculty of Computers and Systems Engineering
-October 2019 - June 2024 (Expected)
+Bachelor of Science in Computers and Systems Engineering<br>
+Al-Azhar University, Faculty of Computers and Systems Engineering<br>
+October 2019 - June 2024 (Expected)<br>
 
 
 # Work Experience :
 
 
-<div style="white-space: pre;">
-Penetration Tester Intern
-Hackers For You
-May 2, 2024 - May 5, 2024 (Current)
+Penetration Tester Intern<br>
+Hackers For You<br>
+May 2, 2024 - May 5, 2024 (Current)<br><br>
 
-Collaborated with senior penetration testers to conduct security assessments and penetration tests on web applications, networks, and systems.
-Assisted in performing reconnaissance, vulnerability scanning, and exploitation to identify and mitigate security vulnerabilities.
-Contributed to the analysis of test results and preparation of detailed reports outlining findings and recommendations for remediation.
+Collaborated with senior penetration testers to conduct security assessments and penetration tests on web applications, networks, and systems.<br>
+Assisted in performing reconnaissance, vulnerability scanning, and exploitation to identify and mitigate security vulnerabilities.<br>
+Contributed to the analysis of test results and preparation of detailed reports outlining findings and recommendations for remediation.<br>
 Participated in team meetings and training sessions to enhance technical skills and knowledge in cybersecurity best practices.
-Demonstrated strong problem-solving abilities and attention to detail in identifying and resolving security issues.
-</div>
+Demonstrated strong problem-solving abilities and attention to detail in identifying and resolving security issues.<br>
