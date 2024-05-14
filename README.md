@@ -42,11 +42,13 @@ Participated in team meetings and training sessions to enhance technical skills 
 Demonstrated strong problem-solving abilities and attention to detail in identifying and resolving security issues.<br>
 
 # Certificates
+<a href="/certificates/Hackers_For_you_intern_cert.png">Hackers For You internship certificate
+</a><br>
 <a href="certificates/mlang_enCourse_Certificate_Enmlangmlang_ar___mlang.pdf">Red Hat System Administration I</a><br>
 <a href="certificates/Coursera 62QY3G5YL8MZ.pdf">Google certificate - Foundations of Cybersecurity</a><br>
 <a href="certificates/Coursera M7NZDA9943MN.pdf">Google certificate - Play It Safe: Manage Security Risks</a><br>
 <a href="certificates/Coursera M4T8D89EFANG.pdf">Google certificate - Connect and Protect: Networks and Network Security</a><br>
-<a href="certificates/Coursera VKAPSSTPLL5W.pdf">Google certificate - Tools of the Trade: Linux and SQL</a><br>
+<a href="certificates/Coursera VKAPSSTPLL5W.pdf">Google certificate - Tools of the Trade: Linux and SQL</a><br><br>
 
 # Skills :
 
