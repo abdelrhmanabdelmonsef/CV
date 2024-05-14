@@ -33,7 +33,7 @@ October 2019 - June 2024 (Expected)<br>
 
 Penetration Tester Intern<br>
 Hackers For You<br>
-May 2, 2024 - May 5, 2024 (Current)<br><br>
+May 2, 2024 - May 5, 2024 <br><br>
 
 Collaborated with senior penetration testers to conduct security assessments and penetration tests on web applications, networks, and systems.<br>
 Assisted in performing reconnaissance, vulnerability scanning, and exploitation to identify and mitigate security vulnerabilities.<br>
