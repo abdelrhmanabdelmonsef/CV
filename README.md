@@ -56,9 +56,9 @@ Networking: Intermediate<br>
 
 Operating Systems (Windows, Linux): Intermediate<br>
 
-Object-Oriented Programming (Java): Basic<br>
+Object-Oriented Programming (Java,JavaScript): Basic<br>
 
-Scripting Languages (JavaScript, Python, Bash): Basic<br>
+Scripting Languages ( Python, Bash): Basic<br>
 
 Database Management (MySQL): Basic<br>
 
