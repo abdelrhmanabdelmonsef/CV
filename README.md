@@ -8,11 +8,13 @@
 
 # Personal Informations :
 
+Mobile Phone : 01272862660
 Mobile Phone : 01020708385
 
 Linkedin : <a href="https://www.linkedin.com/in/abdelrhman-abdelmonsef-48aa281ab/"> Abdelrhman Abdelmonsef </a> 
 
 Email Address : abdelmonsef349@gmail.com
+Email Address : abdelmonsef348@gmail.com
 
 # Summary : 
 
@@ -28,7 +30,8 @@ Additionally, actively participating in the McKinsey Forward Program to enhance 
 
 Bachelor of Science in Computers and Systems Engineering<br>
 Al-Azhar University, Faculty of Computers and Systems Engineering<br>
-October 2019 - June 2024 (Expected)<br>
+October 2019 - June 2024 <br>
+Grade: Very Good<br>
 
 
 # Work Experience :
