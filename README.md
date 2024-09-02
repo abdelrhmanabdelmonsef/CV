@@ -11,10 +11,16 @@
 Mobile Phone : 01272862660<br>
 Mobile Phone : 01020708385
 
+<<<<<<< Updated upstream
 Linkedin : <a href="https://www.linkedin.com/in/abdelrhman-abdelmonsef-48aa281ab/"> Abdelrhman Abdelmonsef </a> 
 
 Email Address : abdelmonsef349@gmail.com<br>
 Email Address : abdelmonsef348@gmail.com
+=======
+Linkedin : <a href="https://www.linkedin.com/in/abdelrhman-abdelmonsef-48aa281ab/">Abdelrehman Abdelmonsef</a>
+
+Email Address : abdelmonsef349@gmail.com
+>>>>>>> Stashed changes
 
 # Summary : 
 
@@ -48,7 +54,7 @@ Participated in team meetings and training sessions to enhance technical skills 
 Demonstrated strong problem-solving abilities and attention to detail in identifying and resolving security issues.<br>
 
 # Certificates
-<a href="/certificates/Hackers_For_you_intern_cert.png">Hackers For You internship certificate
+<a href="/certificates/Hackers_For_you_intern_cert.png">Penetration testing internship certificate at Hackers For You
 </a><br>
 <a href="certificates/mlang_enCourse_Certificate_Enmlangmlang_ar___mlang.pdf">Red Hat System Administration I</a><br>
 <a href="certificates/Coursera 62QY3G5YL8MZ.pdf">Google certificate - Foundations of Cybersecurity</a><br>
