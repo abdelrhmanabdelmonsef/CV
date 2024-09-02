@@ -8,11 +8,25 @@
 
 # Personal Informations :
 
-Mobile Phone : 01272862660<br>
-Mobile Phone : 01020708385<br>
-Linkedin : <a href="https://www.linkedin.com/in/abdelrhman-abdelmonsef-48aa281ab/"> Abdelrhman Abdelmonsef </a> <br>
-Email Address : abdelmonsef349@gmail.com<br>
-Email Address : abdelmonsef348@gmail.com<br>
+<ul>
+    <li><strong>Mobile Phones:</strong>
+        <ul>
+            <li>+201272862660</li>
+            <li>+201020708385</li>
+        </ul>
+    </li>
+    <li><strong>LinkedIn:</strong>
+        <ul>
+            <li><a href="https://www.linkedin.com/in/abdelrhman-abdelmonsef-48aa281ab/">Abdelrhman Abdelmonsef</a></li>
+        </ul>
+    </li>
+    <li><strong>Email Addresses:</strong>
+        <ul>
+            <li><a herf="abdelmonsef349@gmail.com">abdelmonsef349@gmail.com</a></li>
+            <li><a herf="abdelmonsef348@gmail.com">abdelmonsef348@gmail.com</a></li>
+        </ul>
+    </li>
+</ul>
 
 
 # Summary : 
@@ -47,62 +61,80 @@ Participated in team meetings and training sessions to enhance technical skills 
 Demonstrated strong problem-solving abilities and attention to detail in identifying and resolving security issues.<br>
 
 # Certificates
-<a href="/certificates/Hackers_For_you_intern_cert.png">Penetration testing internship certificate at Hackers For You
-</a><br>
-<a href="certificates/mlang_enCourse_Certificate_Enmlangmlang_ar___mlang.pdf">Red Hat System Administration I</a><br>
-<a href="certificates/Coursera 62QY3G5YL8MZ.pdf">Google certificate - Foundations of Cybersecurity</a><br>
-<a href="certificates/Coursera M7NZDA9943MN.pdf">Google certificate - Play It Safe: Manage Security Risks</a><br>
-<a href="certificates/Coursera M4T8D89EFANG.pdf">Google certificate - Connect and Protect: Networks and Network Security</a><br>
-<a href="certificates/Coursera VKAPSSTPLL5W.pdf">Google certificate - Tools of the Trade: Linux and SQL</a><br><br>
+<ol>
+    <li><a href="/certificates/Hackers_For_you_intern_cert.png">Penetration Testing Internship Certificate at Hackers For You</a></li>
+    <li><a href="certificates/mlang_enCourse_Certificate_Enmlangmlang_ar___mlang.pdf">Red Hat System Administration I</a></li>
+    <li><a href="certificates/Coursera 62QY3G5YL8MZ.pdf">Google Certificate - Foundations of Cybersecurity</a></li>
+    <li><a href="certificates/Coursera M7NZDA9943MN.pdf">Google Certificate - Play It Safe: Manage Security Risks</a></li>
+    <li><a href="certificates/Coursera M4T8D89EFANG.pdf">Google Certificate - Connect and Protect: Networks and Network Security</a></li>
+    <li><a href="certificates/Coursera VKAPSSTPLL5W.pdf">Google Certificate - Tools of the Trade: Linux and SQL</a></li>
+</ol>
 
 # Skills :
-
-### Technical Skills:
-
-Networking: Intermediate<br>
-
-Operating Systems (Windows, Linux): Intermediate<br>
-
-Object-Oriented Programming (Java,JavaScript): Basic<br>
-
-Scripting Languages ( Python, Bash): Basic<br>
-
-Database Management (MySQL): Basic<br>
-
-Web Application Security:<br>
-&emsp; Penetration Testing: Intermediate<br>
-&emsp; Reconnaissance<br>
-&emsp; Port Scanning<br>
-&emsp; Host Discovery<br>
-&emsp; Service Enumeration<br>
-Tools:<br>
-&emsp;Nmap, Burp Suite, Metasploit, OWASP ZAP
-
-### Soft Skills:
-
-Adaptability: Intermediate<br>
-
-Communication Skills: Intermediate<br>
-
-Problem Solving: Intermediate<br>
-
-Teamwork: Intermediate<br>
-
+<ul>
+    <li><strong>Technical Skills:</strong>
+        <ul>
+            <li>Networking: Intermediate</li>
+            <li>Operating Systems (Windows, Linux): Intermediate</li>
+            <li>Object-Oriented Programming (Java, JavaScript): Basic</li>
+            <li>Scripting Languages (Python, Bash): Basic</li>
+            <li>Database Management (MySQL): Basic</li>
+            <li>Web Application Security:
+                <ul>
+                    <li>Penetration Testing: Intermediate</li>
+                    <li>Reconnaissance</li>
+                    <li>Port Scanning</li>
+                    <li>Host Discovery</li>
+                    <li>Service Enumeration</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li><strong>Tools:</strong>
+        <ul>
+            <li>Nmap</li>
+            <li>Burp Suite</li>
+            <li>Metasploit</li>
+            <li>OWASP ZAP</li>
+        </ul>
+    </li>
+    <li><strong>Soft Skills:</strong>
+        <ul>
+            <li>Adaptability: Intermediate</li>
+            <li>Communication Skills: Intermediate</li>
+            <li>Problem Solving: Intermediate</li>
+            <li>Teamwork: Intermediate</li>
+        </ul>
+    </li>
+</ul>
 
 # Additional Sections:
 
-Volunteer Experience:
+<ul>
+    <li><strong>Volunteer Experience:</strong>
+        <ul>
+            <li>Member, Java Team, AZ-SEnCS Al-Azhar University
+                <ul>
+                    <li>Collaborated with team members to develop Java-based projects and applications.</li>
+                </ul>
+            </li>
+            <li>Vice-Head, Cybersecurity Team, AZ-SEnCS Al-Azhar University
+                <ul>
+                    <li>Assisted in organizing cybersecurity workshops and events, and contributed to team projects.</li>
+                </ul>
+            </li>
+            <li>Vice-Head, Cybersecurity Team, Google Developer Students Club (GDSC), Al-Azhar University
+                <ul>
+                    <li>Coordinated cybersecurity initiatives and activities within the GDSC community.</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li><strong>Languages:</strong>
+        <ul>
+            <li>English: Level 7 (CEFR B1.3)</li>
+            <li>Arabic: Native Speaker</li>
+        </ul>
+    </li>
+</ul>
 
-<br>Member, Java Team, AZ-SEnCS Al-Azhar University
-<br>Collaborated with team members to develop Java-based projects and applications.
-
-<br>Vice-Head, Cybersecurity Team, AZ-SEnCS Al-Azhar University
-<br>Assisted in organizing cybersecurity workshops and events, and contributed to team projects.
-
-<br>Vice-Head, Cybersecurity Team, Google Developer Students Club (GDSC), Al-Azhar University<br>
-Coordinated cybersecurity initiatives and activities within the GDSC community.<br>
-
-Languages:<br>
-
-English: Level 7 (CEFR B1.3)<br>
-Arabic: Native Speaker
