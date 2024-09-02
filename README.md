@@ -1,5 +1,5 @@
 
-.# Abdel-Raman Abdel-Monsef Mohammed
+# Abdel-Raman Abdel-Monsef Mohammed
 
 <img src="photo/pic.jpg" alt="Personal Picture" width="150" height="150">
 
@@ -9,18 +9,11 @@
 # Personal Informations :
 
 Mobile Phone : 01272862660<br>
-Mobile Phone : 01020708385
-
-<<<<<<< Updated upstream
-Linkedin : <a href="https://www.linkedin.com/in/abdelrhman-abdelmonsef-48aa281ab/"> Abdelrhman Abdelmonsef </a> 
-
+Mobile Phone : 01020708385<br>
+Linkedin : <a href="https://www.linkedin.com/in/abdelrhman-abdelmonsef-48aa281ab/"> Abdelrhman Abdelmonsef </a> <br>
 Email Address : abdelmonsef349@gmail.com<br>
-Email Address : abdelmonsef348@gmail.com
-=======
-Linkedin : <a href="https://www.linkedin.com/in/abdelrhman-abdelmonsef-48aa281ab/">Abdelrehman Abdelmonsef</a>
+Email Address : abdelmonsef348@gmail.com<br>
 
-Email Address : abdelmonsef349@gmail.com
->>>>>>> Stashed changes
 
 # Summary : 
 
