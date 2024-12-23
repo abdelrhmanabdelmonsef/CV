@@ -38,24 +38,27 @@ Additionally, actively participating in the McKinsey Forward Program to enhance 
 
 # Education :
 
-Bachelor of Science in Computers and Systems Engineering<br>
-Al-Azhar University, Faculty of Computers and Systems Engineering<br>
-October 2019 - June 2024 <br>
-Grade: <a href="/certificates/graduation_cert.pdf" >Very Good</a><br>
-
+Bachelor of Science in Computers and Systems Engineering
+<ul>
+<li> Institution: Al-Azhar University, Faculty of Computers and Systems Engineering</li>
+<li> Duration: October 2019 – June 2024 </li>
+<li>Grade: Very Good <a href="/certificates/graduation_cert.pdf" >(Graduation Certificate)</a></li>
+</ul>
 
 # Work Experience :
 
 
 <a href="/certificates/Hackers_For_you_intern_cert.png"> Penetration Tester Intern </a> <br>
 Hackers For You<br>
-May 2, 2024 - May 5, 2024 <br><br>
+May 2, 2024 - May 5, 2024
 
-Collaborated with senior penetration testers to conduct security assessments and penetration tests on web applications, networks, and systems.<br>
-Assisted in performing reconnaissance, vulnerability scanning, and exploitation to identify and mitigate security vulnerabilities.<br>
-Contributed to the analysis of test results and preparation of detailed reports outlining findings and recommendations for remediation.<br>
-Participated in team meetings and training sessions to enhance technical skills and knowledge in cybersecurity best practices.
-Demonstrated strong problem-solving abilities and attention to detail in identifying and resolving security issues.<br>
+<ul>
+<li>Collaborated with senior penetration testers to conduct security assessments and penetration tests on web applications, networks, and systems.</li>
+<li>Assisted in performing reconnaissance, vulnerability scanning, and exploitation to identify and mitigate security vulnerabilities.</li>
+<li>Contributed to the analysis of test results and preparation of detailed reports outlining findings and recommendations for remediation.</li>
+<li>Participated in team meetings and training sessions to enhance technical skills and knowledge in cybersecurity best practices.</li>
+<li>Demonstrated strong problem-solving abilities and attention to detail in identifying and resolving security issues.</li>
+</ul>
 
 # Certificates
 <ol>
