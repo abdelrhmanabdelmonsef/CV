@@ -78,7 +78,7 @@ Demonstrated strong problem-solving abilities and attention to detail in identif
             <li>Database Management (MySQL): Basic</li>
             <li>Web Application Security:
                 <ul>
-                    <li>Penetration Testing: Intermediate</li>
+                    <li>Penetration Testing</li>
                     <li>Reconnaissance</li>
                     <li>Port Scanning</li>
                     <li>Host Discovery</li>
