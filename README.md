@@ -41,13 +41,13 @@ Additionally, actively participating in the McKinsey Forward Program to enhance 
 Bachelor of Science in Computers and Systems Engineering<br>
 Al-Azhar University, Faculty of Computers and Systems Engineering<br>
 October 2019 - June 2024 <br>
-Grade: <a src="/certificates/graduation_cert.pdf" >Very Good</a><br>
+Grade: <a href="/certificates/graduation_cert.pdf" >Very Good</a><br>
 
 
 # Work Experience :
 
 
-<a src="/certificates/Hackers_For_you_intern_cert.png"> Penetration Tester Intern </a> <br>
+<a href="/certificates/Hackers_For_you_intern_cert.png"> Penetration Tester Intern </a> <br>
 Hackers For You<br>
 May 2, 2024 - May 5, 2024 <br><br>
 
