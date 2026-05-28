@@ -50,7 +50,7 @@ Bachelor of Science in Computers and Systems Engineering
 
 <a href="/certificates/Hackers_For_you_intern_cert.png"> Penetration Tester Intern </a> <br>
 Hackers For You<br>
-May 2, 2024 - May 5, 2024
+FEB 2, 2024 - May 5, 2024
 
 <ul>
 <li>Collaborated with senior penetration testers to conduct security assessments and penetration tests on web applications, networks, and systems.</li>
