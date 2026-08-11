@@ -1,71 +1,143 @@
-# Abdel-Rahman Abdel-Monsef Mohammed
-<p align="left">
-  <img src="photo/pic.jpg" alt="Abdel-Rahman Abdel-Monsef" width="150" height="150" style="border-radius: 50%;">
-</p>
+# CV — Cyber HUD Portfolio
 
----
+Interactive CV website for **Abdel-Rahman Abdel-Monsef**, built as a **NestJS + Next.js** monorepo with the original Cyber HUD design ported from the static HTML site.
 
-## Contact Information
-* **Mobile:** [+201272862660](tel:+201272862660) | [+201020708385](tel:+201020708385)
-* **LinkedIn:** [Abdelrhman Abdelmonsef](https://www.linkedin.com/in/abdelrhman-abdelmonsef-48aa281ab/)
-* **GitHub:** [abdelrhmanabdelmonsef](https://github.com/abdelrhmanabdelmonsef)
-* **Email:** [abdelmonsef349@gmail.com](mailto:abdelmonsef349@gmail.com) | [abdelmonsef348@gmail.com](mailto:abdelmonsef348@gmail.com)
+## Repository layout
 
----
+```
+cv/
+├── README.md                 ← project overview (this file)
+├── package.json              ← npm workspaces root
+├── tsconfig.base.json        ← shared TypeScript paths
+│
+├── apps/
+│   ├── web-cv/               ← Next.js 14 — Cyber HUD UI
+│   │   ├── app/              ← routes, API handlers, global styles
+│   │   ├── components/       ← React UI (contact, cv, layout, ui)
+│   │   ├── contexts/         ← matrix & lightbox providers
+│   │   ├── lib/              ← messages auth helpers
+│   │   └── public/           ← synced symlinks to legacy assets
+│   └── api-cv/               ← NestJS REST API
+│       ├── src/              ← cv & contact modules
+│       └── data/             ← messages.json (runtime)
+│
+├── libs/
+│   └── cv-data/              ← typed CV content shared by both apps
+│       └── src/
+│           ├── data.ts       ← live site content (edit here)
+│           ├── types.ts
+│           └── index.ts
+│
+├── data/                     ← markdown CV drafts & variants
+├── legacy/                   ← original static HTML site + assets
+│   ├── index.html
+│   ├── photo/
+│   ├── certificates/
+│   └── good resources/
+└── node_modules/
+```
 
-## Summary
-Highly motivated **Computers and Systems Engineering graduate** with hands-on experience in **Web Application Penetration Testing** and a robust foundation in networking, operating systems, and scripting. Proven track record of identifying vulnerabilities and performing secure code analysis during a dedicated cybersecurity internship. Active student leader and technical speaker, currently training for advanced certifications including the **OSCP** and **eWAPT**. Exceptional problem-solver who thrives in fast-paced, high-pressure environments.
+| Folder | Purpose |
+|--------|---------|
+| **`apps/web-cv`** | Primary frontend — run, build, and deploy the site from here |
+| **`apps/api-cv`** | Optional NestJS API for CV JSON and contact endpoints |
+| **`libs/cv-data`** | Single source of truth for typed CV data at runtime |
+| **`data/`** | Markdown drafts used when updating `libs/cv-data/src/data.ts` |
+| **`legacy/`** | Standalone static site; photo, certificates, and PDF assets |
 
----
+## Quick start
 
-## Education
-* **Bachelor of Science in Computers and Systems Engineering**
-  * *Institution:* Al-Azhar University, Faculty of Computers and Systems Engineering
-  * *Duration:* October 2019 – June 2024
-  * *Cumulative Grade:* Very Good (Grade A Equivalent) | [Graduation Certificate](certificates/graduation_cert.pdf)
+```bash
+npm install
+cp apps/web-cv/.env.example apps/web-cv/.env.local   # set MESSAGE_SECRET
+npm run sync-assets                                    # link legacy assets into public/
+npm run dev                                            # API :4000 + site :3000
+```
 
----
+| URL | Description |
+|-----|-------------|
+| http://localhost:3000 | CV site |
+| http://localhost:3000/messages | Contact inbox (password from `MESSAGE_SECRET`) |
+| http://localhost:4000/cv | NestJS CV JSON (when API is running) |
 
-## Technical Skills & Tools
-* **Web Security:** Penetration Testing, OWASP Top 10, Reconnaissance, Port Scanning, Host Discovery, Service Enumeration
-* **Tools:** Nmap, Burp Suite, Metasploit, OWASP ZAP, Wireshark, Dirbuster
-* **Operating Systems:** Linux (Red Hat / Kali Linux / Debian), Windows (Server & Client)
-* **Networking:** TCP/IP Protocols, Network Routing & Switching, Network Security Architecture
-* **Programming & Scripting:** Python, Bash, Java, JavaScript, SQL (MySQL)
+## Prerequisites
 
----
+- Node.js 18+
+- npm 9+ (workspaces)
 
-## Work Experience
-### Penetration Tester Intern
-**Hackers For You** | *Feb 2, 2024 - May 5, 2024* | [Internship Certificate](certificates/Hackers_For_you_intern_cert.png)
-* Collaborated with senior penetration testers to perform comprehensive security assessments and web application/network penetration tests.
-* Executed targeted reconnaissance, vulnerability scanning, and manual exploitation of flaws to secure applications against OWASP Top 10 vulnerabilities.
-* Analyzed test results, drafted detailed technical remediation reports, and presented actionable security recommendations to developers.
-* Participated in continuous training and threat modeling sessions to align security controls with modern cybersecurity best practices.
+## Environment
 
----
+Copy `apps/web-cv/.env.example` → `apps/web-cv/.env.local`:
 
-## Certifications & Training
-1. **Red Hat System Administration I** | [Certificate](certificates/mlang_enCourse_Certificate_Enmlangmlang_ar___mlang.pdf)
-2. **Google Cybersecurity Professional Certificate**
-   * *Foundations of Cybersecurity* | [Certificate](certificates/Coursera%2062QY3G5YL8MZ.pdf)
-   * *Play It Safe: Manage Security Risks* | [Certificate](certificates/Coursera%20M7NZDA9943MN.pdf)
-   * *Connect and Protect: Networks and Network Security* | [Certificate](certificates/Coursera%20M4T8D89EFANG.pdf)
-   * *Tools of the Trade: Linux and SQL* | [Certificate](certificates/Coursera%20VKAPSSTPLL5W.pdf)
-3. **Professional Development Training:** McKinsey Forward Program *(Focus on adaptability, problem-solving, and team leadership)*
+| Variable | Description |
+|----------|-------------|
+| `NEXT_PUBLIC_API_URL` | API base URL. Use `/api` for built-in Next.js routes (default). |
+| `MESSAGE_SECRET` | Password for `/messages` admin page. **Required** — no default. |
+| `NEXT_PUBLIC_SITE_URL` | Optional. Used for metadata base URL (defaults to `http://localhost:3000`). |
 
----
+Optional NestJS-only copy: `apps/api-cv/.env.example` → `.env`
 
-## Volunteer & Leadership Experience
-* **Vice-Head, Cybersecurity Team** | *Google Developer Student Clubs (GDSC), Al-Azhar University*
-  * Coordinated, planned, and delivered high-quality cybersecurity workshops, CTF training, and events for 150+ students.
-* **Vice-Head, Cybersecurity Team** | *AZ-SEnCS, Al-Azhar University*
-  * Designed practical security curricula for university students and assisted in organizing academic cybersecurity bootcamps.
-* **Member, Java Development Team** | *AZ-SEnCS, Al-Azhar University*
-  * Partnered with peers to build and optimize Java-based applications, incorporating object-oriented design and clean coding principles.
+## Scripts
 
----
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start API (:4000) and Next.js (:3000) together |
+| `npm run dev:web` | Next.js only |
+| `npm run dev:api` | NestJS only |
+| `npm run sync-assets` | Symlink `legacy/photo`, `legacy/certificates`, and HTB transcript into `apps/web-cv/public/` |
+| `npm run build:cv-data` | Compile shared CV data package |
+| `npm run build` | Build cv-data, web-cv, and api-cv |
+| `npm run start:api` | Run NestJS in production |
 
-## Languages
-* **Arabic:** Native Speaker
-* **English:** Professional Working Proficiency (Level 7 / CEFR B1.3)
+`npm run dev` and `npm run build` automatically compile `cv-data` and sync assets first.
+
+## Updating CV content
+
+1. Edit markdown drafts in **`data/`** (profile, skills, role-specific variants).
+2. Update the typed source in **`libs/cv-data/src/data.ts`** to match.
+3. Add new photos or certificates under **`legacy/photo/`** and **`legacy/certificates/`**, then run `npm run sync-assets`.
+
+The Next.js app reads from `cv-data` at build time — it does **not** load `data/*.md` at runtime.
+
+## Contact form & messages
+
+The contact form posts to `/api/contact` (Next.js route). Messages are stored at:
+
+```
+apps/api-cv/data/messages.json
+```
+
+Session auth for `/messages` uses an httpOnly cookie (8 h). Logic lives in `apps/web-cv/lib/messages-auth.ts`.
+
+## Production build
+
+```bash
+npm run sync-assets
+npm run build
+npm --prefix apps/web-cv run start   # frontend
+npm run start:api                    # optional API
+```
+
+## Legacy static site
+
+Open **`legacy/index.html`** in a browser, or serve the `legacy/` folder with any static host. Asset paths inside that file are relative to `legacy/`.
+
+The modern app reuses `legacy/photo/` and `legacy/certificates/` via symlinks — run `npm run sync-assets` after adding files.
+
+## Tech stack
+
+- **Frontend:** Next.js 14, React 18, Cyber HUD CSS (matrix rain, terminal, lightbox)
+- **Backend:** NestJS (optional in dev — contact form also works via Next.js API routes)
+- **Shared data:** TypeScript workspace package `cv-data`
+
+## Troubleshooting
+
+**`ENOSPC: file watchers`** — increase inotify limit or run `dev:web` and `dev:api` in separate terminals:
+
+```bash
+sudo sysctl fs.inotify.max_user_watches=524288
+```
+
+**Missing images or certificates** — run `npm run sync-assets` so `public/` symlinks point at `legacy/`.
+
+**Broken symlinks after moving the repo** — re-run `npm run sync-assets` from the repo root.
