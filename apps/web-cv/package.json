@@ -1,0 +1,24 @@
+{
+  "name": "web-cv",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "predev": "npm --workspace cv-data run build",
+    "dev": "next dev",
+    "prebuild": "npm --workspace cv-data run build",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "cv-data": "*",
+    "next": "14.2.5",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.0",
+    "@types/react": "^18.3.2",
+    "@types/react-dom": "^18.3.0"
+  }
+}
