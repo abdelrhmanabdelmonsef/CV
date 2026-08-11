@@ -1,0 +1,2307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO & Discovery Metadata -->
+  <title>Abdel-Rahman Abdel-Monsef | Web Developer & Cybersecurity Enthusiast</title>
+  <meta name="description" content="Professional portfolio of Abdel-Rahman Abdel-Monsef — Computers & Systems Engineering graduate with growing experience in modern web development and cybersecurity. Explore skills, projects, and technical background.">
+  <meta name="keywords" content="Web Developer, TypeScript, JavaScript, Node.js, Express, NestJS, Next.js, Cybersecurity, Egypt, Portfolio">
+  <meta name="author" content="Abdel-Rahman Abdel-Monsef">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://github.com/abdelrhmanabdelmonsef/CV">
+  <meta property="og:title" content="Abdel-Rahman Abdel-Monsef | Web Developer & Cybersecurity Enthusiast">
+  <meta property="og:description" content="Computers & Systems Engineering graduate with growing experience in modern web development and cybersecurity. Explore skills, projects, and technical background.">
+  <meta property="og:image" content="photo/pic.jpg">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:title" content="Abdel-Rahman Abdel-Monsef | Web Developer & Cybersecurity Enthusiast">
+  <meta property="twitter:description" content="Computers & Systems Engineering graduate with growing experience in modern web development and cybersecurity. Explore skills, projects, and technical background.">
+  <meta property="twitter:image" content="photo/pic.jpg">
+
+  <!-- Schema.org JSON-LD Person Metadata -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Abdel-Rahman Abdel-Monsef",
+    "jobTitle": "Web Developer & Cybersecurity Enthusiast",
+    "alumniOf": {
+      "@type": "EducationalOrganization",
+      "name": "Al-Azhar University, Faculty of Computers and Systems Engineering"
+    },
+    "url": "https://github.com/abdelrhmanabdelmonsef",
+    "sameAs": [
+      "https://www.linkedin.com/in/abdelrhman-abdelmonsef-48aa281ab/",
+      "https://github.com/abdelrhmanabdelmonsef"
+    ],
+    "knowsAbout": ["Web Development", "TypeScript", "JavaScript", "Node.js", "Express", "NestJS", "Next.js", "Asynchronous Node.js", "Express Middleware", "Route Parameters", "Query Strings", "Module Exports", "Cybersecurity", "Network Security", "Linux Administration", "Python", "Bash", "Vulnerability Assessment"],
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Cairo",
+      "addressCountry": "Egypt"
+    }
+  }
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── CORE DESIGN VARIABLES (CYBER HUD PALETTE) ── */
+    :root {
+      --bg-primary: #06090e;
+      --bg-secondary: #0a0f19;
+      --bg-card: rgba(13, 20, 35, 0.45);
+      --bg-card-hover: rgba(19, 30, 53, 0.65);
+      --accent-green: #00ff88;
+      --accent-cyan: #00e5ff;
+      --accent-amber: #ffb300;
+      --accent-red: #ff3b30;
+      --text-primary: #f1f5f9;
+      --text-secondary: #94a3b8;
+      --text-muted: #475569;
+      --border-green: rgba(0, 255, 136, 0.15);
+      --border-cyan: rgba(0, 229, 255, 0.15);
+      --glow-green: 0 0 25px rgba(0, 255, 136, 0.25);
+      --glow-cyan: 0 0 25px rgba(0, 229, 255, 0.25);
+      --glow-amber: 0 0 25px rgba(255, 179, 0, 0.25);
+      --transition-speed: 0.3s;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* ── SCROLLBARS ── */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--bg-primary);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(0, 229, 255, 0.2);
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--accent-cyan);
+      box-shadow: var(--glow-cyan);
+    }
+
+    /* ── BACKGROUND MATRIX CANVAS & GRID ── */
+    #matrix-canvas {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      opacity: 0.04;
+      pointer-events: none;
+      transition: opacity 0.5s ease;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0, 229, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 229, 255, 0.02) 1px, transparent 1px);
+      background-size: 50px 50px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Scanline visual overlay effect */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+      background-size: 100% 4px, 6px 100%;
+      pointer-events: none;
+      z-index: 10;
+      opacity: 0.15;
+    }
+
+    .wrapper {
+      position: relative;
+      z-index: 2;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+    }
+
+    /* ── GENERAL UTILITIES & GLASS PANELS ── */
+    .glass-panel {
+      background: var(--bg-card);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--border-cyan);
+      border-radius: 16px;
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      transition: all var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .glass-panel:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--accent-green);
+      box-shadow: 0 12px 40px rgba(0, 255, 136, 0.05), 0 0 2px rgba(0, 255, 136, 0.15);
+    }
+
+    /* Corner Decals for Cyberpunk Aesthetic */
+    .glass-panel::before, .glass-panel::after {
+      content: '';
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      pointer-events: none;
+    }
+    .glass-panel::before {
+      top: 0; left: 0;
+      border-top: 2px solid var(--accent-cyan);
+      border-left: 2px solid var(--accent-cyan);
+    }
+    .glass-panel::after {
+      bottom: 0; right: 0;
+      border-bottom: 2px solid var(--accent-green);
+      border-right: 2px solid var(--accent-green);
+    }
+
+    /* Floating control buttons (Print & Matrix toggles) */
+    .control-panel {
+      position: fixed;
+      top: 24px;
+      right: 24px;
+      z-index: 100;
+      display: flex;
+      gap: 12px;
+    }
+
+    .hud-btn {
+      background: rgba(10, 15, 30, 0.8);
+      border: 1px solid var(--accent-cyan);
+      backdrop-filter: blur(8px);
+      color: var(--accent-cyan);
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    }
+
+    .hud-btn:hover {
+      color: #000;
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-green));
+      border-color: var(--accent-green);
+      box-shadow: var(--glow-green);
+      transform: translateY(-2px);
+    }
+
+    .hud-btn.active {
+      background: var(--accent-green);
+      color: #000;
+      border-color: var(--accent-green);
+      box-shadow: var(--glow-green);
+    }
+
+    /* ── HEADER ── */
+    .header {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 32px;
+      align-items: center;
+      margin-bottom: 32px;
+    }
+
+    .avatar-container {
+      position: relative;
+      width: 140px;
+      height: 140px;
+    }
+
+    .avatar-container::before {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-green));
+      z-index: 0;
+      animation: spin-glow 10s linear infinite;
+    }
+
+    @keyframes spin-glow {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .avatar {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      border: 4px solid var(--bg-primary);
+      position: relative;
+      z-index: 1;
+      object-fit: cover;
+      display: block;
+    }
+
+    .header-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .terminal-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--accent-green);
+      background: rgba(0, 255, 136, 0.08);
+      border: 1px solid rgba(0, 255, 136, 0.2);
+      padding: 4px 12px;
+      border-radius: 6px;
+      width: fit-content;
+      margin-bottom: 12px;
+      letter-spacing: 2px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .terminal-tag::before {
+      content: '';
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent-green);
+      animation: pulse-dot 1.5s infinite;
+    }
+
+    @keyframes pulse-dot {
+      0% { opacity: 0.3; }
+      50% { opacity: 1; }
+      100% { opacity: 0.3; }
+    }
+
+    .name {
+      font-size: 40px;
+      font-weight: 800;
+      letter-spacing: -1px;
+      line-height: 1.1;
+      background: linear-gradient(135deg, var(--text-primary) 30%, var(--accent-cyan) 80%, var(--accent-green) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 8px;
+    }
+
+    .title {
+      font-size: 16px;
+      color: var(--accent-cyan);
+      font-weight: 500;
+      margin-bottom: 18px;
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.5px;
+    }
+
+    .contacts-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .contact-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-secondary);
+      font-size: 13px;
+      text-decoration: none;
+      padding: 6px 14px;
+      border: 1px solid var(--border-cyan);
+      background: rgba(10, 15, 28, 0.6);
+      border-radius: 20px;
+      transition: all 0.25s ease;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .contact-badge:hover {
+      color: var(--accent-green);
+      border-color: var(--accent-green);
+      box-shadow: var(--glow-green);
+      transform: translateY(-2px);
+      background: rgba(0, 255, 136, 0.05);
+    }
+
+    .contact-badge svg {
+      width: 14px;
+      height: 14px;
+      fill: currentColor;
+    }
+
+    /* ── SECTIONS GENERAL ── */
+    .section {
+      margin-bottom: 36px;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+
+    .section-header::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, var(--border-cyan), transparent 85%);
+    }
+
+    .section-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--accent-cyan);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-title svg {
+      width: 16px;
+      height: 16px;
+      color: var(--accent-cyan);
+    }
+
+    /* ── SUMMARY ── */
+    .summary-card {
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      border-left: 3px solid var(--accent-green);
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
+    .summary-card strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    /* ── INTERACTIVE OPERATIVE CLI TERMINAL ── */
+    .terminal-panel {
+      font-family: 'JetBrains Mono', monospace;
+      background: rgba(4, 6, 12, 0.95);
+      border: 1px solid var(--accent-green);
+      border-radius: 12px;
+      box-shadow: var(--glow-green);
+      margin-bottom: 36px;
+      overflow: hidden;
+    }
+
+    .terminal-header {
+      background: #0d1117;
+      padding: 10px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(0, 255, 136, 0.2);
+    }
+
+    .terminal-title {
+      font-size: 11px;
+      color: var(--accent-green);
+      letter-spacing: 1.5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .terminal-dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .t-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+    .t-dot.red { background: var(--accent-red); }
+    .t-dot.yellow { background: var(--accent-amber); }
+    .t-dot.green { background: var(--accent-green); }
+
+    .terminal-body {
+      padding: 20px;
+      height: 280px;
+      overflow-y: auto;
+      font-size: 13px;
+      color: var(--text-primary);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .t-out {
+      white-space: pre-wrap;
+      line-height: 1.5;
+    }
+    .t-green { color: var(--accent-green); }
+    .t-cyan { color: var(--accent-cyan); }
+    .t-amber { color: var(--accent-amber); }
+    .t-red { color: var(--accent-red); }
+    .t-muted { color: var(--text-muted); }
+
+    .t-input-container {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: auto;
+    }
+
+    .t-prompt {
+      color: var(--accent-cyan);
+    }
+
+    .t-input {
+      background: transparent;
+      border: none;
+      outline: none;
+      color: var(--accent-green);
+      font-family: inherit;
+      font-size: inherit;
+      flex: 1;
+    }
+
+    /* ── SLEEK GRID LAYOUTS ── */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+      .header {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .avatar-container {
+        margin: 0 auto;
+      }
+      .contacts-container {
+        justify-content: center;
+      }
+    }
+
+    /* ── CYBER TIMELINE (EXPERIENCE & EDUCATION) ── */
+    .timeline-container {
+      position: relative;
+      padding-left: 28px;
+    }
+
+    .timeline-container::before {
+      content: '';
+      position: absolute;
+      left: 6px;
+      top: 10px;
+      bottom: 10px;
+      width: 2px;
+      background: linear-gradient(180deg, var(--accent-green) 0%, var(--accent-cyan) 60%, transparent 100%);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 28px;
+    }
+
+    .timeline-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: -28px;
+      top: 6px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--bg-primary);
+      border: 3px solid var(--accent-green);
+      box-shadow: 0 0 10px rgba(0, 255, 136, 0.4);
+      z-index: 1;
+      transition: all 0.3s ease;
+    }
+
+    .timeline-item:hover .timeline-dot {
+      border-color: var(--accent-cyan);
+      box-shadow: 0 0 15px var(--accent-cyan);
+      transform: scale(1.2);
+    }
+
+    .timeline-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 10px;
+      gap: 12px;
+    }
+
+    .timeline-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .timeline-subtitle {
+      font-size: 13px;
+      color: var(--accent-cyan);
+      font-weight: 500;
+      font-family: 'JetBrains Mono', monospace;
+      margin-top: 2px;
+    }
+
+    .timeline-meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--text-muted);
+      margin-top: 6px;
+    }
+
+    .timeline-meta .dot {
+      color: var(--accent-green);
+    }
+
+    .timeline-badge {
+      background: rgba(255, 179, 0, 0.08);
+      border: 1px solid rgba(255, 179, 0, 0.2);
+      color: var(--accent-amber);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 10px;
+    }
+
+    .timeline-badge.green {
+      background: rgba(0, 255, 136, 0.08);
+      border: 1px solid rgba(0, 255, 136, 0.2);
+      color: var(--accent-green);
+    }
+
+    .bullet-list {
+      list-style: none;
+      margin-top: 12px;
+    }
+
+    .bullet-list li {
+      font-size: 14px;
+      color: var(--text-secondary);
+      padding-left: 20px;
+      position: relative;
+      margin-bottom: 8px;
+    }
+
+    .bullet-list li::before {
+      content: '⚡';
+      position: absolute;
+      left: 0;
+      color: var(--accent-green);
+      font-size: 11px;
+      top: 2px;
+    }
+
+    /* ── PROJECTS ── */
+    .project-card {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .project-card::after {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 70px; height: 70px;
+      background: radial-gradient(circle at top right, rgba(0, 229, 255, 0.08), transparent 70%);
+      pointer-events: none;
+    }
+
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 10px;
+    }
+
+    .project-title-text {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--accent-green);
+    }
+
+    .project-desc {
+      font-size: 13.5px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 16px;
+      flex-grow: 1;
+    }
+
+    .tag-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+
+    .tech-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 4px;
+      background: rgba(10, 15, 30, 0.7);
+      border: 1px solid rgba(0, 229, 255, 0.12);
+      color: var(--accent-cyan);
+    }
+
+    .tech-tag.green {
+      border-color: rgba(0, 255, 136, 0.12);
+      color: var(--accent-green);
+    }
+
+    /* ── SKILLS PROGRESS MODS ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+
+    .skill-mod {
+      background: rgba(8, 12, 22, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      border-radius: 10px;
+      padding: 16px;
+      transition: all 0.3s ease;
+    }
+
+    .skill-mod:hover {
+      border-color: var(--border-cyan);
+      background: rgba(10, 18, 32, 0.8);
+      transform: translateY(-2px);
+    }
+
+    .skill-mod-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--accent-cyan);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .skill-mod-title::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent-cyan);
+      box-shadow: var(--glow-cyan);
+    }
+
+    .skill-tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .skill-progress {
+      display: grid;
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .progress-item {
+      display: grid;
+      gap: 6px;
+    }
+
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: var(--text-secondary);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--accent-green), var(--accent-cyan));
+      transition: width 0.4s ease;
+    }
+
+    .skill-level-text {
+      font-size: 11px;
+      color: var(--text-primary);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .skill-mini-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      border: 1px solid transparent;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .skill-mini-tag.green {
+      color: var(--accent-green);
+      background: rgba(0, 255, 136, 0.05);
+      border-color: rgba(0, 255, 136, 0.1);
+    }
+    .skill-mini-tag.green:hover {
+      background: rgba(0, 255, 136, 0.12);
+      box-shadow: var(--glow-green);
+      border-color: var(--accent-green);
+    }
+
+    .skill-mini-tag.blue {
+      color: var(--accent-cyan);
+      background: rgba(0, 229, 255, 0.05);
+      border-color: rgba(0, 229, 255, 0.1);
+    }
+    .skill-mini-tag.blue:hover {
+      background: rgba(0, 229, 255, 0.12);
+      box-shadow: var(--glow-cyan);
+      border-color: var(--accent-cyan);
+    }
+
+    .skill-mini-tag.purple {
+      color: #a78bfa;
+      background: rgba(167, 139, 250, 0.05);
+      border-color: rgba(167, 139, 250, 0.15);
+    }
+    .skill-mini-tag.purple:hover {
+      background: rgba(167, 139, 250, 0.15);
+      border-color: #a78bfa;
+    }
+
+    .skill-mini-tag.gray {
+      color: var(--text-secondary);
+      background: rgba(255, 255, 255, 0.03);
+      border-color: rgba(255, 255, 255, 0.06);
+    }
+    .skill-mini-tag.gray:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    /* ── PLATFORMS & TELEMETRY ── */
+    .platform-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 24px;
+      position: relative;
+    }
+
+    .platform-badge-wrapper {
+      margin: 12px 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .platform-badge-wrapper img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      border: 1px solid rgba(0, 255, 136, 0.15);
+      box-shadow: var(--glow-green);
+    }
+
+    .platform-logo-large {
+      font-size: 36px;
+      margin-bottom: 8px;
+      filter: drop-shadow(0 0 10px var(--accent-cyan));
+    }
+
+    .platform-username-link {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      color: var(--accent-green);
+      text-decoration: none;
+      margin-bottom: 12px;
+      transition: all 0.2s ease;
+    }
+    .platform-username-link:hover {
+      color: var(--accent-cyan);
+      text-decoration: underline;
+    }
+
+    .telemetry-row {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      width: 100%;
+      margin-top: 8px;
+    }
+
+    .telemetry-item {
+      text-align: center;
+    }
+
+    .telemetry-val {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--accent-cyan);
+    }
+
+    .telemetry-label {
+      font-size: 10px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .cert-badge-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--accent-green);
+      text-decoration: none;
+      border: 1px solid rgba(0, 255, 136, 0.2);
+      padding: 4px 12px;
+      border-radius: 6px;
+      transition: all 0.3s ease;
+      background: rgba(0, 255, 136, 0.03);
+      cursor: pointer;
+    }
+
+    .cert-badge-link:hover {
+      background: rgba(0, 255, 136, 0.1);
+      box-shadow: var(--glow-green);
+      border-color: var(--accent-green);
+      transform: translateY(-1px);
+    }
+
+    /* ── CERTIFICATIONS LIST ── */
+    .certifications-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .cert-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(8, 12, 22, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      border-radius: 10px;
+      padding: 16px 20px;
+      transition: all 0.3s ease;
+      gap: 14px;
+    }
+
+    .cert-row:hover {
+      border-color: var(--border-green);
+      background: rgba(10, 18, 30, 0.8);
+      transform: translateX(4px);
+    }
+
+    .cert-row-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .cert-id {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--accent-green);
+      background: rgba(0, 255, 136, 0.08);
+      border: 1px solid rgba(0, 255, 136, 0.2);
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: inset 0 0 5px rgba(0, 255, 136, 0.1);
+    }
+
+    .cert-details-name {
+      font-size: 14.5px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .cert-details-issuer {
+      font-size: 12px;
+      color: var(--text-secondary);
+      font-family: 'JetBrains Mono', monospace;
+      margin-top: 2px;
+    }
+
+    /* ── LANGUAGES & VOLUNTEER CARDS ── */
+    .languages-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .lang-meter-card {
+      background: rgba(8, 12, 22, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      border-radius: 12px;
+      padding: 18px;
+    }
+
+    .lang-meta-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 10px;
+    }
+
+    .lang-text {
+      font-weight: 600;
+      font-size: 14.5px;
+    }
+
+    .lang-metric {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--accent-cyan);
+    }
+
+    .meter-container {
+      height: 6px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .meter-fill {
+      height: 100%;
+      border-radius: 3px;
+      background: linear-gradient(90deg, var(--accent-green), var(--accent-cyan));
+      width: 0%;
+      transition: width 1.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ── IN-PAGE CERTIFICATE LIGHTBOX MODAL ── */
+    .lightbox-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(4, 6, 12, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      padding: 24px;
+    }
+
+    .lightbox-modal.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .lightbox-content {
+      background: var(--bg-secondary);
+      border: 1px solid var(--accent-cyan);
+      box-shadow: var(--glow-cyan);
+      border-radius: 16px;
+      width: 100%;
+      max-width: 900px;
+      height: 80vh;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+      transform: scale(0.9);
+      transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .lightbox-modal.active .lightbox-content {
+      transform: scale(1);
+    }
+
+    .lightbox-header {
+      background: #0d111b;
+      padding: 14px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(0, 229, 255, 0.15);
+    }
+
+    .lightbox-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      color: var(--accent-cyan);
+      font-weight: 600;
+    }
+
+    .lightbox-close {
+      background: transparent;
+      border: none;
+      color: var(--text-secondary);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border: 1px solid transparent;
+      border-radius: 4px;
+      transition: all 0.2s ease;
+    }
+
+    .lightbox-close:hover {
+      color: var(--accent-red);
+      border-color: rgba(255, 59, 48, 0.3);
+      background: rgba(255, 59, 48, 0.05);
+    }
+
+    .lightbox-body {
+      flex: 1;
+      background: #000;
+      position: relative;
+    }
+
+    .lightbox-viewer {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .lightbox-img-viewer {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: none;
+    }
+
+    .lightbox-loader {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--accent-cyan);
+      background: var(--bg-secondary);
+      gap: 16px;
+      z-index: 10;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .spinner {
+      width: 32px;
+      height: 32px;
+      border: 3px solid rgba(0, 229, 255, 0.1);
+      border-top-color: var(--accent-cyan);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      text-align: center;
+      margin-top: 48px;
+      padding: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .footer-text {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .footer-text span {
+      color: var(--accent-green);
+    }
+
+    /* ── OUTLINE DECALS ── */
+    .timeline-header::after {
+      content: ' ';
+      display: block;
+      clear: both;
+    }
+
+    /* ── PRINT RULES (EXECUTIVE RESUME EXPORT) ── */
+    @media print {
+      body {
+        background: #ffffff !important;
+        color: #000000 !important;
+        font-size: 11pt !important;
+      }
+      body::before, body::after, #matrix-canvas, .control-panel, .terminal-panel, .lightbox-modal {
+        display: none !important;
+      }
+      .wrapper {
+        padding: 0 !important;
+        max-width: 100% !important;
+      }
+      .glass-panel {
+        background: #ffffff !important;
+        border: none !important;
+        box-shadow: none !important;
+        padding: 12px 0 !important;
+        margin-bottom: 20px !important;
+        page-break-inside: avoid;
+      }
+      .glass-panel::before, .glass-panel::after {
+        display: none !important;
+      }
+      .section-header::after {
+        background: #dddddd !important;
+      }
+      .section-title {
+        color: #000000 !important;
+        font-weight: 700 !important;
+      }
+      .section-title svg {
+        color: #000000 !important;
+      }
+      .name {
+        background: none !important;
+        -webkit-text-fill-color: #000000 !important;
+        color: #000000 !important;
+        font-size: 26pt !important;
+      }
+      .title {
+        color: #333333 !important;
+        font-size: 12pt !important;
+      }
+      .contact-badge {
+        border: 1px solid #cccccc !important;
+        color: #333333 !important;
+        background: none !important;
+        font-size: 9pt !important;
+        padding: 2px 8px !important;
+      }
+      .summary-card {
+        border-left: 3px solid #000000 !important;
+        color: #222222 !important;
+        padding-left: 12px !important;
+      }
+      .timeline-container::before {
+        background: #cccccc !important;
+      }
+      .timeline-dot {
+        border-color: #000000 !important;
+        background: #ffffff !important;
+      }
+      .timeline-title {
+        color: #000000 !important;
+        font-size: 13pt !important;
+      }
+      .timeline-subtitle {
+        color: #333333 !important;
+      }
+      .bullet-list li {
+        color: #333333 !important;
+      }
+      .bullet-list li::before {
+        color: #000000 !important;
+      }
+      .tech-tag {
+        border: 1px solid #aaaaaa !important;
+        color: #000000 !important;
+        background: none !important;
+        font-size: 9pt !important;
+      }
+      .skill-mod {
+        border: 1px solid #dddddd !important;
+        background: none !important;
+      }
+      .skill-mini-tag {
+        border: 1px solid #cccccc !important;
+        color: #000000 !important;
+        background: none !important;
+      }
+      .cert-row {
+        border: 1px solid #dddddd !important;
+        background: none !important;
+        page-break-inside: avoid;
+      }
+      .cert-id {
+        border: 1px solid #cccccc !important;
+        color: #000000 !important;
+        background: none !important;
+      }
+      .cert-details-name {
+        color: #000000 !important;
+      }
+      .cert-badge-link {
+        border: 1px solid #cccccc !important;
+        color: #333333 !important;
+        background: none !important;
+      }
+      .languages-grid {
+        grid-template-columns: 1fr 1fr !important;
+      }
+      .lang-meter-card {
+        border: 1px solid #dddddd !important;
+        background: none !important;
+      }
+      .meter-container {
+        border: 1px solid #cccccc !important;
+        background: #eeeeee !important;
+      }
+      .meter-fill {
+        background: #333333 !important;
+      }
+      .footer {
+        margin-top: 24px !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Matrix canvas overlay -->
+  <canvas id="matrix-canvas"></canvas>
+
+  <!-- HUD Control pills -->
+  <div class="control-panel">
+    <button class="hud-btn" id="matrix-toggle" onclick="toggleMatrix()">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M15 3v18M3 9h18M3 15h18"/></svg>
+      Matrix Rain
+    </button>
+    <button class="hud-btn" onclick="window.print()">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+      Print Resume
+    </button>
+  </div>
+
+  <div class="wrapper">
+
+    <!-- ══════════════════ HEADER ══════════════════ -->
+    <header class="glass-panel header">
+      <div class="avatar-container">
+        <img class="avatar" src="photo/pic.jpg" alt="Abdel-Rahman Abdel-Monsef" id="profile-photo">
+      </div>
+      <div class="header-info">
+        <div class="terminal-tag">whoami --status SEC_OK</div>
+        <h1 class="name">Abdel-Rahman Abdel-Monsef</h1>
+        <p class="title">Computers & Systems Engineer | Web Developer & Cybersecurity Enthusiast</p>
+        <div class="contacts-container">
+          <a class="contact-badge" href="tel:+201272862660" id="phone-1">
+            <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+            +20 127 286 2660
+          </a>
+          <a class="contact-badge" href="tel:+201020708385" id="phone-2">
+            <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+            +20 102 070 8385
+          </a>
+          <a class="contact-badge" href="mailto:abdelmonsef349@gmail.com" id="email-link">
+            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            abdelmonsef349@gmail.com
+          </a>
+          <a class="contact-badge" href="https://www.linkedin.com/in/abdelrhman-abdelmonsef-48aa281ab/" target="_blank" id="linkedin-link">
+            <svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+            LinkedIn
+          </a>
+          <a class="contact-badge" href="https://github.com/abdelrhmanabdelmonsef" target="_blank" id="github-link">
+            <svg viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
+            GitHub
+          </a>
+          <span class="contact-badge" id="location-badge">
+            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
+            Cairo, Egypt
+          </span>
+        </div>
+      </div>
+    </header>
+
+    <!-- ══════════════════ INTERACTIVE SECURITY TERMINAL ══════════════════ -->
+    <div class="terminal-panel">
+      <div class="terminal-header">
+        <div class="terminal-title">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="animation: pulse-dot 2s infinite;"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          AEGIS SECURE LOGSHELL v2.4.9 — guest@aegis
+        </div>
+        <div class="terminal-dots">
+          <div class="t-dot red"></div>
+          <div class="t-dot yellow"></div>
+          <div class="t-dot green"></div>
+        </div>
+      </div>
+      <div class="terminal-body" id="term-body">
+        <div class="t-out t-muted">// Active Secure Session Established. System OK.</div>
+        <div class="t-out t-cyan">
+===========================================================
+  █████  ███████  ██████  ███████ ███████
+ ██   ██ ██      ██       ██      ██
+ ███████ █████   ██   ███ █████   ███████
+ ██   ██ ██      ██    ██ ██           ██
+ ██   ██ ███████  ██████  ███████ ███████  INTELLIGENT SHELL
+===========================================================</div>
+        <div class="t-out">Welcome, cybersecurity recruiter! Live console operational.</div>
+        <div class="t-out">Type <span class="t-green">help</span> to view available security commands.</div>
+        <div class="t-input-container">
+          <span class="t-prompt">guest@aegis:~$</span>
+          <input type="text" class="t-input" id="term-input" autocomplete="off" spellcheck="false" autofocus>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════ PROFESSIONAL SUMMARY ══════════════════ -->
+    <section class="section" id="summary-section">
+      <div class="section-header">
+        <div class="section-title">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          Professional Summary
+        </div>
+      </div>
+      <div class="glass-panel summary-card" id="summary-card">
+        Highly motivated <strong>Computers &amp; Systems Engineering graduate</strong> with growing hands-on experience in <strong>modern web development</strong>, especially <strong>TypeScript</strong>, <strong>JavaScript</strong>, <strong>Node.js</strong>, <strong>Express</strong>, <strong>NestJS</strong>, and <strong>Next.js</strong>. I am building a solid foundation in backend and frontend development by studying asynchronous Node.js patterns, Express middleware, route parameters, query strings, and module exports, while maintaining strong interest in <strong>cybersecurity</strong>, secure coding, and web application security. I enjoy learning practical technologies, solving problems, and turning ideas into functional applications.
+      </div>
+    </section>
+
+    <!-- ══════════════════ LEARNING HIGHLIGHTS ══════════════════ -->
+    <section class="section" id="learning-highlights-section">
+      <div class="section-header">
+        <div class="section-title">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6l4 2"></path></svg>
+          Learning Highlights
+        </div>
+      </div>
+      <div class="glass-panel">
+        <ul class="bullet-list">
+          <li>Developing large-scale TypeScript applications with secure webhook ingestion, queue-based fulfillment, and RBAC-driven operations.</li>
+          <li>Focused on full-stack JavaScript with TypeScript, Node.js, Express, and Next.js.</li>
+          <li>Practicing secure web development by applying secure coding principles and OWASP-aware patterns.</li>
+          <li>Building backend APIs and frontend dashboards while exploring NestJS architecture, async jobs, and modern deployment tooling.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ══════════════════ WORK EXPERIENCE ══════════════════ -->
+    <section class="section" id="experience-section">
+      <div class="section-header">
+        <div class="section-title">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          Work Experience
+        </div>
+      </div>
+      <div class="glass-panel">
+        <div class="timeline-container" id="experience-timeline">
+          
+          <div class="timeline-item" id="exp-hackers-for-you">
+            <div class="timeline-dot"></div>
+            <div class="timeline-header">
+              <div>
+                <h3 class="timeline-title">Penetration Tester Intern</h3>
+                <h4 class="timeline-subtitle">Hackers For You</h4>
+                <div class="timeline-meta">
+                  <span>🗓️ Feb 2024 – May 2024</span>
+                  <span class="dot">●</span>
+                  <span>3 months</span>
+                  <span class="dot">●</span>
+                  <span class="timeline-badge green">Completed</span>
+                </div>
+              </div>
+              <a class="cert-badge-link" onclick="openLightbox('certificates/Hackers_For_you_intern_cert.png', 'Hackers For You - Internship Certificate')">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                View Cert
+              </a>
+            </div>
+            <ul class="bullet-list">
+              <li>Collaborated with senior penetration testers to perform comprehensive security assessments and web application/network penetration tests.</li>
+              <li>Executed targeted reconnaissance, vulnerability scanning, and manual exploitation of flaws to secure applications against OWASP Top 10 vulnerabilities.</li>
+              <li>Analyzed test results, drafted detailed technical remediation reports, and presented actionable security recommendations to developers.</li>
+              <li>Participated in continuous training and threat modeling sessions to align security controls with modern cybersecurity best practices.</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════ EDUCATION ══════════════════ -->
+    <section class="section" id="education-section">
+      <div class="section-header">
+        <div class="section-title">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"/></svg>
+          Education
+        </div>
+      </div>
+      <div class="glass-panel">
+        <div class="timeline-container" id="education-timeline">
+
+          <div class="timeline-item" id="edu-card">
+            <div class="timeline-dot"></div>
+            <div class="timeline-header">
+              <div>
+                <h3 class="timeline-title">Bachelor of Science — Computers &amp; Systems Engineering</h3>
+                <h4 class="timeline-subtitle">Al-Azhar University, Faculty of Computers &amp; Systems Engineering</h4>
+                <div class="timeline-meta">
+                  <span>🗓️ Oct 2019 – Jun 2024</span>
+                  <span class="dot">●</span>
+                  <span>Cairo, Egypt</span>
+                  <span class="dot">●</span>
+                  <span style="color: var(--accent-green);">Grade: Very Good (A Equivalent)</span>
+                </div>
+              </div>
+              <a class="cert-badge-link" onclick="openLightbox('certificates/graduation_cert.pdf', 'Bachelor Degree Certificate - Al-Azhar University')">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                View Degree
+              </a>
+            </div>
+            <ul class="bullet-list">
+              <li>Strong foundation in cybersecurity, networking protocols, operating systems, and software engineering.</li>
+              <li>Completed graduation project developing a <strong>cybersecurity penetration testing tool</strong> with automated scanning and reporting capabilities.</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════ PROJECTS ══════════════════ -->
+    <section class="section" id="projects-section">
+      <div class="section-header">
+        <div class="section-title">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+          Security Projects
+        </div>
+      </div>
+      <div class="grid-2" id="projects-grid">
+
+        <div class="glass-panel project-card" id="proj-grad">
+          <div class="project-header">
+            <h3 class="project-title-text">🔐 Automated Web Pentest Tool</h3>
+            <a href="https://github.com/abdelrhmanabdelmonsef" target="_blank" class="cert-badge-link">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+              GitHub
+            </a>
+          </div>
+          <p class="project-desc">
+            Developed a custom penetration testing toolkit designed for automated web application security assessments. The tool performs reconnaissance, service enumeration, vulnerability identification, and generates structured PDF reports for remediation guidance.
+          </p>
+          <div class="tag-container">
+            <span class="tech-tag green">Python</span>
+            <span class="tech-tag green">Bash</span>
+            <span class="tech-tag">OWASP Top 10</span>
+            <span class="tech-tag">Nmap API</span>
+            <span class="tech-tag">Burp API</span>
+          </div>
+        </div>
+
+        <div class="glass-panel project-card" id="proj-ocean67">
+          <div class="project-header">
+            <h3 class="project-title-text">🚀 Ocean67 Fulfillment Platform</h3>
+            <a href="https://github.com/abdelrhmanabdelmonsef" target="_blank" class="cert-badge-link">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+              GitHub
+            </a>
+          </div>
+          <p class="project-desc">
+            Built a full-stack TypeScript/NestJS/Next.js platform for secure digital-goods fulfillment with webhook ingestion, async BullMQ workers, RBAC, PostgreSQL/Redis workflows, and provider integration logic.
+          </p>
+          <div class="tag-container">
+            <span class="tech-tag green">TypeScript</span>
+            <span class="tech-tag green">NestJS</span>
+            <span class="tech-tag">Next.js</span>
+            <span class="tech-tag">BullMQ</span>
+            <span class="tech-tag">PostgreSQL</span>
+            <span class="tech-tag">Redis</span>
+            <span class="tech-tag">Webhook Security</span>
+            <span class="tech-tag">RBAC</span>
+            <span class="tech-tag">Jest</span>
+          </div>
+        </div>
+
+        <div class="glass-panel project-card" id="proj-ctf">
+          <div class="project-header">
+            <h3 class="project-title-text">🏴 CTF Writeups &amp; Research</h3>
+            <a href="https://github.com/abdelrhmanabdelmonsef" target="_blank" class="cert-badge-link">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+              GitHub
+            </a>
+          </div>
+          <p class="project-desc">
+            Collection of Capture The Flag solutions and penetration testing lab walkthroughs covering web exploitation, privilege escalation, and network attacks. Includes documented techniques for OWASP vulnerabilities encountered on HackTheBox and TryHackMe.
+          </p>
+          <div class="tag-container">
+            <span class="tech-tag green">Web Exploitation</span>
+            <span class="tech-tag green">Privilege Escalation</span>
+            <span class="tech-tag">SQL Injection</span>
+            <span class="tech-tag">XSS & SSRF</span>
+          </div>
+        </div>
+
+        <div class="glass-panel project-card" id="proj-scripts">
+          <div class="project-header">
+            <h3 class="project-title-text">⚙️ Security Automation Scripts</h3>
+            <a href="https://github.com/abdelrhmanabdelmonsef" target="_blank" class="cert-badge-link">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+              GitHub
+            </a>
+          </div>
+          <p class="project-desc">
+            Collection of Python and Bash scripts for automating common penetration testing tasks including subdomain enumeration, port scanning automation, and custom payload generation for web application testing.
+          </p>
+          <div class="tag-container">
+            <span class="tech-tag green">Python</span>
+            <span class="tech-tag green">Bash</span>
+            <span class="tech-tag">Recon Automation</span>
+            <span class="tech-tag">Payload Gen</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══════════════════ TECHNICAL SKILLS & TOOLS ══════════════════ -->
+    <section class="section" id="skills-section">
+      <div class="section-header">
+        <div class="section-title">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/></svg>
+          Technical Skills &amp; Tools
+        </div>
+      </div>
+      <div class="glass-panel skills-grid" id="skills-grid">
+
+        <div class="skill-mod" id="skill-web-security">
+          <h4 class="skill-mod-title">Web Security</h4>
+          <div class="skill-tag-list">
+            <span class="skill-mini-tag green">Penetration Testing</span>
+            <span class="skill-mini-tag green">OWASP Top 10</span>
+            <span class="skill-mini-tag green">SQL Injection</span>
+            <span class="skill-mini-tag green">XSS</span>
+            <span class="skill-mini-tag green">SSRF</span>
+            <span class="skill-mini-tag green">Auth Bypass</span>
+          </div>
+        </div>
+
+        <div class="skill-mod" id="skill-tools">
+          <h4 class="skill-mod-title">Pentesting Tools</h4>
+          <div class="skill-tag-list">
+            <span class="skill-mini-tag blue">Burp Suite</span>
+            <span class="skill-mini-tag blue">Nmap</span>
+            <span class="skill-mini-tag blue">Metasploit</span>
+            <span class="skill-mini-tag blue">OWASP ZAP</span>
+            <span class="skill-mini-tag blue">Wireshark</span>
+            <span class="skill-mini-tag blue">Dirbuster</span>
+            <span class="skill-mini-tag blue">SQLMap</span>
+            <span class="skill-mini-tag blue">Gobuster</span>
+            <span class="skill-mini-tag blue">Hydra</span>
+          </div>
+        </div>
+
+        <div class="skill-mod" id="skill-os">
+          <h4 class="skill-mod-title">Operating Systems</h4>
+          <div class="skill-tag-list">
+            <span class="skill-mini-tag purple">Kali Linux</span>
+            <span class="skill-mini-tag purple">Parrot OS</span>
+            <span class="skill-mini-tag purple">Red Hat Linux</span>
+            <span class="skill-mini-tag purple">Debian</span>
+            <span class="skill-mini-tag purple">Windows Server</span>
+            <span class="skill-mini-tag purple">Windows Client</span>
+          </div>
+        </div>
+
+        <div class="skill-mod" id="skill-networking">
+          <h4 class="skill-mod-title">Networking &amp; Code</h4>
+          <div class="skill-tag-list">
+            <span class="skill-mini-tag gray">TCP/IP</span>
+            <span class="skill-mini-tag gray">Routing & Switching</span>
+            <span class="skill-mini-tag gray">Python</span>
+            <span class="skill-mini-tag gray">Bash Scripting</span>
+            <span class="skill-mini-tag gray">Java</span>
+            <span class="skill-mini-tag gray">JavaScript</span>
+            <span class="skill-mini-tag gray">SQL / MySQL</span>
+            <span class="skill-mini-tag gray">Git</span>
+          </div>
+        </div>
+
+        <div class="skill-mod" id="skill-backend-devops">
+          <h4 class="skill-mod-title">Backend &amp; DevOps</h4>
+          <div class="skill-tag-list">
+            <span class="skill-mini-tag blue">NestJS</span>
+            <span class="skill-mini-tag blue">TypeORM</span>
+            <span class="skill-mini-tag blue">PostgreSQL</span>
+            <span class="skill-mini-tag blue">Redis</span>
+            <span class="skill-mini-tag blue">BullMQ</span>
+            <span class="skill-mini-tag blue">Docker Compose</span>
+            <span class="skill-mini-tag blue">Nx</span>
+            <span class="skill-mini-tag blue">pnpm</span>
+            <span class="skill-mini-tag blue">Jest</span>
+            <span class="skill-mini-tag blue">Testcontainers</span>
+          </div>
+        </div>
+
+        <div class="skill-mod" id="skill-web-dev">
+          <h4 class="skill-mod-title">Web Development</h4>
+          <div class="skill-tag-list">
+            <span class="skill-mini-tag green">TypeScript</span>
+            <span class="skill-mini-tag green">React</span>
+            <span class="skill-mini-tag green">Tailwind CSS</span>
+            <span class="skill-mini-tag green">JavaScript</span>
+            <span class="skill-mini-tag green">Node.js</span>
+            <span class="skill-mini-tag green">Express.js</span>
+            <span class="skill-mini-tag green">Asynchronous JS</span>
+            <span class="skill-mini-tag green">Express Middleware</span>
+            <span class="skill-mini-tag green">Route Params</span>
+            <span class="skill-mini-tag green">NestJS</span>
+            <span class="skill-mini-tag green">Next.js</span>
+          </div>
+          <div class="skill-progress">
+            <div class="progress-item">
+              <div class="progress-label"><span>TypeScript</span><span>Upper Basic</span></div>
+              <div class="progress-bar"><div class="progress-fill" style="width:72%"></div></div>
+            </div>
+            <div class="progress-item">
+              <div class="progress-label"><span>JavaScript</span><span>Mid Level</span></div>
+              <div class="progress-bar"><div class="progress-fill" style="width:65%"></div></div>
+            </div>
+            <div class="progress-item">
+              <div class="progress-label"><span>Node.js</span><span>Upper Basic</span></div>
+              <div class="progress-bar"><div class="progress-fill" style="width:70%"></div></div>
+            </div>
+            <div class="progress-item">
+              <div class="progress-label"><span>Express.js</span><span>Basic</span></div>
+              <div class="progress-bar"><div class="progress-fill" style="width:55%"></div></div>
+            </div>
+            <div class="progress-item">
+              <div class="progress-label"><span>NestJS</span><span>Upper Basic</span></div>
+              <div class="progress-bar"><div class="progress-fill" style="width:70%"></div></div>
+            </div>
+            <div class="progress-item">
+              <div class="progress-label"><span>Next.js</span><span>Upper Basic</span></div>
+              <div class="progress-bar"><div class="progress-fill" style="width:70%"></div></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══════════════════ HACKING PLATFORMS ══════════════════ -->
+    <section class="section" id="platforms-section">
+      <div class="section-header">
+        <div class="section-title">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"/></svg>
+          Hacking Profiles
+        </div>
+      </div>
+      <div class="grid-2" id="platform-cards">
+
+        <div class="glass-panel platform-card" id="thm-card">
+          <div class="platform-logo-large">🔴</div>
+          <h3 class="timeline-title" style="font-size: 15px;">TryHackMe</h3>
+          <a href="https://tryhackme.com/p/0xTDS" target="_blank" class="platform-username-link">@0xTDS</a>
+          <div class="platform-badge-wrapper">
+            <img src="https://tryhackme-badges.s3.amazonaws.com/0xTDS.png" alt="TryHackMe Badge for 0xTDS" onerror="this.style.display='none'">
+          </div>
+          <a href="https://tryhackme.com/p/0xTDS" target="_blank" class="cert-badge-link" style="margin-top: 10px;">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+            Live THM Profile
+          </a>
+        </div>
+
+        <div class="glass-panel platform-card" id="htb-card">
+          <div class="platform-logo-large">🟢</div>
+          <h3 class="timeline-title" style="font-size: 15px;">HackTheBox</h3>
+          <a href="https://profile.hackthebox.com/profile/019e8056-cb46-73e2-a8ce-09c8b8aceb7d" target="_blank" class="platform-username-link">@0xMonsef</a>
+          <div class="platform-badge-wrapper" style="flex-direction: column; align-items: center; justify-content: center; min-height: 90px; border: 1px dashed rgba(0,255,136,0.15); border-radius: 8px; background: rgba(0,0,0,0.25); width: 100%;">
+            <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent-green);">PROFILE LINKED ✔</span>
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 9px; color: var(--text-muted); margin-top: 4px;">HTB PROFILE VERIFIED (STATUS: ACTIVE)</div>
+          </div>
+          <div class="telemetry-row" style="margin-bottom: 12px;">
+            <div class="telemetry-item">
+              <div class="telemetry-val">Pro</div>
+              <div class="telemetry-label">Rank</div>
+            </div>
+            <div class="telemetry-item">
+              <div class="telemetry-val">30+</div>
+              <div class="telemetry-label">Labs</div>
+            </div>
+          </div>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; width: 100%;">
+            <a href="https://profile.hackthebox.com/profile/019e8056-cb46-73e2-a8ce-09c8b8aceb7d" target="_blank" class="cert-badge-link">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+              Live HTB Profile
+            </a>
+            <a class="cert-badge-link" onclick="openLightbox('HTB Academy Student Transcript.pdf', 'HackTheBox Academy Student Transcript')">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              Academy Transcript
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══════════════════ CERTIFICATIONS & TRAINING ══════════════════ -->
+    <section class="section" id="certs-section">
+      <div class="section-header">
+        <div class="section-title">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+          Certifications &amp; Training
+        </div>
+      </div>
+      <div class="glass-panel certifications-list" id="cert-list">
+
+        <div class="cert-row" id="cert-rhcsa">
+          <div class="cert-row-left">
+            <div class="cert-id">01</div>
+            <div>
+              <div class="cert-details-name">Red Hat System Administration I (RH124)</div>
+              <div class="cert-details-issuer">Red Hat Inc.</div>
+            </div>
+          </div>
+          <a class="cert-badge-link" onclick="openLightbox('certificates/mlang_enCourse_Certificate_Enmlangmlang_ar___mlang.pdf', 'Red Hat System Administration I (RH124) Certificate')">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            Verify
+          </a>
+        </div>
+
+        <div class="cert-row" id="cert-google-cyber">
+          <div class="cert-row-left">
+            <div class="cert-id">02</div>
+            <div>
+              <div class="cert-details-name">Google Cybersecurity Professional Certificate</div>
+              <div class="cert-details-issuer">Google &amp; Coursera — Foundations, Managing Risk, Linux &amp; SQL, Network Security</div>
+            </div>
+          </div>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <a class="cert-badge-link" onclick="openLightbox('certificates/Coursera 62QY3G5YL8MZ.pdf', 'Google Cybersecurity Certificate (Full Suite)')">
+              Suite Certificate
+            </a>
+            <a class="cert-badge-link" onclick="openLightbox('certificates/Coursera M7NZDA9943MN.pdf', 'Play It Safe: Manage Security Risks Certificate')">
+              Risks
+            </a>
+            <a class="cert-badge-link" onclick="openLightbox('certificates/Coursera M4T8D89EFANG.pdf', 'Connect and Protect: Network Security Certificate')">
+              Networks
+            </a>
+            <a class="cert-badge-link" onclick="openLightbox('certificates/Coursera VKAPSSTPLL5W.pdf', 'Tools of the Trade: Linux and SQL Certificate')">
+              Linux/SQL
+            </a>
+          </div>
+        </div>
+
+        <div class="cert-row" id="cert-mckinsey">
+          <div class="cert-row-left">
+            <div class="cert-id">03</div>
+            <div>
+              <div class="cert-details-name">McKinsey Forward Program</div>
+              <div class="cert-details-issuer">McKinsey &amp; Company — Advanced Adaptability, Problem-Solving, Team Leadership</div>
+            </div>
+          </div>
+          <span class="cert-badge-link" style="color: var(--accent-cyan); border-color: rgba(0, 229, 255, 0.2); cursor: default;">
+            Completed
+          </span>
+        </div>
+
+        <div class="cert-row" id="cert-oscp-training">
+          <div class="cert-row-left">
+            <div class="cert-id">04</div>
+            <div>
+              <div class="cert-details-name">OSCP &amp; eWAPT (Active Training)</div>
+              <div class="cert-details-issuer">Offensive Security &amp; eLearnSecurity — Preparing for Exams</div>
+            </div>
+          </div>
+          <span class="cert-badge-link" style="color: var(--accent-amber); border-color: rgba(255, 179, 0, 0.2); cursor: default; animation: pulse-dot 2s infinite;">
+            ⏳ In Progress
+          </span>
+        </div>
+
+        <div class="cert-row" id="cert-htb-academy">
+          <div class="cert-row-left">
+            <div class="cert-id">05</div>
+            <div>
+              <div class="cert-details-name">HackTheBox Academy Student Transcript</div>
+              <div class="cert-details-issuer">HackTheBox Academy — Active Web Security Path &amp; Penetration Testing Modules</div>
+            </div>
+          </div>
+          <a class="cert-badge-link" onclick="openLightbox('HTB Academy Student Transcript.pdf', 'HackTheBox Academy Student Transcript')">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            Verify
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══════════════════ VOLUNTEER & LEADERSHIP ══════════════════ -->
+    <section class="section" id="volunteer-section">
+      <div class="section-header">
+        <div class="section-title">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+          Volunteer &amp; Leadership
+        </div>
+      </div>
+      <div class="glass-panel" style="display: flex; flex-direction: column; gap: 20px;">
+        
+        <div style="display: flex; gap: 16px;" id="vol-gdsc">
+          <div style="font-size: 24px; color: var(--accent-green); filter: drop-shadow(0 0 5px rgba(0, 255, 136, 0.4));">🔐</div>
+          <div>
+            <h4 style="font-size: 15px; font-weight: 700; color: var(--text-primary);">Vice-Head, Cybersecurity Team</h4>
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--accent-cyan); margin-top: 2px;">
+              Google Developer Student Clubs (GDSC) — Al-Azhar University <span style="color: var(--text-muted);">| 2022 – 2024</span>
+            </div>
+            <p style="font-size: 13.5px; color: var(--text-secondary); margin-top: 6px; line-height: 1.6;">
+              Coordinated, planned, and delivered high-quality cybersecurity workshops, CTF training, and events for 150+ students.
+            </p>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 16px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 20px;" id="vol-azsecs">
+          <div style="font-size: 24px; color: var(--accent-green); filter: drop-shadow(0 0 5px rgba(0, 255, 136, 0.4));">🛡️</div>
+          <div>
+            <h4 style="font-size: 15px; font-weight: 700; color: var(--text-primary);">Vice-Head, Cybersecurity Team</h4>
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--accent-cyan); margin-top: 2px;">
+              AZ-SEnCS — Al-Azhar University <span style="color: var(--text-muted);">| 2022 – 2024</span>
+            </div>
+            <p style="font-size: 13.5px; color: var(--text-secondary); margin-top: 6px; line-height: 1.6;">
+              Designed practical security curricula and assisted in organizing academic cybersecurity bootcamps for university students.
+            </p>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 16px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 20px;" id="vol-java">
+          <div style="font-size: 24px; color: var(--accent-green); filter: drop-shadow(0 0 5px rgba(0, 255, 136, 0.4));">☕</div>
+          <div>
+            <h4 style="font-size: 15px; font-weight: 700; color: var(--text-primary);">Member, Java Development Team</h4>
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--accent-cyan); margin-top: 2px;">
+              AZ-SEnCS — Al-Azhar University <span style="color: var(--text-muted);">| 2021 – 2023</span>
+            </div>
+            <p style="font-size: 13.5px; color: var(--text-secondary); margin-top: 6px; line-height: 1.6;">
+              Partnered with peers to build and optimize Java-based applications, incorporating OOP design and clean coding principles.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══════════════════ LANGUAGES ══════════════════ -->
+    <section class="section" id="languages-section">
+      <div class="section-header">
+        <div class="section-title">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>
+          Languages
+        </div>
+      </div>
+      <div class="languages-grid" id="lang-grid">
+        
+        <div class="lang-meter-card" id="lang-arabic">
+          <div class="lang-meta-row">
+            <span class="lang-text">Arabic</span>
+            <span class="lang-metric">Native / C2</span>
+          </div>
+          <div class="meter-container">
+            <div class="meter-fill" id="bar-arabic"></div>
+          </div>
+        </div>
+
+        <div class="lang-meter-card" id="lang-english">
+          <div class="lang-meta-row">
+            <span class="lang-text">English</span>
+            <span class="lang-metric">Professional / B2</span>
+          </div>
+          <div class="meter-container">
+            <div class="meter-fill" id="bar-english"></div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══════════════════ FOOTER ══════════════════ -->
+    <footer class="footer" id="cv-footer">
+      <div class="footer-text">
+        <span>//</span> Operational Status: Ready for Deployments <span>●</span> Located in Cairo, Egypt <span>●</span> Updated: May 2026
+      </div>
+    </footer>
+
+  </div><!-- end wrapper -->
+
+  <!-- ══════════════════ LIGHTBOX PORTAL ══════════════════ -->
+  <div class="lightbox-modal" id="lightbox-portal" onclick="closeLightboxOnBackdrop(event)">
+    <div class="lightbox-content">
+      <div class="lightbox-header">
+        <span class="lightbox-title" id="lightbox-label">CERTIFICATE CONSOLE</span>
+        <button class="lightbox-close" onclick="closeLightbox()">
+          <span style="font-size: 14px;">[x]</span> CLOSE_PANEL
+        </button>
+      </div>
+      <div class="lightbox-body">
+        <div class="lightbox-loader" id="lightbox-spinner">
+          <div class="spinner"></div>
+          <div>LOADING SECURE DECRYPTED CACHE...</div>
+        </div>
+        <iframe class="lightbox-viewer" id="lightbox-pdf-frame"></iframe>
+        <img class="lightbox-img-viewer" id="lightbox-img-frame" alt="Certificate Content">
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════ SYSTEM SCRIPT ══════════════════ -->
+  <script>
+    /* ── SCROLL ANIMATIONS (INTERSECTION OBSERVER) ── */
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.05, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.section').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Animate languages meters on load
+    window.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => {
+        document.getElementById('bar-arabic').style.width = '100%';
+        document.getElementById('bar-english').style.width = '75%';
+      }, 400);
+    });
+
+    /* ── LIGHTBOX CONTROLLER ── */
+    const portal = document.getElementById('lightbox-portal');
+    const pdfFrame = document.getElementById('lightbox-pdf-frame');
+    const imgFrame = document.getElementById('lightbox-img-frame');
+    const spinner = document.getElementById('lightbox-spinner');
+    const label = document.getElementById('lightbox-label');
+
+    function openLightbox(url, titleText) {
+      document.body.style.overflow = 'hidden'; // Lock scrolling
+      portal.classList.add('active');
+      spinner.style.opacity = '1';
+      label.innerText = `SECURE VIEW: ${titleText.toUpperCase()}`;
+
+      // Reset contents
+      pdfFrame.style.display = 'none';
+      imgFrame.style.display = 'none';
+      pdfFrame.src = '';
+      imgFrame.src = '';
+
+      const isImage = url.endsWith('.png') || url.endsWith('.jpg') || url.endsWith('.jpeg');
+
+      if (isImage) {
+        imgFrame.src = url;
+        imgFrame.onload = () => {
+          spinner.style.opacity = '0';
+          imgFrame.style.display = 'block';
+        };
+      } else {
+        pdfFrame.src = url;
+        pdfFrame.onload = () => {
+          spinner.style.opacity = '0';
+          pdfFrame.style.display = 'block';
+        };
+      }
+    }
+
+    function closeLightbox() {
+      portal.classList.remove('active');
+      document.body.style.overflow = ''; // Unlock scrolling
+      // Unload frames to save RAM
+      setTimeout(() => {
+        pdfFrame.src = '';
+        imgFrame.src = '';
+      }, 300);
+    }
+
+    function closeLightboxOnBackdrop(e) {
+      if (e.target === portal) {
+        closeLightbox();
+      }
+    }
+
+    // Keyboard handlers (Escape to close)
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && portal.classList.contains('active')) {
+        closeLightbox();
+      }
+    });
+
+    /* ── INTELLIGENT TERMINAL SYSTEM ── */
+    const termBody = document.getElementById('term-body');
+    const termInput = document.getElementById('term-input');
+
+    // Make clicking the terminal container focus the input
+    termBody.addEventListener('click', (e) => {
+      if (e.target !== termInput) {
+        termInput.focus();
+      }
+    });
+
+    const helpOutput = `
+Available Security Commands:
+  <span class="t-green">help</span>       - Display this assistance manual.
+  <span class="t-green">whoami</span>     - View profile metadata & clearance.
+  <span class="t-green">skills</span>     - Perform interactive confidence mapping.
+  <span class="t-green">certs</span>      - List encrypted academic credentials.
+  <span class="t-green">socials</span>    - Display telemetry connection coordinates.
+  <span class="t-green">nmap</span>       - Perform active local credential scan.
+  <span class="t-green">exploit</span>    - Launch simulated binary penetration matrix.
+  <span class="t-green">matrix</span>     - Toggle low-overhead matrix rain background.
+  <span class="t-green">clear</span>      - Flush terminal logs.`;
+
+    const whoamiOutput = `
+[+] OPERATIVE IDENTITY DOSSIER:
+=======================================
+  Name:        Abdel-Rahman Abdel-Monsef
+  Title:       Computers & Systems Engineer | Cybersecurity Specialist
+  Specialty:   Web Application Penetration Testing & Secure Code Analysis
+  HTB Handle:  @0xMonsef
+  THM Handle:  @0xTDS
+  Clearance:   Level 1 Guest (Recruiter)
+  Status:      Active - Seeking Global Opportunities
+  Objective:   Acquire robust certifications (OSCP / eWAPT) & secure critical systems.`;
+
+    const skillsOutput = `
+[+] CONFIDENCE & CAPABILITY MAPPING [100pt Max]:
+===================================================
+  Web Application Pentesting   [████████████████░░░] 85%
+  Vulnerability Scanning       [█████████████████░░] 90%
+  Burp Suite & Nmap API        [█████████████████░░] 90%
+  Linux Server Administration  [███████████████░░░░] 78%
+  Python & Bash Security Script[████████████████░░░] 80%
+  Network Architecture         [██████████████░░░░░] 75%
+  OWASP Top 10 Exploitation    [█████████████████░░] 88%`;
+
+    const certsOutput = `
+[+] ACADEMIC & PROFESSIONAL CREDENTIALS:
+===========================================
+  1. Red Hat System Administration I (RH124)  [VERIFIED - PDF READY]
+  2. Google Cybersecurity Professional Cert   [VERIFIED - SUITE & SUB-COURSE CORES]
+  3. McKinsey Forward Program                 [VERIFIED - COMPLETED]
+  4. OSCP & eWAPT Training                    [ONGOING - PREPARATION PHASE]
+  5. HackTheBox Academy Student Transcript    [VERIFIED - PDF READY]
+  *(Type 'nmap' to trigger an active scan/verification)*`;
+
+    const socialsOutput = `
+[+] TELEMETRY CONNECTION COORDINATES:
+========================================
+  - LinkedIn:   <a href="https://www.linkedin.com/in/abdelrhman-abdelmonsef-48aa281ab/" target="_blank" class="t-cyan">abdelrhman-abdelmonsef</a>
+  - GitHub:     <a href="https://github.com/abdelrhmanabdelmonsef" target="_blank" class="t-cyan">abdelrhmanabdelmonsef</a>
+  - HTB:        <a href="https://profile.hackthebox.com/profile/019e8056-cb46-73e2-a8ce-09c8b8aceb7d" target="_blank" class="t-cyan">@0xMonsef</a>
+  - TryHackMe:  <a href="https://tryhackme.com/p/0xTDS" target="_blank" class="t-cyan">@0xTDS</a>
+  - Email:      <a href="mailto:abdelmonsef349@gmail.com" class="t-cyan">abdelmonsef349@gmail.com</a>
+  - Mobile:     +20 127 286 2660 / +20 102 070 8385`;
+
+    termInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        const fullVal = termInput.value.trim();
+        const cmd = fullVal.toLowerCase();
+        termInput.value = '';
+
+        if (fullVal === '') return;
+
+        // Print prompt & input
+        const promptLine = document.createElement('div');
+        promptLine.className = 't-out';
+        promptLine.innerHTML = `<span class="t-prompt">guest@aegis:~$</span> <span class="t-green">${fullVal}</span>`;
+        termBody.insertBefore(promptLine, termInput.parentNode);
+
+        const outLine = document.createElement('div');
+        outLine.className = 't-out';
+
+        switch (cmd) {
+          case 'help':
+            outLine.innerHTML = helpOutput;
+            break;
+          case 'whoami':
+            outLine.innerHTML = whoamiOutput;
+            break;
+          case 'skills':
+            outLine.innerHTML = skillsOutput;
+            break;
+          case 'certs':
+            outLine.innerHTML = certsOutput;
+            break;
+          case 'socials':
+            outLine.innerHTML = socialsOutput;
+            break;
+          case 'clear':
+            // Remove all prior outputs
+            document.querySelectorAll('#term-body .t-out').forEach(el => el.remove());
+            termBody.scrollTop = 0;
+            return;
+          case 'matrix':
+            toggleMatrix();
+            outLine.innerHTML = `[+] System Backdrop Altered: Canvas matrix digital rain toggled.`;
+            break;
+          case 'nmap':
+            outLine.innerHTML = `[+] Initiating local system credential scans...\n`;
+            let dotsCount = 0;
+            const timer = setInterval(() => {
+              outLine.innerHTML += `  Scanning port ${80 + dotsCount*100} ... <span class="t-green">SECURE</span>\n`;
+              dotsCount++;
+              termBody.scrollTop = termBody.scrollHeight;
+              if (dotsCount >= 4) {
+                clearInterval(timer);
+                outLine.innerHTML += `\n<span class="t-cyan">[+] SCAN COMPLETE: 4 services verified. No active leaks detected. All academic certificates ready to view.</span>`;
+                termBody.scrollTop = termBody.scrollHeight;
+              }
+            }, 300);
+            break;
+          case 'exploit':
+            outLine.innerHTML = `<span class="t-red">[!] ALERT: UNAUTHORIZED PRIVILEGE ESCALATION ATTEMPT DETECTED!</span>\n`;
+            outLine.innerHTML += `[+] Launching local Aegis bypass kernel exploit...\n`;
+            let tick = 0;
+            const runExploit = setInterval(() => {
+              const hex = Math.floor(Math.random()*16777215).toString(16).toUpperCase();
+              outLine.innerHTML += `  [DEBUG_0x${hex}] Overflowing memory heap buffer... <span class="t-green">OK</span>\n`;
+              termBody.scrollTop = termBody.scrollHeight;
+              tick++;
+              if (tick >= 6) {
+                clearInterval(runExploit);
+                outLine.innerHTML += `\n<span class="t-green">=====================================================\n[+] EXPLOIT SUCCESSFUL: PRIVILEGE ESCALATION TO 'ROOT'\n[+] Abdel-Rahman is highly proficient. Hiring him is advised.\n=====================================================</span>`;
+                termBody.scrollTop = termBody.scrollHeight;
+              }
+            }, 250);
+            break;
+          default:
+            outLine.innerHTML = `<span class="t-red">[!] COMMAND NOT FOUND: '${fullVal}'</span>\nType <span class="t-green">help</span> to view supported commands.`;
+        }
+
+        termBody.insertBefore(outLine, termInput.parentNode);
+        termBody.scrollTop = termBody.scrollHeight;
+      }
+    });
+
+    /* ── CANVAS MATRIX DIGITAL RAIN BACKDROP ── */
+    const canvas = document.getElementById('matrix-canvas');
+    const ctx = canvas.getContext('2d');
+    let matrixActive = false;
+    let matrixInterval = null;
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%-+*[]{}";
+    const fontSize = 14;
+    let columns = canvas.width / fontSize;
+    let drops = Array(Math.floor(columns)).fill(1);
+
+    function drawMatrix() {
+      ctx.fillStyle = 'rgba(6, 9, 14, 0.15)'; // Keep transparent matching background
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.fillStyle = '#00ff88'; // Matrix Green
+      ctx.font = fontSize + 'px monospace';
+
+      for (let i = 0; i < drops.length; i++) {
+        const text = chars.charAt(Math.floor(Math.random() * chars.length));
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+        drops[i]++;
+      }
+    }
+
+    function toggleMatrix() {
+      const btn = document.getElementById('matrix-toggle');
+      if (matrixActive) {
+        // Disable
+        clearInterval(matrixInterval);
+        canvas.style.opacity = '0.04';
+        btn.classList.remove('active');
+        matrixActive = false;
+      } else {
+        // Enable
+        columns = canvas.width / fontSize;
+        drops = Array(Math.floor(columns)).fill(1);
+        matrixInterval = setInterval(drawMatrix, 35);
+        canvas.style.opacity = '0.12'; // Make highly visible
+        btn.classList.add('active');
+        matrixActive = true;
+      }
+    }
+  </script>
+</body>
+</html>
