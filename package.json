@@ -9,7 +9,7 @@
     "dev:web": "npm run dev -w web-cv",
     "dev:api": "npm run dev -w api-cv",
     "predev": "npm run build:cv-data && npm run sync-assets",
-    "dev": "concurrently -n api,web -c cyan,magenta \"npm run dev:api\" \"npm run dev:web\"",
+    "dev": "concurrently -n api,web -c cyan,magenta \"PORT=3001 npm run dev:api\" \"npm run dev:web\"",
     "sync-assets": "mkdir -p apps/web-cv/public && rm -rf apps/web-cv/public/photo apps/web-cv/public/certificates 'apps/web-cv/public/HTB Academy Student Transcript.pdf' && ln -sfn ../../../legacy/photo apps/web-cv/public/photo && ln -sfn ../../../legacy/certificates apps/web-cv/public/certificates && ln -sfn '../../../legacy/HTB Academy Student Transcript.pdf' 'apps/web-cv/public/HTB Academy Student Transcript.pdf'",
     "build:cv-data": "npm --workspace cv-data run build",
     "prebuild": "npm run build:cv-data && npm run sync-assets",

@@ -51,14 +51,14 @@ cv/
 npm install
 cp apps/web-cv/.env.example apps/web-cv/.env.local   # set MESSAGE_SECRET
 npm run sync-assets                                    # link legacy assets into public/
-npm run dev                                            # API :4000 + site :3000
+npm run dev                                            # API :3001 + site :3000
 ```
 
 | URL | Description |
 |-----|-------------|
 | http://localhost:3000 | CV site |
 | http://localhost:3000/messages | Contact inbox (password from `MESSAGE_SECRET`) |
-| http://localhost:4000/cv | NestJS CV JSON (when API is running) |
+| http://localhost:3001/cv | NestJS CV JSON (when API is running) |
 
 ## Prerequisites
 
@@ -81,7 +81,7 @@ Optional NestJS-only copy: `apps/api-cv/.env.example` → `.env`
 
 | Command | Description |
 |---------|-------------|
-| `npm run dev` | Start API (:4000) and Next.js (:3000) together |
+| `npm run dev` | Start API (:3001) and Next.js (:3000) together |
 | `npm run dev:web` | Next.js only |
 | `npm run dev:api` | NestJS only |
 | `npm run sync-assets` | Symlink `legacy/photo`, `legacy/certificates`, and HTB transcript into `apps/web-cv/public/` |

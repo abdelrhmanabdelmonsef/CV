@@ -7,7 +7,7 @@ async function bootstrap() {
   const corsOrigin = process.env.CORS_ORIGIN ?? '*';
   app.enableCors({ origin: corsOrigin });
   app.useGlobalPipes(new ValidationPipe({ whitelist: true, transform: true }));
-  const port = process.env.PORT ? Number(process.env.PORT) : 4000;
+  const port = process.env.PORT ? Number(process.env.PORT) : 3001;
   await app.listen(port);
   console.log(`API CV running on http://localhost:${port}`);
 }
