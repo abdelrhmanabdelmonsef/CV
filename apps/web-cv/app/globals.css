@@ -1467,3 +1467,29 @@
       color: var(--text-muted);
       margin-top: 4px;
     }
+
+    .htb-badge-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin: 12px 0;
+      width: 100%;
+      padding: 12px;
+      border: 1px dashed rgba(0, 255, 136, 0.15);
+      border-radius: 8px;
+      background: rgba(0, 0, 0, 0.25);
+    }
+
+    .htb-badge-grid img {
+      width: 48px;
+      height: 48px;
+      border-radius: 8px;
+      border: 1px solid rgba(0, 255, 136, 0.15);
+      box-shadow: var(--glow-green);
+      object-fit: contain;
+    }
+
+    .htb-card-loading {
+      animation: pulse-dot 2s infinite;
+    }

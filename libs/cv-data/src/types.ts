@@ -67,6 +67,11 @@ export type CvCertification = {
   documents?: { label: string; url: string; title: string }[];
 };
 
+export type CvPlatformBadge = {
+  name: string;
+  imageUrl: string;
+};
+
 export type CvPlatform = {
   id: string;
   name: string;
@@ -74,6 +79,7 @@ export type CvPlatform = {
   handle: string;
   url: string;
   badgeUrl?: string;
+  badges?: CvPlatformBadge[];
   stats?: { label: string; value: string }[];
   transcriptUrl?: string;
   transcriptTitle?: string;

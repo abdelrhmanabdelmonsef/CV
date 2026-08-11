@@ -184,9 +184,35 @@ const cvData: CvData = {
       emoji: '🟢',
       handle: '@0xMonsef',
       url: 'https://profile.hackthebox.com/profile/019e8056-cb46-73e2-a8ce-09c8b8aceb7d',
+      badges: [
+        {
+          name: 'Playing with the mess',
+          imageUrl: 'https://academy.hackthebox.com/storage/badges/playing-with-the-mess.png'
+        },
+        {
+          name: 'Developer',
+          imageUrl: 'https://academy.hackthebox.com/storage/badges/developer.png'
+        },
+        {
+          name: 'Your request is my demand',
+          imageUrl: 'https://academy.hackthebox.com/storage/badges/your-request-is-my-demand.png'
+        },
+        {
+          name: 'Academician',
+          imageUrl: 'https://academy.hackthebox.com/storage/badges/academician.png'
+        },
+        {
+          name: 'Binary Duo Explorer',
+          imageUrl: 'https://academy.hackthebox.com/storage/badges/0d982edba15037e6d52d54eaa7f0209a/logo.png'
+        },
+        {
+          name: 'Cyber Rookie 365',
+          imageUrl: 'https://academy.hackthebox.com/storage/badges/60fc416b5eec425a6451aeb1e50d14e4/logo.png'
+        }
+      ],
       stats: [
-        { label: 'Rank', value: 'Pro' },
-        { label: 'Labs', value: '30+' }
+        { label: 'Academy', value: '6' },
+        { label: 'Labs', value: '0' }
       ],
       transcriptUrl: '/HTB%20Academy%20Student%20Transcript.pdf',
       transcriptTitle: 'HackTheBox Academy Student Transcript'

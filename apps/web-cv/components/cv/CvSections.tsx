@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import type { CvData } from 'cv-data';
 import { useLightbox } from '../../contexts/LightboxContext';
 import ContactForm from '../contact/ContactForm';
+import HtbPlatformCard from './HtbPlatformCard';
 import {
   BriefcaseIcon,
   CertIcon,
@@ -227,47 +228,46 @@ export default function CvSections({ data }: { data: CvData }) {
 
       <SectionBlock id="platforms-section" title="Hacking Profiles" icon={<PlatformIcon />}>
         <div className="grid-2">
-          {data.platforms.map((platform) => (
-            <div key={platform.id} className="glass-panel platform-card" id={platform.id}>
-              <div className="platform-logo-large">{platform.emoji}</div>
-              <h3 className="timeline-title" style={{ fontSize: 15 }}>
-                {platform.name}
-              </h3>
-              <a href={platform.url} target="_blank" rel="noreferrer" className="platform-username-link">
-                {platform.handle}
-              </a>
-              {platform.badgeUrl ? (
-                <div className="platform-badge-wrapper">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={platform.badgeUrl} alt={`${platform.name} Badge for ${platform.handle}`} onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }} />
-                </div>
-              ) : (
-                <div className="htb-badge-placeholder">
-                  <span>PROFILE LINKED ✔</span>
-                  <span>HTB PROFILE VERIFIED (STATUS: ACTIVE)</span>
-                </div>
-              )}
-              {platform.stats && (
-                <div className="telemetry-row" style={{ marginBottom: 12 }}>
-                  {platform.stats.map((stat) => (
-                    <div key={stat.label} className="telemetry-item">
-                      <div className="telemetry-val">{stat.value}</div>
-                      <div className="telemetry-label">{stat.label}</div>
-                    </div>
-                  ))}
-                </div>
-              )}
-              <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', justifyContent: 'center', width: '100%' }}>
-                <a href={platform.url} target="_blank" rel="noreferrer" className="cert-badge-link">
-                  <ExternalIcon />
-                  Live {platform.name} Profile
+          {data.platforms.map((platform) =>
+            platform.id === 'htb-card' ? (
+              <HtbPlatformCard key={platform.id} fallback={platform} />
+            ) : (
+              <div key={platform.id} className="glass-panel platform-card" id={platform.id}>
+                <div className="platform-logo-large">{platform.emoji}</div>
+                <h3 className="timeline-title" style={{ fontSize: 15 }}>
+                  {platform.name}
+                </h3>
+                <a href={platform.url} target="_blank" rel="noreferrer" className="platform-username-link">
+                  {platform.handle}
                 </a>
-                {platform.transcriptUrl && platform.transcriptTitle && (
-                  <CertLinkButton url={platform.transcriptUrl} title={platform.transcriptTitle} label="Academy Transcript" />
+                {platform.badgeUrl ? (
+                  <div className="platform-badge-wrapper">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={platform.badgeUrl} alt={`${platform.name} Badge for ${platform.handle}`} onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }} />
+                  </div>
+                ) : null}
+                {platform.stats && (
+                  <div className="telemetry-row" style={{ marginBottom: 12 }}>
+                    {platform.stats.map((stat) => (
+                      <div key={stat.label} className="telemetry-item">
+                        <div className="telemetry-val">{stat.value}</div>
+                        <div className="telemetry-label">{stat.label}</div>
+                      </div>
+                    ))}
+                  </div>
                 )}
+                <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', justifyContent: 'center', width: '100%' }}>
+                  <a href={platform.url} target="_blank" rel="noreferrer" className="cert-badge-link">
+                    <ExternalIcon />
+                    Live {platform.name} Profile
+                  </a>
+                  {platform.transcriptUrl && platform.transcriptTitle && (
+                    <CertLinkButton url={platform.transcriptUrl} title={platform.transcriptTitle} label="Academy Transcript" />
+                  )}
+                </div>
               </div>
-            </div>
-          ))}
+            )
+          )}
         </div>
       </SectionBlock>
 
