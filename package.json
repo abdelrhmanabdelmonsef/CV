@@ -1,0 +1,23 @@
+{
+  "name": "cv-monorepo",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "libs/*"
+  ],
+  "scripts": {
+    "dev:web": "npm run dev -w web-cv",
+    "dev:api": "npm run dev -w api-cv",
+    "predev": "npm run build:cv-data && npm run sync-assets",
+    "dev": "concurrently -n api,web -c cyan,magenta \"npm run dev:api\" \"npm run dev:web\"",
+    "sync-assets": "mkdir -p apps/web-cv/public && rm -rf apps/web-cv/public/photo apps/web-cv/public/certificates 'apps/web-cv/public/HTB Academy Student Transcript.pdf' && ln -sfn ../../../legacy/photo apps/web-cv/public/photo && ln -sfn ../../../legacy/certificates apps/web-cv/public/certificates && ln -sfn '../../../legacy/HTB Academy Student Transcript.pdf' 'apps/web-cv/public/HTB Academy Student Transcript.pdf'",
+    "build:cv-data": "npm --workspace cv-data run build",
+    "prebuild": "npm run build:cv-data && npm run sync-assets",
+    "build": "npm --workspace ./apps/web-cv run build && npm --workspace ./apps/api-cv run build",
+    "start:api": "npm --prefix ./apps/api-cv run start:prod"
+  },
+  "devDependencies": {
+    "concurrently": "^10.0.3",
+    "typescript": "^5.6.0"
+  }
+}

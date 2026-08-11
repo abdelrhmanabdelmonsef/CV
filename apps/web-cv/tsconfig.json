@@ -1,0 +1,32 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "noEmit": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "baseUrl": "../..",
+    "paths": {
+      "@cv-data": ["libs/cv-data/src/index.ts"],
+      "@cv-data/*": ["libs/cv-data/src/*"]
+    },
+    "types": [
+      "node"
+    ],
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

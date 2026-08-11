@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+
+# Environment & secrets
+.env
+.env.local
+.env.*.local
+
+# Next.js
+.next/
+out/
+
+# NestJS / TypeScript build
+dist/
+*.tsbuildinfo
+
+# Logs & OS
+*.log
+.DS_Store
+Thumbs.db
+
+# Contact messages (runtime data)
+apps/api-cv/data/messages.json
+
+# Public assets are symlinks to legacy/ — run: npm run sync-assets
+apps/web-cv/public/photo
+apps/web-cv/public/certificates
+apps/web-cv/public/HTB Academy Student Transcript.pdf
