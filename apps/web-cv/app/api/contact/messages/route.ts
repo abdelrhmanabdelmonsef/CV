@@ -1,28 +1,6 @@
-import { mkdir, readFile, writeFile } from 'fs/promises';
-import { dirname, join } from 'path';
 import { NextRequest, NextResponse } from 'next/server';
 import { isAuthConfigured, isAuthorized } from '../../../../lib/messages-auth';
-
-const messagesFilePath = join(process.cwd(), '..', 'api-cv', 'data', 'messages.json');
-
-type ContactMessage = {
-  name: string;
-  email: string;
-  message: string;
-  receivedAt: string;
-};
-
-async function readMessages(): Promise<ContactMessage[]> {
-  try {
-    const fileContents = await readFile(messagesFilePath, 'utf8');
-    const parsed = JSON.parse(fileContents || '[]');
-    return Array.isArray(parsed) ? parsed : [];
-  } catch {
-    await mkdir(dirname(messagesFilePath), { recursive: true });
-    await writeFile(messagesFilePath, '[]', 'utf8');
-    return [];
-  }
-}
+import { readMessages } from '../../../../lib/messages-store';
 
 export async function GET(request: NextRequest) {
   if (!isAuthConfigured()) {

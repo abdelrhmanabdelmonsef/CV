@@ -1,35 +1,5 @@
-import { mkdir, readFile, writeFile } from 'fs/promises';
-import { dirname, join } from 'path';
 import { NextRequest, NextResponse } from 'next/server';
-
-const messagesFilePath = join(process.cwd(), '..', 'api-cv', 'data', 'messages.json');
-
-type ContactMessage = {
-  name: string;
-  email: string;
-  message: string;
-  receivedAt: string;
-};
-
-async function readMessages(): Promise<ContactMessage[]> {
-  
-  try {
-    const fileContents = await readFile(messagesFilePath, 'utf8');
-    const parsed = JSON.parse(fileContents || '[]');
-    return Array.isArray(parsed) ? parsed : [];
-  } catch {
-    await mkdir(dirname(messagesFilePath), { recursive: true });
-    await writeFile(messagesFilePath, '[]', 'utf8');
-    return [];
-  }
-}
-
-async function appendMessage(message: { name: string; email: string; message: string }) {
-  await mkdir(dirname(messagesFilePath), { recursive: true });
-  const messages = await readMessages();
-  messages.push({ ...message, receivedAt: new Date().toISOString() });
-  await writeFile(messagesFilePath, JSON.stringify(messages, null, 2), 'utf8');
-}
+import { appendMessage } from '../../../lib/messages-store';
 
 function validateBody(body: unknown): { name: string; email: string; message: string } | string {
   if (!body || typeof body !== 'object') return 'Invalid request body';
@@ -52,11 +22,11 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ status: 'error', message: validated }, { status: 400 });
     }
 
-    await appendMessage(validated);
+    const saved = await appendMessage(validated);
 
     return NextResponse.json({
       status: 'success',
-      received: validated
+      received: saved
     });
   } catch {
     return NextResponse.json({ status: 'error', message: 'Unable to save message' }, { status: 500 });
