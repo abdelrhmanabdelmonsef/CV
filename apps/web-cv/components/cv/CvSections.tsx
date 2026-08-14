@@ -328,6 +328,14 @@ export default function CvSections({ data }: { data: CvData }) {
             <a href={`mailto:${data.contact.email}`} style={{ color: 'var(--accent-green)' }}>
               {data.contact.email}
             </a>
+            {data.contact.secondaryEmail && (
+              <>
+                {' / '}
+                <a href={`mailto:${data.contact.secondaryEmail}`} style={{ color: 'var(--accent-green)' }}>
+                  {data.contact.secondaryEmail}
+                </a>
+              </>
+            )}
           </p>
           <p style={{ color: 'var(--text-secondary)', marginBottom: '0.5rem' }}>
             Phone: {data.contact.phones.join(' / ')}

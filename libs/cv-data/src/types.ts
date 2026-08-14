@@ -4,6 +4,7 @@ export type CvPersonal = {
   location: string;
   phones: string[];
   email: string;
+  secondaryEmail?: string;
   linkedIn: string;
   github: string;
   htb?: string;
@@ -127,6 +128,7 @@ export type CvData = {
   contact: {
     phones: string[];
     email: string;
+    secondaryEmail?: string;
     linkedIn: string;
     github: string;
     location: string;

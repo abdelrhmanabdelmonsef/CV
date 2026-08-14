@@ -7,6 +7,7 @@ const cvData: CvData = {
     location: 'Cairo, Egypt',
     phones: ['+20 127 286 2660', '+20 102 070 8385'],
     email: 'abdelmonsef349@gmail.com',
+    secondaryEmail: 'abdelmonsef348@gmail.com',
     linkedIn: 'https://www.linkedin.com/in/abdelrhman-abdelmonsef-48aa281ab/',
     github: 'https://github.com/abdelrhmanabdelmonsef',
     htb: 'https://profile.hackthebox.com/profile/019e8056-cb46-73e2-a8ce-09c8b8aceb7d',
@@ -61,12 +62,30 @@ const cvData: CvData = {
 
   projects: [
     {
+      id: 'proj-grad',
+      title: '🔐 Automated Web Pentest Tool',
+      link: 'https://github.com/abdelrhmanabdelmonsef/web-app-vuln-scanner',
+      description:
+        'Developed a custom penetration testing toolkit designed for automated web application security assessments. The tool performs reconnaissance, service enumeration, vulnerability identification, and generates structured PDF reports for remediation guidance.',
+      tags: ['Python', 'Bash', 'OWASP Top 10', 'Nmap API', 'Burp API'],
+      featuredTags: ['Python', 'OWASP Top 10']
+    },
+    {
       id: 'proj-ocean67',
       title: '🚀 Ocean67 Fulfillment Platform',
       link: 'https://github.com/abdelrhmanabdelmonsef',
       description:
         'Built a full-stack TypeScript/NestJS/Next.js platform for secure digital-goods fulfillment with webhook ingestion, async BullMQ workers, RBAC, PostgreSQL/Redis workflows, provider integration logic, and ~85 automated tests.',
       tags: ['TypeScript', 'NestJS', 'Next.js', 'BullMQ', 'PostgreSQL', 'Redis', 'Webhook Security', 'RBAC', 'Jest'],
+      featuredTags: ['TypeScript', 'NestJS']
+    },
+    {
+      id: 'proj-tasks-notes',
+      title: '📋 Tasks & Notes App',
+      link: 'https://github.com/abdelrhmanabdelmonsef/tasks-notes-app',
+      description:
+        'Full-stack monorepo featuring a NestJS REST API with JWT auth, RBAC, PostgreSQL persistence via TypeORM, class-validator DTOs, bcrypt password hashing, BullMQ async queues, and a Next.js frontend scaffold.',
+      tags: ['TypeScript', 'NestJS', 'Node.js', 'PostgreSQL', 'TypeORM', 'JWT', 'Passport', 'Next.js', 'Tailwind CSS'],
       featuredTags: ['TypeScript', 'NestJS']
     }
   ],
@@ -76,13 +95,31 @@ const cvData: CvData = {
       id: 'skill-web-security',
       title: 'Web Security',
       color: 'green',
-      tags: ['Penetration Testing', 'OWASP Top 10', 'SQL Injection', 'XSS', 'SSRF', 'Auth Bypass', 'Access Control', 'CSRF', 'IDOR', 'Secure Coding']
+      tags: [
+        'Penetration Testing',
+        'OWASP Top 10',
+        'SQL Injection',
+        'XSS',
+        'SSRF',
+        'Auth Bypass',
+        'Access Control',
+        'CSRF',
+        'IDOR',
+        'Secure Coding',
+        'Reconnaissance',
+        'Port Scanning',
+        'Host Discovery',
+        'Service Enumeration',
+        'Account Enumeration Protection',
+        'Replay Defense',
+        'Webhook Security'
+      ]
     },
     {
       id: 'skill-tools',
       title: 'Pentesting Tools',
       color: 'blue',
-      tags: ['Burp Suite', 'Nmap', 'Metasploit', 'OWASP ZAP', 'Wireshark', 'Dirbuster', 'SQLMap', 'Gobuster', 'Hydra']
+      tags: ['Burp Suite', 'Burp API', 'Nmap', 'Nmap API', 'Metasploit', 'OWASP ZAP', 'Wireshark', 'Dirbuster', 'SQLMap', 'Gobuster', 'Hydra']
     },
     {
       id: 'skill-os',
@@ -100,7 +137,7 @@ const cvData: CvData = {
       id: 'skill-backend-devops',
       title: 'Backend & DevOps',
       color: 'blue',
-      tags: ['NestJS', 'TypeORM', 'PostgreSQL', 'Redis', 'BullMQ', 'Docker Compose', 'Nx', 'pnpm', 'Jest', 'Testcontainers']
+      tags: ['NestJS', 'TypeORM', 'PostgreSQL', 'Redis', 'BullMQ', 'Docker Compose', 'Nx', 'pnpm', 'Jest', 'Testcontainers', 'Express.js', 'Passport.js', 'JWT', 'REST APIs', 'C#']
     },
     {
       id: 'skill-web-dev',
@@ -110,8 +147,10 @@ const cvData: CvData = {
       progress: [
         { name: 'TypeScript', label: 'Upper Basic', width: 72 },
         { name: 'JavaScript', label: 'Mid Level', width: 65 },
-        { name: 'Node.js', label: 'Mid Level', width: 60 },
-        { name: 'NestJS', label: 'Intermediate', width: 55 }
+        { name: 'Node.js', label: 'Upper Basic', width: 70 },
+        { name: 'Express.js', label: 'Basic', width: 55 },
+        { name: 'NestJS', label: 'Upper Basic', width: 70 },
+        { name: 'Next.js', label: 'Upper Basic', width: 70 }
       ]
     }
   ],
@@ -211,8 +250,9 @@ const cvData: CvData = {
         }
       ],
       stats: [
-        { label: 'Academy', value: '6' },
-        { label: 'Labs', value: '0' }
+        { label: 'Rank', value: 'Pro' },
+        { label: 'Labs', value: '30+' },
+        { label: 'Academy', value: '6' }
       ],
       transcriptUrl: '/HTB%20Academy%20Student%20Transcript.pdf',
       transcriptTitle: 'HackTheBox Academy Student Transcript'
@@ -254,6 +294,7 @@ const cvData: CvData = {
   contact: {
     phones: ['+20 127 286 2660', '+20 102 070 8385'],
     email: 'abdelmonsef349@gmail.com',
+    secondaryEmail: 'abdelmonsef348@gmail.com',
     linkedIn: 'https://www.linkedin.com/in/abdelrhman-abdelmonsef-48aa281ab/',
     github: 'https://github.com/abdelrhmanabdelmonsef',
     location: 'Cairo, Egypt'
@@ -268,15 +309,18 @@ const cvData: CvData = {
   socials    - Display telemetry connection coordinates.
   nmap       - Perform active local credential scan.
   exploit    - Launch simulated binary penetration matrix.
+  projects   - Output major software & security engineering builds.
+  exp        - View professional work history timeline.
+  edu        - Inspect academic degree credentials.
   matrix     - Toggle low-overhead matrix rain background.
   clear      - Flush terminal logs.`,
 
     whoami: `[+] OPERATIVE IDENTITY DOSSIER:
 =======================================
   Name:        Abdel-Rahman Abdel-Monsef
-  Title:       Computers & Systems Engineer | Cybersecurity Specialist
-  Specialty:   Web Application Penetration Testing & Secure Code Analysis
-  HTB Handle:  @0xMonsef
+  Title:       Computers & Systems Engineer | Cybersecurity Specialist & Web Developer
+  Specialty:   Web Application Penetration Testing, NestJS & Secure Code Analysis
+  HTB Handle:  @0xMonsef (Pro Rank, 30+ Labs)
   THM Handle:  @0xTDS
   Clearance:   Level 1 Guest (Recruiter)
   Status:      Active - Seeking Global Opportunities
@@ -285,17 +329,17 @@ const cvData: CvData = {
     skills: `[+] CONFIDENCE & CAPABILITY MAPPING [100pt Max]:
 ===================================================
   Web Application Pentesting   [████████████████░░░] 85%
-  Vulnerability Scanning       [█████████████████░░] 90%
+  Vulnerability Assessment     [█████████████████░░] 90%
   Burp Suite & Nmap API        [█████████████████░░] 90%
+  TypeScript & NestJS Dev      [██████████████░░░░░] 72%
   Linux Server Administration  [███████████████░░░░] 78%
-  Python & Bash Security Script[████████████████░░░] 80%
-  Network Architecture         [██████████████░░░░░] 75%
+  Python & Bash Automation     [████████████████░░░] 80%
   OWASP Top 10 Exploitation    [█████████████████░░] 88%`,
 
     certs: `[+] ACADEMIC & PROFESSIONAL CREDENTIALS:
 ===========================================
   1. Red Hat System Administration I (RH124)  [VERIFIED - PDF READY]
-  2. Google Cybersecurity Professional Cert   [VERIFIED - SUITE & SUB-COURSE CORES]
+  2. Google Cybersecurity Professional Cert   [VERIFIED - SUITE & SUB-COURSES]
   3. McKinsey Forward Program                 [VERIFIED - COMPLETED]
   4. OSCP & eWAPT Training                    [ONGOING - PREPARATION PHASE]
   5. HackTheBox Academy Student Transcript    [VERIFIED - PDF READY]
@@ -307,8 +351,52 @@ const cvData: CvData = {
   - GitHub:     abdelrhmanabdelmonsef
   - HTB:        @0xMonsef
   - TryHackMe:  @0xTDS
-  - Email:      abdelmonsef349@gmail.com
-  - Mobile:     +20 127 286 2660 / +20 102 070 8385`
+  - Emails:     abdelmonsef349@gmail.com / abdelmonsef348@gmail.com
+  - Mobiles:    +20 127 286 2660 / +20 102 070 8385`,
+
+    nmap: `[+] STARTING NMAP SCAN v7.94 AT LOCAL TARGET
+==================================================
+PORT     STATE SERVICE     VERSION
+22/tcp   open  ssh         OpenSSH 8.9p1 Ubuntu
+80/tcp   open  http        Next.js 16 Web Engine
+443/tcp  open  ssl/https   NestJS Secure API Gateway
+5432/tcp open  postgresql  PostgreSQL 18 Operational DB
+6379/tcp open  redis       Redis Idempotency Nonce Store
+--------------------------------------------------
+[✓] SCAN COMPLETE: 0 VULNERABILITIES DETECTED. ALL SHIELD MATRIXES OPERATIONAL.`,
+
+    exploit: `[!] INITIATING SIMULATED BINARY PENETRATION MATRIX...
+[+] TARGET: Vulnerability Assessment Engine
+[+] STAGE 1: Reconnaissance & Subdomain Enumeration ... PASS
+[+] STAGE 2: OWASP Top 10 Vulnerability Audit ... PASS
+[+] STAGE 3: RBAC & Webhook Idempotency Verification ... PASS
+[✓] EXPLOIT SIMULATION SUCCESSFUL: SECURE ARCHITECTURE VERIFIED. SYSTEM STABLE.`,
+
+    projects: `[+] KEY ENGINEERING & SECURITY PROJECTS:
+===========================================
+  1. 🔐 Automated Web Pentest Tool (Graduation Project)
+     - Python, Bash, OWASP Top 10, Nmap & Burp APIs.
+     - Repo: https://github.com/abdelrhmanabdelmonsef/web-app-vuln-scanner
+  2. 🚀 Ocean67 Fulfillment Platform
+     - Full-stack NestJS/Next.js/BullMQ/PostgreSQL digital-goods fulfillment.
+     - Repo: https://github.com/abdelrhmanabdelmonsef
+  3. 📋 Tasks & Notes App
+     - NestJS REST API, JWT, RBAC, TypeORM, PostgreSQL, class-validator, Next.js.
+     - Repo: https://github.com/abdelrhmanabdelmonsef/tasks-notes-app`,
+
+    exp: `[+] WORK HISTORY DOSSIER:
+===========================
+  Role:         Penetration Tester Intern
+  Company:      Hackers For You
+  Duration:     Feb 2024 – May 2024 (3 months)
+  Highlights:   Web App & Network Pentesting, OWASP Top 10 Remediation, Technical Security Reports.`,
+
+    edu: `[+] ACADEMIC CREDENTIALS:
+============================
+  Degree:       B.Sc. Computers & Systems Engineering
+  Institution:  Al-Azhar University, Faculty of Computers & Systems Engineering
+  Duration:     Oct 2019 – Jun 2024 | Cairo, Egypt
+  Grade:        Very Good (Grade A Equivalent)`
   },
 
   seo: {

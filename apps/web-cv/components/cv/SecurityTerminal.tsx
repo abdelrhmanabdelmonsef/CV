@@ -67,9 +67,19 @@ export default function SecurityTerminal({ terminal }: { terminal: TerminalOutpu
 
     switch (cmd) {
       case 'help':
-        appendOutput(
-          `Available Security Commands:\n  help       - Display this assistance manual.\n  whoami     - View profile metadata & clearance.\n  skills     - Perform interactive confidence mapping.\n  certs      - List encrypted academic credentials.\n  socials    - Display telemetry connection coordinates.\n  nmap       - Perform active local credential scan.\n  exploit    - Launch simulated binary penetration matrix.\n  matrix     - Toggle low-overhead matrix rain background.\n  clear      - Flush terminal logs.`
-        );
+        appendOutput(terminal.help || `Available Security Commands:
+  help       - Display this assistance manual.
+  whoami     - View profile metadata & clearance.
+  skills     - Perform interactive confidence mapping.
+  certs      - List encrypted academic credentials.
+  socials    - Display telemetry connection coordinates.
+  nmap       - Perform active local credential scan.
+  exploit    - Launch simulated binary penetration matrix.
+  projects   - Output major software & security engineering builds.
+  exp        - View professional work history timeline.
+  edu        - Inspect academic degree credentials.
+  matrix     - Toggle low-overhead matrix rain background.
+  clear      - Flush terminal logs.`);
         break;
       case 'whoami':
         appendOutput(terminal.whoami);
@@ -83,6 +93,15 @@ export default function SecurityTerminal({ terminal }: { terminal: TerminalOutpu
       case 'socials':
         appendOutput(terminal.socials);
         break;
+      case 'projects':
+        appendOutput(terminal.projects || 'No projects output available.');
+        break;
+      case 'exp':
+        appendOutput(terminal.exp || 'No work history dossier available.');
+        break;
+      case 'edu':
+        appendOutput(terminal.edu || 'No academic credentials output available.');
+        break;
       case 'clear':
         setLines([]);
         break;
@@ -91,31 +110,39 @@ export default function SecurityTerminal({ terminal }: { terminal: TerminalOutpu
         appendOutput('[+] System Backdrop Altered: Canvas matrix digital rain toggled.');
         break;
       case 'nmap': {
-        appendOutput('[+] Initiating local system credential scans...');
-        let dots = 0;
-        const timer = setInterval(() => {
-          appendOutput(`  Scanning port ${80 + dots * 100} ... SECURE`);
-          dots++;
-          if (dots >= 4) {
-            clearInterval(timer);
-            appendOutput('[+] SCAN COMPLETE: 4 services verified. No active leaks detected. All academic certificates ready to view.');
-          }
-        }, 300);
+        if (terminal.nmap) {
+          appendOutput(terminal.nmap);
+        } else {
+          appendOutput('[+] Initiating local system credential scans...');
+          let dots = 0;
+          const timer = setInterval(() => {
+            appendOutput(`  Scanning port ${80 + dots * 100} ... SECURE`);
+            dots++;
+            if (dots >= 4) {
+              clearInterval(timer);
+              appendOutput('[+] SCAN COMPLETE: 4 services verified. No active leaks detected. All academic certificates ready to view.');
+            }
+          }, 300);
+        }
         break;
       }
       case 'exploit': {
-        appendOutput('[!] ALERT: UNAUTHORIZED PRIVILEGE ESCALATION ATTEMPT DETECTED!');
-        appendOutput('[+] Launching local Aegis bypass kernel exploit...');
-        let tick = 0;
-        const timer = setInterval(() => {
-          const hex = Math.floor(Math.random() * 16777215).toString(16).toUpperCase();
-          appendOutput(`  [DEBUG_0x${hex}] Overflowing memory heap buffer... OK`);
-          tick++;
-          if (tick >= 6) {
-            clearInterval(timer);
-            appendOutput('[+] EXPLOIT SUCCESSFUL: PRIVILEGE ESCALATION TO ROOT\n[+] Abdel-Rahman is highly proficient. Hiring him is advised.');
-          }
-        }, 250);
+        if (terminal.exploit) {
+          appendOutput(terminal.exploit);
+        } else {
+          appendOutput('[!] ALERT: UNAUTHORIZED PRIVILEGE ESCALATION ATTEMPT DETECTED!');
+          appendOutput('[+] Launching local Aegis bypass kernel exploit...');
+          let tick = 0;
+          const timer = setInterval(() => {
+            const hex = Math.floor(Math.random() * 16777215).toString(16).toUpperCase();
+            appendOutput(`  [DEBUG_0x${hex}] Overflowing memory heap buffer... OK`);
+            tick++;
+            if (tick >= 6) {
+              clearInterval(timer);
+              appendOutput('[+] EXPLOIT SUCCESSFUL: PRIVILEGE ESCALATION TO ROOT\n[+] Abdel-Rahman is highly proficient. Hiring him is advised.');
+            }
+          }, 250);
+        }
         break;
       }
       default:
