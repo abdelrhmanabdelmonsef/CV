@@ -27,7 +27,7 @@ async function readMessages(): Promise<ContactMessage[]> {
 export async function GET(request: NextRequest) {
   if (!isAuthConfigured()) {
     return NextResponse.json(
-      { status: 'error', message: 'Admin access is not configured. Set MESSAGE_SECRET in .env.local' },
+      { status: 'error', message: 'Admin access is not configured. Set MESSAGE_SECRET in Vercel environment variables.' },
       { status: 503 }
     );
   }

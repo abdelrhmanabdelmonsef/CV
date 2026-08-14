@@ -116,7 +116,7 @@ export default function MessagesPage() {
         <p style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem' }}>
           {authConfigured
             ? 'Enter the admin password to view received messages.'
-            : 'Admin access is not configured. Set MESSAGE_SECRET in apps/web-cv/.env.local and restart the server.'}
+            : 'Admin access is not configured. Set the MESSAGE_SECRET environment variable in Vercel project settings (or .env.local locally).'}
         </p>
 
         <form className="glass-panel contact-form" onSubmit={handleLogin}>
