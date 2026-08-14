@@ -8,12 +8,12 @@
   "scripts": {
     "dev:web": "npm run dev -w web-cv",
     "dev:api": "npm run dev -w api-cv",
-    "predev": "npm run build:cv-data && npm run sync-assets",
-    "dev": "concurrently -n api,web -c cyan,magenta \"PORT=3001 npm run dev:api\" \"npm run dev:web\"",
     "sync-assets": "node scripts/sync-assets.mjs",
+    "generate-pdf": "node scripts/generate-resume-pdf.mjs",
     "build:cv-data": "npm --workspace cv-data run build",
-    "build:vercel": "npm run build:cv-data && npm run sync-assets && npm run build -w web-cv",
-    "prebuild": "npm run build:cv-data && npm run sync-assets",
+    "build:vercel": "npm run build:cv-data && npm run sync-assets && npm run generate-pdf && npm run build -w web-cv",
+    "predev": "npm run build:cv-data && npm run sync-assets && npm run generate-pdf",
+    "prebuild": "npm run build:cv-data && npm run sync-assets && npm run generate-pdf",
     "build": "npm --workspace ./apps/web-cv run build && npm --workspace ./apps/api-cv run build",
     "start:api": "npm --prefix ./apps/api-cv run start:prod"
   },
