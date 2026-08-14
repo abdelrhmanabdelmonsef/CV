@@ -331,8 +331,11 @@ writeFileSync(tempHtmlPath, htmlContent, 'utf8');
 
 console.log('Compiled HTML resume template.');
 
-// Convert HTML to PDF using LibreOffice
+// Convert HTML to PDF via system tools if available
+let pdfGenerated = false;
+
 try {
+  execSync('which libreoffice', { stdio: 'ignore' });
   console.log('Converting HTML to PDF via LibreOffice...');
   execSync(`libreoffice --headless --convert-to pdf "${tempHtmlPath}" --outdir "${tempPdfDir}"`, {
     stdio: 'inherit'
@@ -342,10 +345,16 @@ try {
   if (existsSync(generatedPdfPath)) {
     copyFileSync(generatedPdfPath, outputPdfPath);
     console.log(`[✓] Successfully updated PDF resume: ${outputPdfPath}`);
-  } else {
-    throw new Error('Generated PDF file not found after conversion');
+    pdfGenerated = true;
   }
-} catch (error) {
-  console.error('Error generating PDF:', error.message);
-  process.exit(1);
+} catch {
+  // LibreOffice not available in current environment (e.g. Vercel CI)
+}
+
+if (!pdfGenerated) {
+  if (existsSync(outputPdfPath)) {
+    console.log(`[!] PDF rendering engine (libreoffice) not available in build environment (e.g. Vercel CI). Utilizing pre-compiled PDF resume.`);
+  } else {
+    console.warn(`[!] Warning: PDF engine not available and no pre-built PDF exists at ${outputPdfPath}.`);
+  }
 }
