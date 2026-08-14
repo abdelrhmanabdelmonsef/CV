@@ -5,7 +5,8 @@ import { fileURLToPath } from 'node:url';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const cvDataDist = join(root, 'libs/cv-data/dist/index.js');
-const outputPdfPath = join(root, 'apps/web-cv/public/Abdel_Rahman_Abdelemonsef_resume.pdf');
+const outputPdfPath1 = join(root, 'apps/web-cv/public/Abdel_Rahman_Abdelemonsef_resume.pdf');
+const outputPdfPath2 = join(root, 'apps/web-cv/public/Abdel_Rahman_Abdelmonsef_resume.pdf');
 
 if (!existsSync(cvDataDist)) {
   console.log('Building cv-data library first...');
@@ -343,8 +344,9 @@ try {
 
   const generatedPdfPath = join(tempPdfDir, 'resume_template.pdf');
   if (existsSync(generatedPdfPath)) {
-    copyFileSync(generatedPdfPath, outputPdfPath);
-    console.log(`[✓] Successfully updated PDF resume: ${outputPdfPath}`);
+    copyFileSync(generatedPdfPath, outputPdfPath1);
+    copyFileSync(generatedPdfPath, outputPdfPath2);
+    console.log(`[✓] Successfully updated PDF resume assets.`);
     pdfGenerated = true;
   }
 } catch {
@@ -352,9 +354,9 @@ try {
 }
 
 if (!pdfGenerated) {
-  if (existsSync(outputPdfPath)) {
+  if (existsSync(outputPdfPath1) || existsSync(outputPdfPath2)) {
     console.log(`[!] PDF rendering engine (libreoffice) not available in build environment (e.g. Vercel CI). Utilizing pre-compiled PDF resume.`);
   } else {
-    console.warn(`[!] Warning: PDF engine not available and no pre-built PDF exists at ${outputPdfPath}.`);
+    console.warn(`[!] Warning: PDF engine not available and no pre-built PDF exists.`);
   }
 }

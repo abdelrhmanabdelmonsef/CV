@@ -27,9 +27,7 @@ export default function ControlPanel() {
         Print Resume
       </button>
       <a
-        href="/Abdel_Rahman_Abdelemonsef_resume.pdf"
-        target="_blank"
-        rel="noreferrer"
+        href="/Abdel_Rahman_Abdelmonsef_resume.pdf"
         className="hud-btn"
         download="Abdel_Rahman_Abdelmonsef_Resume.pdf"
       >
