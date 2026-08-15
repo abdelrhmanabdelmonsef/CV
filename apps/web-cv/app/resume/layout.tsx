@@ -6,15 +6,5 @@ export const metadata: Metadata = {
 };
 
 export default function ResumeLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <div
-      style={{
-        background: '#ffffff',
-        minHeight: '100vh',
-        padding: '24px 16px'
-      }}
-    >
-      {children}
-    </div>
-  );
+  return <div className="resume-shell">{children}</div>;
 }

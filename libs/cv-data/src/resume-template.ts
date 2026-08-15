@@ -1,5 +1,14 @@
 import type { CvData } from './types';
 
+export const RESUME_PRINT_SCRIPT = `
+<script>
+  if (new URLSearchParams(location.search).get('print') === '1') {
+    window.addEventListener('load', () => {
+      document.fonts.ready.then(() => setTimeout(() => window.print(), 200));
+    });
+  }
+</script>`;
+
 export const RESUME_CSS = `
   @page { size: A4; margin: 8mm 8mm; }
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -32,8 +41,8 @@ export const RESUME_CSS = `
     border-top: 1.5px solid #c4a0f0;
     margin: 6px 0 8px 0;
   }
-  .section { margin-bottom: 7px; }
-  .section-title {
+  .resume-block { margin-bottom: 7px; }
+  .resume-heading {
     font-size: 9.5pt;
     font-weight: 700;
     color: #6728b8;
@@ -43,7 +52,7 @@ export const RESUME_CSS = `
     padding-bottom: 1px;
     margin-bottom: 4px;
   }
-  .summary-text {
+  .resume-summary {
     font-size: 8.5pt;
     color: #1a1a1a;
     text-align: justify;
@@ -61,8 +70,43 @@ export const RESUME_CSS = `
   ul.additional-list { list-style: disc; margin-left: 14px; font-size: 8pt; color: #1a1a1a; }
   ul.additional-list li { margin-bottom: 2px; line-height: 1.35; }
   ul.additional-list strong { color: #1a1a1a; }
+  .resume-shell {
+    background: #ffffff;
+    min-height: 100vh;
+    padding: 24px 16px;
+  }
+  .resume-page {
+    max-width: 210mm;
+    margin: 0 auto;
+    background: #ffffff;
+  }
   @media print {
-    body { background: #ffffff !important; }
+    html, body {
+      background: #ffffff !important;
+      color: #1a1a1a !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      font-size: 8.8pt !important;
+    }
+    body::before, body::after {
+      display: none !important;
+      content: none !important;
+    }
+    .resume-shell {
+      padding: 0 !important;
+      min-height: auto !important;
+    }
+    .resume-page {
+      max-width: 100% !important;
+      margin: 0 !important;
+    }
+    .resume-heading, .resume-name {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .resume-block, .item {
+      page-break-inside: avoid;
+    }
   }
 `;
 
@@ -85,6 +129,11 @@ function formatGithub(url: string) {
   return url.replace(/^https?:\/\/(www\.)?github\.com\//, 'github.com/').replace(/\/$/, '');
 }
 
+function truncateText(text: string, maxLength: number) {
+  if (text.length <= maxLength) return text;
+  return `${text.slice(0, maxLength - 1).trim()}…`;
+}
+
 export function buildResumeBodyHtml(data: CvData): string {
   const p = data.personal;
   const c = data.contact || p;
@@ -93,9 +142,12 @@ export function buildResumeBodyHtml(data: CvData): string {
   const emailsStr = [c.email, c.secondaryEmail].filter(Boolean).join(' \u2022 ');
   const phonesStr = (c.phones || []).join(' \u2022 ');
 
-  const certsGrouped = (data.certifications || [])
-    .map((cert) => `${cert.name} (${cert.issuer.split('\u2014')[0].trim().replace(/&/g, '&amp;')})`)
-    .join('; ');
+  const certsGrouped = truncateText(
+    (data.certifications || [])
+      .map((cert) => `${cert.name} (${cert.issuer.split('\u2014')[0].trim().replace(/&/g, '&amp;')})`)
+      .join('; '),
+    400
+  );
 
   const volunteerGrouped = (data.volunteer || [])
     .map((vol) => `${vol.role} at ${vol.org.split('\u2014')[0].trim()} (${vol.period})`)
@@ -145,7 +197,7 @@ export function buildResumeBodyHtml(data: CvData): string {
 
   return `
   <table width="100%" cellspacing="0" cellpadding="0" style="border-collapse:collapse;">
-    <tbody><tr><td style="border:2.5px solid #1a1a1a; padding:16px 20px; vertical-align:top;">
+    <tbody><tr><td style="border:2.5px solid #1a1a1a; padding:12px 16px; vertical-align:top;">
 
     <div class="resume-name">${p.name}</div>
     <div class="contact-bar">
@@ -155,28 +207,28 @@ export function buildResumeBodyHtml(data: CvData): string {
     </div>
     <hr class="header-rule">
 
-    <div class="section">
-      <div class="section-title">Summary</div>
-      <p class="summary-text">${resume.summary}</p>
+    <div class="resume-block">
+      <div class="resume-heading">Summary</div>
+      <p class="resume-summary">${resume.summary}</p>
     </div>
 
-    <div class="section">
-      <div class="section-title">Work Experience</div>
+    <div class="resume-block">
+      <div class="resume-heading">Work Experience</div>
       ${experienceHtml}
     </div>
 
-    <div class="section">
-      <div class="section-title">Projects &amp; Engineering Builds</div>
+    <div class="resume-block">
+      <div class="resume-heading">Projects &amp; Engineering Builds</div>
       ${projectsHtml}
     </div>
 
-    <div class="section">
-      <div class="section-title">Education</div>
+    <div class="resume-block">
+      <div class="resume-heading">Education</div>
       ${educationHtml}
     </div>
 
-    <div class="section" style="margin-bottom:0;">
-      <div class="section-title">Additional Information</div>
+    <div class="resume-block" style="margin-bottom:0;">
+      <div class="resume-heading">Additional Information</div>
       <ul class="additional-list">
         <li><strong>Technical Skills:</strong> ${skillsStr}</li>
         <li><strong>Languages:</strong> ${languagesStr}</li>
@@ -200,6 +252,7 @@ export function buildResumeHtml(data: CvData): string {
 </head>
 <body>
   ${buildResumeBodyHtml(data)}
+  ${RESUME_PRINT_SCRIPT}
 </body>
 </html>`;
 }
