@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Abdel-Rahman Abdel-Monsef — Resume</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 12mm 15mm;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color: #1e293b;
+      background: #ffffff;
+      font-size: 10.5pt;
+      line-height: 1.45;
+    }
+    a {
+      color: #0284c7;
+      text-decoration: none;
+    }
+    .resume-header {
+      border-bottom: 2px solid #0284c7;
+      padding-bottom: 8px;
+      margin-bottom: 12px;
+    }
+    .name {
+      font-size: 20pt;
+      font-weight: 700;
+      color: #0f172a;
+      letter-spacing: -0.5px;
+    }
+    .title-line {
+      font-size: 11pt;
+      font-weight: 600;
+      color: #0284c7;
+      margin-top: 2px;
+      margin-bottom: 6px;
+    }
+    .contact-bar {
+      font-size: 9pt;
+      color: #475569;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .contact-item {
+      display: inline-block;
+    }
+    .section {
+      margin-bottom: 12px;
+    }
+    .section-header {
+      font-size: 11pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: #0f172a;
+      border-bottom: 1px solid #cbd5e1;
+      padding-bottom: 3px;
+      margin-bottom: 8px;
+    }
+    .summary-text {
+      font-size: 9.5pt;
+      color: #334155;
+      text-align: justify;
+    }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px 16px;
+    }
+    .skill-group {
+      font-size: 9pt;
+    }
+    .skill-title {
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 1px;
+    }
+    .skill-tags {
+      color: #475569;
+    }
+    .item {
+      margin-bottom: 8px;
+    }
+    .item:last-child {
+      margin-bottom: 0;
+    }
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-size: 10pt;
+      font-weight: 700;
+      color: #0f172a;
+    }
+    .org {
+      font-weight: 600;
+      color: #0284c7;
+    }
+    .item-date {
+      font-size: 8.5pt;
+      font-weight: 500;
+      color: #64748b;
+    }
+    .item-sub {
+      font-size: 9pt;
+      color: #475569;
+      margin-top: 1px;
+      margin-bottom: 3px;
+    }
+    .item-desc {
+      font-size: 9pt;
+      color: #334155;
+      margin-top: 2px;
+      margin-bottom: 3px;
+    }
+    .item-tags {
+      font-size: 8.5pt;
+      color: #64748b;
+    }
+    .item-link {
+      font-size: 8.5pt;
+      font-weight: 500;
+    }
+    ul.bullets {
+      margin-left: 16px;
+      font-size: 9pt;
+      color: #334155;
+    }
+    ul.bullets li {
+      margin-bottom: 2px;
+    }
+    .cert-list {
+      margin-left: 16px;
+      font-size: 9pt;
+      color: #334155;
+    }
+    .cert-list li {
+      margin-bottom: 3px;
+    }
+    .item-sub-inline {
+      font-size: 9pt;
+      color: #334155;
+      margin-bottom: 3px;
+    }
+  </style>
+</head>
+<body>
+  <header className="resume-header">
+    <h1 className="name">Abdel-Rahman Abdel-Monsef</h1>
+    <div className="title-line">Computers & Systems Engineer | Web Developer & Cybersecurity Enthusiast</div>
+    <div className="contact-bar">
+      <span className="contact-item"><strong>Location:</strong> Cairo, Egypt</span>
+      <span className="contact-item"><strong>Email:</strong> abdelmonsef349@gmail.com | abdelmonsef348@gmail.com</span>
+      <span className="contact-item"><strong>Phone:</strong> +20 127 286 2660 | +20 102 070 8385</span>
+      <span className="contact-item"><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/abdelrhman-abdelmonsef-48aa281ab/">abdelrhman-abdelmonsef</a></span>
+      <span className="contact-item"><strong>GitHub:</strong> <a href="https://github.com/abdelrhmanabdelmonsef">abdelrhmanabdelmonsef</a></span>
+      <span className="contact-item"><strong>HTB:</strong> <a href="https://profile.hackthebox.com/profile/019e8056-cb46-73e2-a8ce-09c8b8aceb7d">@0xMonsef</a> (Pro Rank, 30+ Labs)</span>
+      <span className="contact-item"><strong>THM:</strong> <a href="https://tryhackme.com/p/0xTDS">@0xTDS</a></span>
+    </div>
+  </header>
+
+  <section className="section">
+    <h2 className="section-header">Professional Summary</h2>
+    <p className="summary-text">Highly motivated Computers & Systems Engineering graduate with growing hands-on experience in modern web development — especially TypeScript, JavaScript, Node.js, Express, NestJS, and Next.js — combined with a proven foundation in web application penetration testing from a dedicated cybersecurity internship. I am building solid backend and frontend skills through asynchronous Node.js patterns, REST APIs, middleware, and module-based architecture, while maintaining strong interest in cybersecurity, secure coding, and OWASP-aware web application security. Known for problem-solving, teamwork, and a fast-learning mindset.</p>
+  </section>
+
+  <section className="section">
+    <h2 className="section-header">Technical Skills Matrix</h2>
+    <div className="skills-grid">
+      
+    <div className="skill-group">
+      <div className="skill-title">Web Security</div>
+      <div className="skill-tags">Penetration Testing • OWASP Top 10 Audit • Vulnerability Assessment • Secure Coding • RBAC & Access Control • Webhook Security • Account Protection • Threat Modeling</div>
+    </div>
+  
+    <div className="skill-group">
+      <div className="skill-title">Pentesting Tools</div>
+      <div className="skill-tags">Burp Suite • Nmap • Metasploit • OWASP ZAP • Wireshark • SQLMap • Gobuster • Hydra • Dirbuster</div>
+    </div>
+  
+    <div className="skill-group">
+      <div className="skill-title">Operating Systems</div>
+      <div className="skill-tags">Kali Linux • Parrot OS • Red Hat Linux • Debian • Windows Server</div>
+    </div>
+  
+    <div className="skill-group">
+      <div className="skill-title">Networking & Core Code</div>
+      <div className="skill-tags">TCP/IP Protocols • Routing & Switching • Network Security • Python • Bash Scripting • Java • Git</div>
+    </div>
+  
+    <div className="skill-group">
+      <div className="skill-title">Backend & DevOps</div>
+      <div className="skill-tags">Node.js • Express.js • NestJS • PostgreSQL • TypeORM • Redis • BullMQ • REST APIs • JWT Auth • Passport.js • Docker Compose • Jest • Testcontainers • Nx Workspace • pnpm</div>
+    </div>
+  
+    <div className="skill-group">
+      <div className="skill-title">Web Development</div>
+      <div className="skill-tags">TypeScript • JavaScript (ES6+) • Next.js • React • Tailwind CSS • HTML5 / CSS3</div>
+    </div>
+  
+    </div>
+  </section>
+
+  <section className="section">
+    <h2 className="section-header">Professional Experience</h2>
+    
+    <div className="item">
+      <div className="item-header">
+        <span className="item-title">Penetration Tester Intern — <span className="org">Hackers For You</span></span>
+        <span className="item-date">Feb 2024 – May 2024</span>
+      </div>
+      <ul className="bullets">
+        <li>Collaborated with senior penetration testers to perform comprehensive security assessments and web application/network penetration tests.</li><li>Executed targeted reconnaissance, vulnerability scanning, and manual exploitation of flaws to secure applications against OWASP Top 10 vulnerabilities.</li><li>Analyzed test results, drafted detailed technical remediation reports, and presented actionable security recommendations to developers.</li><li>Participated in continuous training and threat modeling sessions to align security controls with modern cybersecurity best practices.</li>
+      </ul>
+    </div>
+  
+  </section>
+
+  <section className="section">
+    <h2 className="section-header">Engineering & Security Projects</h2>
+    
+    <div className="item">
+      <div className="item-header">
+        <span className="item-title">🔐 Automated Web Pentest Tool</span>
+        <a class="item-link" href="https://github.com/abdelrhmanabdelmonsef/web-app-vuln-scanner">https://github.com/abdelrhmanabdelmonsef/web-app-vuln-scanner</a>
+      </div>
+      <p className="item-desc">Developed a custom penetration testing toolkit designed for automated web application security assessments. The tool performs reconnaissance, service enumeration, vulnerability identification, and generates structured PDF reports for remediation guidance.</p>
+      <div className="item-tags"><strong>Tech Stack:</strong> Python, Bash, OWASP Top 10, Nmap API, Burp API</div>
+    </div>
+  
+    <div className="item">
+      <div className="item-header">
+        <span className="item-title">🚀 Ocean67 Fulfillment Platform</span>
+        
+      </div>
+      <p className="item-desc">Built a full-stack TypeScript/NestJS/Next.js platform for secure digital-goods fulfillment with webhook ingestion, async BullMQ workers, RBAC, PostgreSQL/Redis workflows, provider integration logic, and ~85 automated tests.</p>
+      <div className="item-tags"><strong>Tech Stack:</strong> TypeScript, NestJS, Next.js, BullMQ, PostgreSQL, Redis, Webhook Security, RBAC, Jest</div>
+    </div>
+  
+    <div className="item">
+      <div className="item-header">
+        <span className="item-title">📋 Tasks & Notes App</span>
+        <a class="item-link" href="https://github.com/abdelrhmanabdelmonsef/tasks-notes-app">https://github.com/abdelrhmanabdelmonsef/tasks-notes-app</a>
+      </div>
+      <p className="item-desc">Full-stack monorepo featuring a NestJS REST API with JWT auth, RBAC, PostgreSQL persistence via TypeORM, class-validator DTOs, bcrypt password hashing, BullMQ async queues, and a Next.js frontend scaffold.</p>
+      <div className="item-tags"><strong>Tech Stack:</strong> TypeScript, NestJS, Node.js, PostgreSQL, TypeORM, JWT, Passport, Next.js, Tailwind CSS</div>
+    </div>
+  
+  </section>
+
+  <section className="section">
+    <h2 className="section-header">Education</h2>
+    
+    <div className="item">
+      <div className="item-header">
+        <span className="item-title">Bachelor of Science — Computers & Systems Engineering</span>
+        <span className="item-date">Oct 2019 – Jun 2024</span>
+      </div>
+      <div className="item-sub">Al-Azhar University, Faculty of Computers & Systems Engineering — <strong>Grade: Very Good (A Equivalent)</strong></div>
+      <ul className="bullets">
+        <li>Strong foundation in cybersecurity, networking protocols, operating systems, and software engineering.</li><li>Completed graduation project developing a cybersecurity penetration testing tool with automated scanning and reporting capabilities.</li>
+      </ul>
+    </div>
+  
+  </section>
+
+  <section className="section">
+    <h2 className="section-header">Certifications & Credentials</h2>
+    <ul className="cert-list">
+      <li><strong>Red Hat System Administration I (RH124)</strong> — Red Hat Inc. (VERIFIED)</li><li><strong>Google Cybersecurity Professional Certificate</strong> — Google & Coursera — Foundations, Managing Risk, Linux & SQL, Network Security (VERIFIED)</li><li><strong>McKinsey Forward Program</strong> — McKinsey & Company — Advanced Adaptability, Problem-Solving, Team Leadership (COMPLETED)</li><li><strong>OSCP & eWAPT (Active Training)</strong> — Offensive Security & eLearnSecurity — Preparing for Exams (IN_PROGRESS)</li><li><strong>HackTheBox Academy Student Transcript</strong> — HackTheBox Academy — Active Web Security Path & Penetration Testing Modules (VERIFIED)</li>
+    </ul>
+  </section>
+
+  <section className="section">
+    <h2 className="section-header">Leadership & Volunteer Experience</h2>
+    
+    <div className="item-sub-inline">
+      <strong>Vice-Head, Cybersecurity Team</strong> — Google Developer Student Clubs (GDSC) — Al-Azhar University (2022 – 2024)
+    </div>
+  
+    <div className="item-sub-inline">
+      <strong>Vice-Head, Cybersecurity Team</strong> — AZ-SEnCS — Al-Azhar University (2022 – 2024)
+    </div>
+  
+    <div className="item-sub-inline">
+      <strong>Member, Java Development Team</strong> — AZ-SEnCS — Al-Azhar University (2021 – 2023)
+    </div>
+  
+  </section>
+
+  <section className="section" style="margin-bottom: 0;">
+    <h2 className="section-header">Languages</h2>
+    <p style="font-size: 9pt; color: #334155;">Arabic (Native / C2) • English (Professional / B2)</p>
+  </section>
+</body>
+</html>

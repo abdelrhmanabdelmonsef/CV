@@ -173,10 +173,26 @@ export default function CvSections({ data }: { data: CvData }) {
             <div key={project.id} className="glass-panel project-card" id={project.id}>
               <div className="project-header">
                 <h3 className="project-title-text">{project.title}</h3>
-                <a href={project.link} target="_blank" rel="noreferrer" className="cert-badge-link">
-                  <GitHubSmallIcon />
-                  GitHub
-                </a>
+                {project.link ? (
+                  <a href={project.link} target="_blank" rel="noreferrer" className="cert-badge-link">
+                    <GitHubSmallIcon />
+                    GitHub
+                  </a>
+                ) : project.isPrivate ? (
+                  <span
+                    className="cert-badge-link disabled"
+                    style={{
+                      opacity: 0.65,
+                      cursor: 'default',
+                      pointerEvents: 'none',
+                      borderColor: 'rgba(255, 255, 255, 0.1)',
+                      color: 'var(--text-muted)',
+                      background: 'rgba(255, 255, 255, 0.03)'
+                    }}
+                  >
+                    🔒 Private
+                  </span>
+                ) : null}
               </div>
               <p className="project-desc">{project.description}</p>
               <div className="tag-container">

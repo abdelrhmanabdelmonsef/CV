@@ -38,7 +38,8 @@ export type CvExperience = {
 export type CvProject = {
   id: string;
   title: string;
-  link: string;
+  link?: string;
+  isPrivate?: boolean;
   description: string;
   tags: string[];
   featuredTags?: string[];

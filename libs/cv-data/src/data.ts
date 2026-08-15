@@ -73,7 +73,7 @@ const cvData: CvData = {
     {
       id: 'proj-ocean67',
       title: '🚀 Ocean67 Fulfillment Platform',
-      link: 'https://github.com/abdelrhmanabdelmonsef',
+      isPrivate: true,
       description:
         'Built a full-stack TypeScript/NestJS/Next.js platform for secure digital-goods fulfillment with webhook ingestion, async BullMQ workers, RBAC, PostgreSQL/Redis workflows, provider integration logic, and ~85 automated tests.',
       tags: ['TypeScript', 'NestJS', 'Next.js', 'BullMQ', 'PostgreSQL', 'Redis', 'Webhook Security', 'RBAC', 'Jest'],
@@ -97,60 +97,67 @@ const cvData: CvData = {
       color: 'green',
       tags: [
         'Penetration Testing',
-        'OWASP Top 10',
-        'SQL Injection',
-        'XSS',
-        'SSRF',
-        'Auth Bypass',
-        'Access Control',
-        'CSRF',
-        'IDOR',
+        'OWASP Top 10 Audit',
+        'Vulnerability Assessment',
         'Secure Coding',
-        'Reconnaissance',
-        'Port Scanning',
-        'Host Discovery',
-        'Service Enumeration',
-        'Account Enumeration Protection',
-        'Replay Defense',
-        'Webhook Security'
+        'RBAC & Access Control',
+        'Webhook Security',
+        'Account Protection',
+        'Threat Modeling'
       ]
     },
     {
       id: 'skill-tools',
       title: 'Pentesting Tools',
       color: 'blue',
-      tags: ['Burp Suite', 'Burp API', 'Nmap', 'Nmap API', 'Metasploit', 'OWASP ZAP', 'Wireshark', 'Dirbuster', 'SQLMap', 'Gobuster', 'Hydra']
+      tags: ['Burp Suite', 'Nmap', 'Metasploit', 'OWASP ZAP', 'Wireshark', 'SQLMap', 'Gobuster', 'Hydra', 'Dirbuster']
     },
     {
       id: 'skill-os',
       title: 'Operating Systems',
       color: 'purple',
-      tags: ['Kali Linux', 'Parrot OS', 'Red Hat Linux', 'Debian', 'Windows Server', 'Windows Client']
+      tags: ['Kali Linux', 'Parrot OS', 'Red Hat Linux', 'Debian', 'Windows Server']
     },
     {
       id: 'skill-networking',
-      title: 'Networking & Code',
+      title: 'Networking & Core Code',
       color: 'gray',
-      tags: ['TCP/IP', 'Routing & Switching', 'Python', 'Bash Scripting', 'Java', 'JavaScript', 'SQL / MySQL', 'Git']
+      tags: ['TCP/IP Protocols', 'Routing & Switching', 'Network Security', 'Python', 'Bash Scripting', 'Java', 'Git']
     },
     {
       id: 'skill-backend-devops',
       title: 'Backend & DevOps',
       color: 'blue',
-      tags: ['NestJS', 'TypeORM', 'PostgreSQL', 'Redis', 'BullMQ', 'Docker Compose', 'Nx', 'pnpm', 'Jest', 'Testcontainers', 'Express.js', 'Passport.js', 'JWT', 'REST APIs', 'C#']
+      tags: [
+        'Node.js',
+        'Express.js',
+        'NestJS',
+        'PostgreSQL',
+        'TypeORM',
+        'Redis',
+        'BullMQ',
+        'REST APIs',
+        'JWT Auth',
+        'Passport.js',
+        'Docker Compose',
+        'Jest',
+        'Testcontainers',
+        'Nx Workspace',
+        'pnpm'
+      ]
     },
     {
       id: 'skill-web-dev',
       title: 'Web Development',
       color: 'green',
-      tags: ['TypeScript', 'React', 'Tailwind CSS', 'JavaScript', 'Node.js', 'Express.js', 'Asynchronous JS', 'Express Middleware', 'Route Params', 'NestJS', 'Next.js'],
+      tags: ['TypeScript', 'JavaScript (ES6+)', 'Next.js', 'React', 'Tailwind CSS', 'HTML5 / CSS3'],
       progress: [
-        { name: 'TypeScript', label: 'Upper Basic', width: 72 },
-        { name: 'JavaScript', label: 'Mid Level', width: 65 },
-        { name: 'Node.js', label: 'Upper Basic', width: 70 },
-        { name: 'Express.js', label: 'Basic', width: 55 },
-        { name: 'NestJS', label: 'Upper Basic', width: 70 },
-        { name: 'Next.js', label: 'Upper Basic', width: 70 }
+        { name: 'TypeScript', label: 'Intermediate', width: 72 },
+        { name: 'JavaScript', label: 'Intermediate', width: 75 },
+        { name: 'Node.js', label: 'Intermediate', width: 70 },
+        { name: 'Express.js', label: 'Foundational', width: 60 },
+        { name: 'NestJS', label: 'Intermediate', width: 70 },
+        { name: 'Next.js', label: 'Intermediate', width: 68 }
       ]
     }
   ],
@@ -379,7 +386,7 @@ PORT     STATE SERVICE     VERSION
      - Repo: https://github.com/abdelrhmanabdelmonsef/web-app-vuln-scanner
   2. 🚀 Ocean67 Fulfillment Platform
      - Full-stack NestJS/Next.js/BullMQ/PostgreSQL digital-goods fulfillment.
-     - Repo: https://github.com/abdelrhmanabdelmonsef
+     - Repo: Private Repository
   3. 📋 Tasks & Notes App
      - NestJS REST API, JWT, RBAC, TypeORM, PostgreSQL, class-validator, Next.js.
      - Repo: https://github.com/abdelrhmanabdelmonsef/tasks-notes-app`,
