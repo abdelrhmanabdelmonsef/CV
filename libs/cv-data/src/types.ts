@@ -114,9 +114,16 @@ export type CvSeo = {
   knowsAbout: string[];
 };
 
+export type CvResume = {
+  summary: string;
+  skills: string[];
+  platformLine?: string;
+};
+
 export type CvData = {
   personal: CvPersonal;
   summary: string;
+  resume: CvResume;
   learningHighlights: string[];
   education: CvEducation[];
   experience: CvExperience[];

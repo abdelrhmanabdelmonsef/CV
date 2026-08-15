@@ -17,6 +17,31 @@ const cvData: CvData = {
   summary:
     'Highly motivated Computers & Systems Engineering graduate with growing hands-on experience in modern web development — especially TypeScript, JavaScript, Node.js, Express, NestJS, and Next.js — combined with a proven foundation in web application penetration testing from a dedicated cybersecurity internship. I am building solid backend and frontend skills through asynchronous Node.js patterns, REST APIs, middleware, and module-based architecture, while maintaining strong interest in cybersecurity, secure coding, and OWASP-aware web application security. Known for problem-solving, teamwork, and a fast-learning mindset.',
 
+  resume: {
+    summary:
+      'Computers & Systems Engineering graduate with hands-on experience in modern web development (TypeScript, Node.js, NestJS, Next.js) and a solid foundation in cybersecurity from a dedicated penetration testing internship. Applies OWASP-aware secure coding practices and is actively pursuing OSCP and eWAPT certifications.',
+    skills: [
+      'Web App Pentesting',
+      'OWASP Top 10',
+      'TypeScript',
+      'Node.js',
+      'Express',
+      'NestJS',
+      'Next.js',
+      'PostgreSQL',
+      'Redis',
+      'BullMQ',
+      'Burp Suite',
+      'Nmap',
+      'Kali Linux',
+      'Red Hat Linux',
+      'Python',
+      'Bash',
+      'Docker'
+    ],
+    platformLine: 'TryHackMe (@0xTDS) & HackTheBox (@0xMonsef — Pro Rank, 30+ Labs)'
+  },
+
   learningHighlights: [
     'Developing large-scale TypeScript applications with secure webhook ingestion, queue-based fulfillment, and RBAC-driven operations.',
     'Focused on full-stack JavaScript with TypeScript, Node.js, Express, NestJS, and Next.js.',
