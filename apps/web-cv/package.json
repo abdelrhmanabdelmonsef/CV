@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",
+    "@upstash/redis": "^1.38.2",
     "cv-data": "*",
     "next": "14.2.5",
     "react": "18.3.1",
