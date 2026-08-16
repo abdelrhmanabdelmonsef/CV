@@ -5,6 +5,7 @@ import cvData from 'cv-data';
 import { LightboxProvider } from '../contexts/LightboxContext';
 import { MatrixProvider } from '../contexts/MatrixContext';
 import ErrorBoundary from '../components/ui/ErrorBoundary';
+import { Analytics } from '@vercel/analytics/next';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -76,6 +77,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <LightboxProvider>{children}</LightboxProvider>
           </MatrixProvider>
         </ErrorBoundary>
+        <Analytics />
       </body>
     </html>
   );
