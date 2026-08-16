@@ -10,7 +10,7 @@ const targets = [
   { name: 'certificates', source: join(legacyDir, 'certificates') },
   {
     name: 'HTB Academy Student Transcript.pdf',
-    source: join(legacyDir, 'HTB Academy Student Transcript.pdf')
+    source: join(legacyDir, 'good resources', 'HTB Academy Student Transcript.pdf')
   }
 ];
 
