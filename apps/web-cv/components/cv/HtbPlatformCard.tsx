@@ -2,23 +2,13 @@
 
 import { useEffect, useState } from 'react';
 import type { CvPlatform } from 'cv-data';
-import { useLightbox } from '../../contexts/LightboxContext';
-import { DocIcon, ExternalIcon } from '../layout/Section';
+import { ExternalIcon } from '../layout/Section';
+import CertLinkButton from '../ui/CertLinkButton';
 import type { HtbProfileData } from '../../lib/htb-profile';
 
 type HtbPlatformCardProps = {
   fallback: CvPlatform;
 };
-
-function CertLinkButton({ url, title, label }: { url: string; title: string; label: string }) {
-  const { openLightbox } = useLightbox();
-  return (
-    <button type="button" className="cert-badge-link" onClick={() => openLightbox(url, title)}>
-      <DocIcon />
-      {label}
-    </button>
-  );
-}
 
 function HtbBadgeGrid({ badges }: { badges: { name: string; imageUrl: string }[] }) {
   if (badges.length === 0) {

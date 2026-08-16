@@ -1,8 +1,7 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import type { CvData } from 'cv-data';
-import { useLightbox } from '../../contexts/LightboxContext';
 import ContactForm from '../contact/ContactForm';
 import HtbPlatformCard from './HtbPlatformCard';
 import {
@@ -11,7 +10,6 @@ import {
   ClockIcon,
   CodeIcon,
   ContactIcon,
-  DocIcon,
   EducationIcon,
   ExternalIcon,
   GitHubSmallIcon,
@@ -22,27 +20,15 @@ import {
   SkillsIcon,
   VolunteerIcon
 } from '../layout/Section';
-
-function CertLinkButton({ url, title, label }: { url: string; title: string; label: string }) {
-  const { openLightbox } = useLightbox();
-  return (
-    <button type="button" className="cert-badge-link" onClick={() => openLightbox(url, title)}>
-      <DocIcon />
-      {label}
-    </button>
-  );
-}
+import CertLinkButton from '../ui/CertLinkButton';
 
 function LanguageMeters({ languages }: { languages: CvData['languages'] }) {
+  const [animate, setAnimate] = useState(false);
+
   useEffect(() => {
-    const timer = setTimeout(() => {
-      languages.forEach((lang) => {
-        const bar = document.getElementById(`bar-${lang.id}`);
-        if (bar) bar.style.width = `${lang.proficiency}%`;
-      });
-    }, 400);
+    const timer = setTimeout(() => setAnimate(true), 400);
     return () => clearTimeout(timer);
-  }, [languages]);
+  }, []);
 
   return (
     <div className="languages-grid">
@@ -53,7 +39,10 @@ function LanguageMeters({ languages }: { languages: CvData['languages'] }) {
             <span className="lang-metric">{lang.level}</span>
           </div>
           <div className="meter-container">
-            <div className="meter-fill" id={`bar-${lang.id}`} />
+            <div
+              className="meter-fill"
+              style={{ width: animate ? `${lang.proficiency}%` : '0%' }}
+            />
           </div>
         </div>
       ))}

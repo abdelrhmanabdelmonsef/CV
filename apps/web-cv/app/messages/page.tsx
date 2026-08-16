@@ -119,7 +119,7 @@ export default function MessagesPage() {
             : 'Admin access is not configured. Set the MESSAGE_SECRET environment variable in Vercel project settings (or .env.local locally).'}
         </p>
 
-        <form className="glass-panel contact-form" onSubmit={handleLogin}>
+        <form className="glass-panel contact-form" onSubmit={handleLogin} aria-label="Admin login">
           <label>
             <span>Password</span>
             <input
@@ -130,12 +130,13 @@ export default function MessagesPage() {
               required
               autoFocus
               disabled={!authConfigured}
+              aria-label="Admin password"
             />
           </label>
           <button type="submit" disabled={isLoggingIn || !authConfigured}>
             {isLoggingIn ? 'Verifying...' : 'Unlock messages'}
           </button>
-          {loginError && <p className="contact-status error">{loginError}</p>}
+          {loginError && <p className="contact-status error" role="alert">{loginError}</p>}
         </form>
 
         <div style={{ marginTop: '1.5rem' }}>

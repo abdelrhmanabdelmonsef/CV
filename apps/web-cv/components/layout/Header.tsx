@@ -41,10 +41,10 @@ function LocationIcon() {
 }
 
 export default function Header({ personal }: { personal: CvPersonal }) {
-  const phoneLinks = [
-    { href: 'tel:+201272862660', label: '+20 127 286 2660' },
-    { href: 'tel:+201020708385', label: '+20 102 070 8385' }
-  ];
+  const phoneLinks = personal.phones.map((phone) => ({
+    href: `tel:${phone.replace(/[\s()-]/g, '')}`,
+    label: phone
+  }));
 
   return (
     <header className="glass-panel header">

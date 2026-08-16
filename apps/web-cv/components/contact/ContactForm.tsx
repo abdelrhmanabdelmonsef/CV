@@ -92,7 +92,7 @@ export default function ContactForm() {
       <button type="submit" disabled={isSubmitting}>
         {isSubmitting ? 'Sending...' : 'Send message'}
       </button>
-      {status && <p className={`contact-status${statusType ? ` ${statusType}` : ''}`}>{status}</p>}
+      {status && <p className={`contact-status${statusType ? ` ${statusType}` : ''}`} role="status" aria-live="polite">{status}</p>}
     </form>
   );
 }

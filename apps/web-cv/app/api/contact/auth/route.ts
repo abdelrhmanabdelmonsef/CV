@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { AUTH_COOKIE, getSessionToken, isAuthConfigured, isAuthorized, verifyPassword } from '../../../../lib/messages-auth';
+import { AUTH_COOKIE, createSessionToken, isAuthConfigured, isAuthorized, verifyPassword } from '../../../../lib/messages-auth';
 
 export async function POST(request: NextRequest) {
   if (!isAuthConfigured()) {
@@ -18,7 +18,7 @@ export async function POST(request: NextRequest) {
     }
 
     const response = NextResponse.json({ status: 'success' });
-    response.cookies.set(AUTH_COOKIE, getSessionToken(), {
+    response.cookies.set(AUTH_COOKIE, createSessionToken(), {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'strict',

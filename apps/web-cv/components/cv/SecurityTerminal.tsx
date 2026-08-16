@@ -47,7 +47,15 @@ export default function SecurityTerminal({ terminal }: { terminal: TerminalOutpu
   const [input, setInput] = useState('');
   const bodyRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const activeTimersRef = useRef<Set<ReturnType<typeof setInterval>>>(new Set());
   const { toggleMatrix } = useMatrix();
+
+  useEffect(() => {
+    return () => {
+      activeTimersRef.current.forEach(clearInterval);
+      activeTimersRef.current.clear();
+    };
+  }, []);
 
   useEffect(() => {
     if (bodyRef.current) {
@@ -120,9 +128,11 @@ export default function SecurityTerminal({ terminal }: { terminal: TerminalOutpu
             dots++;
             if (dots >= 4) {
               clearInterval(timer);
+              activeTimersRef.current.delete(timer);
               appendOutput('[+] SCAN COMPLETE: 4 services verified. No active leaks detected. All academic certificates ready to view.');
             }
           }, 300);
+          activeTimersRef.current.add(timer);
         }
         break;
       }
@@ -139,9 +149,11 @@ export default function SecurityTerminal({ terminal }: { terminal: TerminalOutpu
             tick++;
             if (tick >= 6) {
               clearInterval(timer);
+              activeTimersRef.current.delete(timer);
               appendOutput('[+] EXPLOIT SUCCESSFUL: PRIVILEGE ESCALATION TO ROOT\n[+] Abdel-Rahman is highly proficient. Hiring him is advised.');
             }
           }, 250);
+          activeTimersRef.current.add(timer);
         }
         break;
       }
@@ -176,12 +188,15 @@ export default function SecurityTerminal({ terminal }: { terminal: TerminalOutpu
         className="terminal-body"
         ref={bodyRef}
         onClick={() => inputRef.current?.focus()}
-        role="presentation"
+        role="log"
+        aria-label="Security terminal output"
+        aria-live="polite"
       >
         {lines.map(renderLine)}
         <div className="t-input-container">
-          <span className="t-prompt">guest@aegis:~$</span>
+          <label htmlFor="terminal-input" className="t-prompt">guest@aegis:~$</label>
           <input
+            id="terminal-input"
             ref={inputRef}
             type="text"
             className="t-input"
@@ -191,6 +206,7 @@ export default function SecurityTerminal({ terminal }: { terminal: TerminalOutpu
             autoComplete="off"
             spellCheck={false}
             autoFocus
+            aria-label="Terminal command input"
           />
         </div>
       </div>

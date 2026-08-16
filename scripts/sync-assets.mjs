@@ -1,5 +1,5 @@
-import { cpSync, existsSync, mkdirSync, rmSync } from 'node:fs';
-import { dirname, join } from 'node:path';
+import { existsSync, mkdirSync, rmSync, symlinkSync } from 'node:fs';
+import { dirname, join, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -24,7 +24,7 @@ for (const target of targets) {
     throw new Error(`Missing legacy asset: ${target.source}`);
   }
 
-  cpSync(target.source, destination, { recursive: true });
+  symlinkSync(relative(publicDir, target.source), destination);
 }
 
-console.log('Synced legacy assets into apps/web-cv/public/');
+console.log('Symlinked legacy assets into apps/web-cv/public/');

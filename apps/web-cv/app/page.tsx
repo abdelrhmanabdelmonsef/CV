@@ -11,12 +11,12 @@ export default function Home() {
     <>
       <MatrixCanvas />
       <ControlPanel />
-      <div className="wrapper">
+      <main id="main-content" className="wrapper">
         <Header personal={cvData.personal} />
         <SecurityTerminal terminal={cvData.terminal} />
         <CvSections data={cvData} />
         <Footer footer={cvData.footer} />
-      </div>
+      </main>
     </>
   );
 }

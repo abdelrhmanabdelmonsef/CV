@@ -1,3 +1,23 @@
+    /* ── SKIP TO CONTENT (ACCESSIBILITY) ── */
+    .skip-to-content {
+      position: absolute;
+      top: -100%;
+      left: 16px;
+      z-index: 10000;
+      background: var(--accent-green);
+      color: #000;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: top 0.2s ease;
+    }
+    .skip-to-content:focus {
+      top: 16px;
+    }
+
     /* ── CORE DESIGN VARIABLES (CYBER HUD PALETTE) ── */
     :root {
       --bg-primary: #06090e;

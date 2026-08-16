@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /messages
+Disallow: /api/
+
+Sitemap: https://cv.abdelrhman.dev/sitemap.xml

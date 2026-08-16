@@ -4,6 +4,7 @@ import { Inter, JetBrains_Mono } from 'next/font/google';
 import cvData from 'cv-data';
 import { LightboxProvider } from '../contexts/LightboxContext';
 import { MatrixProvider } from '../contexts/MatrixContext';
+import ErrorBoundary from '../components/ui/ErrorBoundary';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -67,9 +68,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body style={{ fontFamily: 'var(--font-inter), Inter, sans-serif' }}>
-        <MatrixProvider>
-          <LightboxProvider>{children}</LightboxProvider>
-        </MatrixProvider>
+        <a href="#main-content" className="skip-to-content">
+          Skip to main content
+        </a>
+        <ErrorBoundary>
+          <MatrixProvider>
+            <LightboxProvider>{children}</LightboxProvider>
+          </MatrixProvider>
+        </ErrorBoundary>
       </body>
     </html>
   );

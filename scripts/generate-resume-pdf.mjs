@@ -5,8 +5,8 @@ import { fileURLToPath } from 'node:url';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const cvDataDist = join(root, 'libs/cv-data/dist/index.js');
-const outputPdfPath1 = join(root, 'apps/web-cv/public/Abdel_Rahman_Abdelemonsef_resume.pdf');
-const outputPdfPath2 = join(root, 'apps/web-cv/public/Abdel_Rahman_Abdelmonsef_resume.pdf');
+const outputPdfPath1 = join(root, 'apps/web-cv/public/Abdel_Rahman_Abdelmonsef_resume.pdf');
+const outputPdfPath2 = join(root, 'apps/web-cv/public/Abdel_Rahman_Abdelemonsef_resume.pdf');
 
 if (!existsSync(cvDataDist)) {
   console.log('Building cv-data library first...');
