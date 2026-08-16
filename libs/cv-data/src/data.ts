@@ -233,7 +233,7 @@ const cvData: CvData = {
       documents: [
         {
           label: 'Verify',
-          url: '/HTB%20Academy%20Student%20Transcript.pdf',
+          url: '/HTB_Academy_Student_Transcript.pdf',
           title: 'HackTheBox Academy Student Transcript'
         }
       ]
@@ -286,7 +286,7 @@ const cvData: CvData = {
         { label: 'Labs', value: '30+' },
         { label: 'Academy', value: '6' }
       ],
-      transcriptUrl: '/HTB%20Academy%20Student%20Transcript.pdf',
+      transcriptUrl: '/HTB_Academy_Student_Transcript.pdf',
       transcriptTitle: 'HackTheBox Academy Student Transcript'
     }
   ],

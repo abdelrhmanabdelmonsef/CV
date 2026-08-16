@@ -25,4 +25,4 @@ apps/api-cv/data/messages.json
 # Public assets are symlinks to legacy/ — run: npm run sync-assets
 apps/web-cv/public/photo
 apps/web-cv/public/certificates
-apps/web-cv/public/HTB Academy Student Transcript.pdf
+apps/web-cv/public/HTB_Academy_Student_Transcript.pdf
