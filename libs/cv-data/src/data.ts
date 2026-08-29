@@ -67,6 +67,21 @@ const cvData: CvData = {
 
   experience: [
     {
+      id: 'exp-smaww-fullstack',
+      role: 'Full-Stack Developer Intern (AI-Driven)',
+      organization: 'Smaww (smaww.net)',
+      duration: 'Jun 2026 – Sep 2026',
+      durationMonths: '3 months',
+      status: 'Completed',
+      statusVariant: 'green',
+      highlights: [
+        'Engineered full-stack web solutions and modern architectures utilizing Node.js, NestJS, Next.js, and TypeScript within an AI-driven development workflow.',
+        'Contributed to the core revamp of the Ocean67 platform, building scalable backend APIs, async worker pipelines, and responsive frontend components.',
+        'Applied modular software patterns, secure API integrations, and robust error handling to enhance platform reliability.',
+        'Leveraged AI-assisted development tooling to accelerate feature delivery, code quality review, and automated testing.'
+      ]
+    },
+    {
       id: 'exp-hackers-for-you',
       role: 'Penetration Tester Intern',
       organization: 'Hackers For You',
@@ -98,11 +113,12 @@ const cvData: CvData = {
     {
       id: 'proj-ocean67',
       title: '🚀 Ocean67 Fulfillment Platform',
+      associatedWith: 'Smaww Internship',
       isPrivate: true,
       description:
-        'Built a full-stack TypeScript/NestJS/Next.js platform for secure digital-goods fulfillment with webhook ingestion, async BullMQ workers, RBAC, PostgreSQL/Redis workflows, provider integration logic, and ~85 automated tests.',
-      tags: ['TypeScript', 'NestJS', 'Next.js', 'BullMQ', 'PostgreSQL', 'Redis', 'Webhook Security', 'RBAC', 'Jest'],
-      featuredTags: ['TypeScript', 'NestJS']
+        'Engineered during the Full-Stack Internship at Smaww (smaww.net) — a unified digital-goods fulfillment platform revamp built with TypeScript, NestJS, and Next.js, featuring secure webhook ingestion, async BullMQ workers, RBAC, PostgreSQL/Redis workflows, provider integration logic, and ~85 automated tests.',
+      tags: ['TypeScript', 'NestJS', 'Next.js', 'BullMQ', 'PostgreSQL', 'Redis', 'Webhook Security', 'RBAC', 'Jest', 'AI-Driven Workflow'],
+      featuredTags: ['TypeScript', 'NestJS', 'Next.js']
     },
     {
       id: 'proj-tasks-notes',

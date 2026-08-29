@@ -40,6 +40,7 @@ export type CvProject = {
   title: string;
   link?: string;
   isPrivate?: boolean;
+  associatedWith?: string;
   description: string;
   tags: string[];
   featuredTags?: string[];

@@ -174,7 +174,7 @@ export function buildResumeBodyHtml(data: CvData): string {
       (proj) => `
     <div class="item">
       ${itemRow(
-        `<span class="role-org">${proj.title.replace(/^[^a-zA-Z0-9]+/, '')}</span>`,
+        `<span class="role-org">${proj.title.replace(/^[^a-zA-Z0-9]+/, '')}${proj.associatedWith ? ` <span style="font-size:8pt;font-weight:600;color:#6728b8;">[${proj.associatedWith}]</span>` : ''}</span>`,
         `<span class="date-range">${proj.link ? proj.link.replace('https://', '') : 'Private Repository'}</span>`
       )}
       <ul class="bullets"><li><strong>Tech Stack:</strong> ${(proj.tags || []).join(', ')}</li></ul>

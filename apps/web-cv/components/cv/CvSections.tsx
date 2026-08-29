@@ -161,7 +161,14 @@ export default function CvSections({ data }: { data: CvData }) {
           {data.projects.map((project) => (
             <div key={project.id} className="glass-panel project-card" id={project.id}>
               <div className="project-header">
-                <h3 className="project-title-text">{project.title}</h3>
+                <div>
+                  <h3 className="project-title-text">{project.title}</h3>
+                  {project.associatedWith && (
+                    <div style={{ fontSize: '0.78rem', color: 'var(--accent-green, #10b981)', marginTop: '3px', fontWeight: 500 }}>
+                      🏢 {project.associatedWith}
+                    </div>
+                  )}
+                </div>
                 {project.link ? (
                   <a href={project.link} target="_blank" rel="noreferrer" className="cert-badge-link">
                     <GitHubSmallIcon />

@@ -36,12 +36,29 @@ Highly motivated **Computers and Systems Engineering graduate** with hands-on ex
 ---
 
 ## Work Experience
+### Full-Stack Developer Intern (AI-Driven)
+**Smaww (smaww.net)** | *Jun 1, 2026 - Sep 1, 2026*
+* Engineered full-stack web solutions and modern architectures utilizing Node.js, NestJS, Next.js, and TypeScript within an AI-driven development workflow.
+* Contributed to the core revamp of the Ocean67 platform, building scalable backend APIs, async worker pipelines, and responsive frontend components.
+* Applied modular software patterns, secure API integrations, and robust error handling to enhance platform reliability.
+* Leveraged AI-assisted development tooling to accelerate feature delivery, code quality review, and automated testing.
+
 ### Penetration Tester Intern
 **Hackers For You** | *Feb 2, 2024 - May 5, 2024* | [Internship Certificate](../legacy/certificates/Hackers_For_you_intern_cert.png)
 * Collaborated with senior penetration testers to perform comprehensive security assessments and web application/network penetration tests.
 * Executed targeted reconnaissance, vulnerability scanning, and manual exploitation of flaws to secure applications against OWASP Top 10 vulnerabilities.
 * Analyzed test results, drafted detailed technical remediation reports, and presented actionable security recommendations to developers.
 * Participated in continuous training and threat modeling sessions to align security controls with modern cybersecurity best practices.
+
+---
+
+## Projects & Engineering Builds
+* **Ocean67 Fulfillment Platform** *(Engineered during Smaww Internship)*
+  * Built a unified full-stack digital-goods fulfillment platform using TypeScript, NestJS, Next.js, PostgreSQL, Redis, and BullMQ with ~85 automated tests.
+* **Automated Web Pentest Tool** | [GitHub](https://github.com/abdelrhmanabdelmonsef/web-app-vuln-scanner)
+  * Developed a custom automated penetration testing toolkit for web security assessments with reporting in Python and Bash.
+* **Tasks & Notes App** | [GitHub](https://github.com/abdelrhmanabdelmonsef/tasks-notes-app)
+  * Full-stack monorepo featuring NestJS REST API with JWT auth, RBAC, TypeORM, BullMQ, and Next.js frontend.
 
 ---
 
