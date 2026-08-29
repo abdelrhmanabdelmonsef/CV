@@ -2,83 +2,168 @@ import type { CvData } from './types';
 
 export const RESUME_PRINT_SCRIPT = `
 <script>
-  if (new URLSearchParams(location.search).get('print') === '1') {
+  if (typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('print') === '1') {
     window.addEventListener('load', () => {
-      document.fonts.ready.then(() => setTimeout(() => window.print(), 200));
+      if (document.fonts) {
+        document.fonts.ready.then(() => setTimeout(() => window.print(), 250));
+      } else {
+        setTimeout(() => window.print(), 350);
+      }
     });
   }
 </script>`;
 
 export const RESUME_CSS = `
-  @page { size: A4; margin: 8mm 8mm; }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+  @page {
+    size: A4;
+    margin: 9mm 11mm;
+  }
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
   body {
-    font-family: "Liberation Sans", "DejaVu Sans", Arial, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     color: #1a1a1a;
     background: #ffffff;
-    font-size: 8.8pt;
+    font-size: 8.6pt;
     line-height: 1.32;
+    -webkit-font-smoothing: antialiased;
   }
-  a { color: #1a1a1a; text-decoration: none; }
-  .resume-name {
-    font-size: 19pt;
-    font-weight: 700;
-    color: #6728b8;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
+  a {
+    color: #1e3a8a;
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  .resume-shell {
+    background: #f1f5f9;
+    min-height: 100vh;
+    padding: 24px 16px;
+    display: flex;
+    justify-content: center;
+  }
+  .resume-page {
+    width: 100%;
+    max-width: 210mm;
+    background: #ffffff;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    padding: 24px 28px;
+    border-radius: 4px;
+  }
+  .resume-header {
     text-align: center;
-    margin-bottom: 3px;
+    margin-bottom: 6px;
+  }
+  .resume-name {
+    font-size: 17.5pt;
+    font-weight: 700;
+    color: #1e3a8a;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 2px;
   }
   .contact-bar {
-    font-size: 8pt;
-    color: #333333;
-    text-align: center;
-    line-height: 1.45;
-    margin-bottom: 1px;
+    font-size: 7.9pt;
+    color: #374151;
+    line-height: 1.4;
+  }
+  .contact-bar a {
+    color: #1e3a8a;
+    font-weight: 500;
   }
   .header-rule {
     border: none;
-    border-top: 1.5px solid #c4a0f0;
-    margin: 6px 0 8px 0;
+    border-top: 1.5px solid #93c5fd;
+    margin: 5px 0 6px 0;
   }
-  .resume-block { margin-bottom: 7px; }
+  .resume-block {
+    margin-bottom: 6px;
+    page-break-inside: avoid;
+  }
   .resume-heading {
-    font-size: 9.5pt;
+    font-size: 9.2pt;
     font-weight: 700;
-    color: #6728b8;
+    color: #1e3a8a;
     text-transform: uppercase;
-    letter-spacing: 0.7px;
-    border-bottom: 1.5px solid #c4a0f0;
+    letter-spacing: 0.5px;
+    border-bottom: 1.5px solid #93c5fd;
     padding-bottom: 1px;
     margin-bottom: 4px;
   }
   .resume-summary {
-    font-size: 8.5pt;
-    color: #1a1a1a;
-    text-align: justify;
+    font-size: 8.3pt;
+    color: #1f2937;
+    text-align: left;
+    line-height: 1.35;
+  }
+  .item {
+    margin-bottom: 4.5px;
+    page-break-inside: avoid;
+  }
+  .item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 1px;
+  }
+  .item-left {
+    font-size: 8.6pt;
+    color: #111827;
+  }
+  .role-title {
+    font-weight: 700;
+    color: #111827;
+  }
+  .org-name {
+    font-weight: 600;
+    color: #374151;
+  }
+  .item-badge {
+    display: inline-block;
+    font-size: 7.2pt;
+    font-weight: 600;
+    color: #1e3a8a;
+    background: #dbeafe;
+    padding: 0.5px 5px;
+    border-radius: 3px;
+    margin-left: 4px;
+    vertical-align: middle;
+  }
+  .date-range {
+    font-size: 8pt;
+    font-weight: 600;
+    color: #4b5563;
+    white-space: nowrap;
+    text-align: right;
+  }
+  .item-sub {
+    font-size: 8pt;
+    color: #4b5563;
+    margin-bottom: 1.5px;
+  }
+  ul.bullets {
+    margin-left: 14px;
+    font-size: 8.1pt;
+    color: #1f2937;
+  }
+  ul.bullets li {
+    margin-bottom: 1px;
+    line-height: 1.3;
+  }
+  .skills-list {
+    font-size: 8.1pt;
+    color: #1f2937;
     line-height: 1.38;
   }
-  table.row-table { width: 100%; border-collapse: collapse; margin-bottom: 0px; }
-  td.row-left { text-align: left; vertical-align: top; width: 70%; }
-  td.row-right { text-align: right; vertical-align: top; width: 30%; white-space: nowrap; }
-  .role-org { font-weight: 700; font-size: 8.8pt; color: #1a1a1a; }
-  .date-range { font-weight: 700; font-size: 8.5pt; color: #1a1a1a; }
-  .item { margin-bottom: 5px; }
-  .item-sub { font-size: 8pt; color: #444444; margin: 0px 0 1px 0; }
-  ul.bullets { margin-left: 14px; font-size: 8pt; color: #1a1a1a; }
-  ul.bullets li { margin-bottom: 1px; line-height: 1.3; }
-  ul.additional-list { list-style: disc; margin-left: 14px; font-size: 8pt; color: #1a1a1a; }
-  ul.additional-list li { margin-bottom: 2px; line-height: 1.35; }
-  ul.additional-list strong { color: #1a1a1a; }
-  .resume-shell {
-    background: #ffffff;
-    min-height: 100vh;
-    padding: 24px 16px;
+  .skills-row {
+    margin-bottom: 1.5px;
   }
-  .resume-page {
-    max-width: 210mm;
-    margin: 0 auto;
-    background: #ffffff;
+  .skills-label {
+    font-weight: 700;
+    color: #111827;
   }
   @media print {
     html, body {
@@ -86,21 +171,21 @@ export const RESUME_CSS = `
       color: #1a1a1a !important;
       margin: 0 !important;
       padding: 0 !important;
-      font-size: 8.8pt !important;
-    }
-    body::before, body::after {
-      display: none !important;
-      content: none !important;
+      font-size: 8.6pt !important;
     }
     .resume-shell {
       padding: 0 !important;
       min-height: auto !important;
+      background: #ffffff !important;
     }
     .resume-page {
       max-width: 100% !important;
       margin: 0 !important;
+      padding: 0 !important;
+      box-shadow: none !important;
+      border-radius: 0 !important;
     }
-    .resume-heading, .resume-name {
+    .resume-heading, .resume-name, .item-badge {
       -webkit-print-color-adjust: exact;
       print-color-adjust: exact;
     }
@@ -117,21 +202,12 @@ function sanitizeExperience(experience: CvData['experience']) {
   });
 }
 
-function itemRow(left: string, right: string) {
-  return `<table class="row-table"><tr><td class="row-left">${left}</td><td class="row-right">${right}</td></tr></table>`;
-}
-
 function formatLinkedIn(url: string) {
   return url.replace(/^https?:\/\/(www\.)?linkedin\.com\/in\//, 'linkedin.com/in/').replace(/\/$/, '');
 }
 
 function formatGithub(url: string) {
   return url.replace(/^https?:\/\/(www\.)?github\.com\//, 'github.com/').replace(/\/$/, '');
-}
-
-function truncateText(text: string, maxLength: number) {
-  if (text.length <= maxLength) return text;
-  return `${text.slice(0, maxLength - 1).trim()}…`;
 }
 
 export function buildResumeBodyHtml(data: CvData): string {
@@ -142,28 +218,22 @@ export function buildResumeBodyHtml(data: CvData): string {
   const emailsStr = [c.email, c.secondaryEmail].filter(Boolean).join(' \u2022 ');
   const phonesStr = (c.phones || []).join(' \u2022 ');
 
-  const certsGrouped = truncateText(
-    (data.certifications || [])
-      .map((cert) => `${cert.name} (${cert.issuer.split('\u2014')[0].trim().replace(/&/g, '&amp;')})`)
-      .join('; '),
-    400
-  );
-
   const volunteerGrouped = (data.volunteer || [])
-    .map((vol) => `${vol.role} at ${vol.org.split('\u2014')[0].trim()} (${vol.period})`)
+    .map((vol) => `${vol.role} (${vol.org.split('\u2014')[0].trim()})`)
     .join('; ');
 
   const languagesStr = (data.languages || []).map((l) => `${l.name} (${l.level})`).join(', ');
-  const skillsStr = resume.skills.join(', ');
-  const platformSuffix = resume.platformLine ? ` &bull; ${resume.platformLine}` : '';
 
   const experienceHtml = sanitizeExperience(data.experience)
     .map(
       (exp) => `
     <div class="item">
-      ${itemRow(`<span class="role-org">${exp.role} , ${exp.organization}</span>`, `<span class="date-range">${exp.duration}</span>`)}
+      <div class="item-header">
+        <div class="item-left"><span class="role-title">${exp.role}</span> &bull; <span class="org-name">${exp.organization}</span></div>
+        <div class="date-range">${exp.duration}</div>
+      </div>
       <ul class="bullets">
-        ${(exp.highlights || []).slice(0, 3).map((h) => `<li>${h}</li>`).join('')}
+        ${(exp.highlights || []).map((h) => `<li>${h}</li>`).join('')}
       </ul>
     </div>`
     )
@@ -173,11 +243,17 @@ export function buildResumeBodyHtml(data: CvData): string {
     .map(
       (proj) => `
     <div class="item">
-      ${itemRow(
-        `<span class="role-org">${proj.title.replace(/^[^a-zA-Z0-9]+/, '')}${proj.associatedWith ? ` <span style="font-size:8pt;font-weight:600;color:#6728b8;">[${proj.associatedWith}]</span>` : ''}</span>`,
-        `<span class="date-range">${proj.link ? proj.link.replace('https://', '') : 'Private Repository'}</span>`
-      )}
-      <ul class="bullets"><li><strong>Tech Stack:</strong> ${(proj.tags || []).join(', ')}</li></ul>
+      <div class="item-header">
+        <div class="item-left">
+          <span class="role-title">${proj.title.replace(/^[^a-zA-Z0-9]+/, '').trim()}</span>
+          ${proj.associatedWith ? `<span class="item-badge">${proj.associatedWith}</span>` : ''}
+        </div>
+        <div class="date-range">${proj.link ? `<a href="${proj.link}" target="_blank" rel="noreferrer">${formatGithub(proj.link)}</a>` : 'Private Project'}</div>
+      </div>
+      <ul class="bullets">
+        <li>${proj.description}</li>
+        <li><strong>Tech Stack:</strong> ${(proj.tags || []).join(', ')}</li>
+      </ul>
     </div>`
     )
     .join('');
@@ -186,59 +262,81 @@ export function buildResumeBodyHtml(data: CvData): string {
     .map(
       (edu) => `
     <div class="item">
-      ${itemRow(`<span class="role-org">${edu.degree}</span>`, `<span class="date-range">${edu.duration}</span>`)}
-      <div class="item-sub">${edu.institution} \u2014 <strong>Grade: ${edu.grade}</strong></div>
+      <div class="item-header">
+        <div class="item-left"><span class="role-title">${edu.degree}</span></div>
+        <div class="date-range">${edu.duration}</div>
+      </div>
+      <div class="item-sub">${edu.institution} &bull; <strong>Grade: ${edu.grade}</strong></div>
       <ul class="bullets">
-        ${(edu.highlights || []).slice(0, 1).map((h) => `<li>${h}</li>`).join('')}
+        ${(edu.highlights || []).map((h) => `<li>${h}</li>`).join('')}
       </ul>
     </div>`
     )
     .join('');
 
   return `
-  <table width="100%" cellspacing="0" cellpadding="0" style="border-collapse:collapse;">
-    <tbody><tr><td style="border:2.5px solid #1a1a1a; padding:12px 16px; vertical-align:top;">
-
-    <div class="resume-name">${p.name}</div>
-    <div class="contact-bar">
-      ${p.location} &bull; ${phonesStr}<br>
-      ${emailsStr}<br>
-      ${formatLinkedIn(c.linkedIn)} &bull; ${formatGithub(c.github)}
-    </div>
+    <header class="resume-header">
+      <h1 class="resume-name">${p.name}</h1>
+      <div class="contact-bar">
+        ${p.location} &bull; ${phonesStr}<br>
+        ${emailsStr}<br>
+        <a href="${c.linkedIn}" target="_blank" rel="noreferrer">${formatLinkedIn(c.linkedIn)}</a> &bull;
+        <a href="${c.github}" target="_blank" rel="noreferrer">${formatGithub(c.github)}</a>
+        ${p.htb ? ` &bull; <a href="${p.htb}" target="_blank" rel="noreferrer">HackTheBox (@0xMonsef)</a>` : ''}
+        ${p.tryHackMe ? ` &bull; <a href="${p.tryHackMe}" target="_blank" rel="noreferrer">TryHackMe (@0xTDS)</a>` : ''}
+      </div>
+    </header>
     <hr class="header-rule">
 
-    <div class="resume-block">
-      <div class="resume-heading">Summary</div>
+    <section class="resume-block">
+      <h2 class="resume-heading">Professional Summary</h2>
       <p class="resume-summary">${resume.summary}</p>
-    </div>
+    </section>
 
-    <div class="resume-block">
-      <div class="resume-heading">Work Experience</div>
+    <section class="resume-block">
+      <h2 class="resume-heading">Technical Skills</h2>
+      <div class="skills-list">
+        <div class="skills-row"><span class="skills-label">Languages &amp; Core:</span> TypeScript, JavaScript (ES6+), Node.js, Python, Bash, SQL, Java</div>
+        <div class="skills-row"><span class="skills-label">Frameworks &amp; Web:</span> NestJS, Next.js (App Router), Express.js, React, Tailwind CSS, HTML5/CSS3</div>
+        <div class="skills-row"><span class="skills-label">Backend &amp; DevOps:</span> REST APIs, Asynchronous Queues (BullMQ), Redis, PostgreSQL, TypeORM, Docker, Jest, Webhooks, RBAC</div>
+        <div class="skills-row"><span class="skills-label">Security &amp; Pentesting:</span> Web App Pentesting, OWASP Top 10, Burp Suite, Nmap, Vulnerability Assessment, Kali Linux, Red Hat Enterprise Linux</div>
+      </div>
+    </section>
+
+    <section class="resume-block">
+      <h2 class="resume-heading">Work Experience</h2>
       ${experienceHtml}
-    </div>
+    </section>
 
-    <div class="resume-block">
-      <div class="resume-heading">Projects &amp; Engineering Builds</div>
+    <section class="resume-block">
+      <h2 class="resume-heading">Technical Projects</h2>
       ${projectsHtml}
-    </div>
+    </section>
 
-    <div class="resume-block">
-      <div class="resume-heading">Education</div>
+    <section class="resume-block">
+      <h2 class="resume-heading">Education</h2>
       ${educationHtml}
-    </div>
+    </section>
 
-    <div class="resume-block" style="margin-bottom:0;">
-      <div class="resume-heading">Additional Information</div>
-      <ul class="additional-list">
-        <li><strong>Technical Skills:</strong> ${skillsStr}</li>
-        <li><strong>Languages:</strong> ${languagesStr}</li>
-        <li><strong>Certifications:</strong> ${certsGrouped}</li>
-        <li><strong>Leadership &amp; Activities:</strong> ${volunteerGrouped}${platformSuffix}</li>
+    <section class="resume-block">
+      <h2 class="resume-heading">Certifications &amp; Training</h2>
+      <ul class="bullets">
+        <li><strong>Red Hat System Administration I (RH124)</strong> &mdash; Red Hat Inc.</li>
+        <li><strong>Google Cybersecurity Professional Certificate</strong> &mdash; Google &amp; Coursera (Risk Management, Linux &amp; SQL, Network Security)</li>
+        <li><strong>McKinsey Forward Program</strong> &mdash; McKinsey &amp; Company (Adaptability &amp; Problem Solving)</li>
+        <li><strong>OSCP &amp; eWAPT (Active Training)</strong> &mdash; Offensive Security &amp; eLearnSecurity</li>
+        <li><strong>HackTheBox Academy Student Transcript</strong> &mdash; HackTheBox Academy</li>
       </ul>
-    </div>
+    </section>
 
-    </td></tr></tbody>
-  </table>`;
+    <section class="resume-block" style="margin-bottom:0;">
+      <h2 class="resume-heading">Languages &amp; Activities</h2>
+      <ul class="bullets">
+        <li><strong>Languages:</strong> ${languagesStr}</li>
+        <li><strong>Leadership:</strong> ${volunteerGrouped}</li>
+        <li><strong>Security Labs:</strong> ${resume.platformLine || 'HackTheBox Pro Rank (30+ Labs) \u2022 TryHackMe (@0xTDS)'}</li>
+      </ul>
+    </section>`;
 }
 
 export function buildResumeHtml(data: CvData): string {
@@ -247,11 +345,16 @@ export function buildResumeHtml(data: CvData): string {
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>${p.name} \u2014 Resume</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>${p.name} — Resume</title>
   <style>${RESUME_CSS}</style>
 </head>
 <body>
-  ${buildResumeBodyHtml(data)}
+  <div class="resume-shell">
+    <main class="resume-page">
+      ${buildResumeBodyHtml(data)}
+    </main>
+  </div>
   ${RESUME_PRINT_SCRIPT}
 </body>
 </html>`;
