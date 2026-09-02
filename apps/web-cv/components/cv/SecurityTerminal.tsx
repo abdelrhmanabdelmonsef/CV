@@ -29,17 +29,31 @@ const INITIAL_LINES: TerminalLine[] = [
 function renderLine(line: TerminalLine, index: number) {
   if (line.type === 'prompt') {
     return (
-      <div key={index} className="t-out">
-        <span className="t-prompt">guest@aegis:~$</span>{' '}
-        <span className="t-green">{line.content}</span>
+      <div key={index} className="whitespace-pre-wrap font-mono text-[13px] leading-relaxed">
+        <span className="text-accent-cyan font-bold">guest@aegis:~$</span>{' '}
+        <span className="text-accent-green">{line.content}</span>
       </div>
     );
   }
   if (line.html) {
-    return <div key={index} className="t-out" dangerouslySetInnerHTML={{ __html: line.content }} />;
+    return (
+      <div
+        key={index}
+        className="whitespace-pre-wrap font-mono text-[13px] leading-relaxed text-text-primary"
+        dangerouslySetInnerHTML={{ __html: line.content }}
+      />
+    );
   }
-  const cls = line.type === 'system' ? 't-out t-muted' : 't-out';
-  return <div key={index} className={cls}>{line.content}</div>;
+  return (
+    <div
+      key={index}
+      className={`whitespace-pre-wrap font-mono text-[13px] leading-relaxed ${
+        line.type === 'system' ? 'text-text-muted italic' : 'text-text-primary'
+      }`}
+    >
+      {line.content}
+    </div>
+  );
 }
 
 export default function SecurityTerminal({ terminal }: { terminal: TerminalOutputs }) {
@@ -170,36 +184,44 @@ export default function SecurityTerminal({ terminal }: { terminal: TerminalOutpu
   };
 
   return (
-    <div className="terminal-panel">
-      <div className="terminal-header">
-        <div className="terminal-title">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ animation: 'pulse-dot 2s infinite' }}>
+    <div className="relative rounded-2xl border border-border-green/40 bg-bg-card/70 backdrop-blur-md overflow-hidden mb-8
+      shadow-[0_0_30px_rgba(0,255,136,0.06)]">
+      {/* Terminal header */}
+      <div className="flex items-center justify-between px-4 py-2.5 border-b border-border-subtle bg-bg-secondary/50">
+        <div className="flex items-center gap-2 text-xs font-mono text-accent-green/80">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
+            className="animate-pulse-dot">
             <polygon points="5 3 19 12 5 21 5 3" />
           </svg>
           AEGIS SECURE LOGSHELL v2.4.9 — guest@aegis
         </div>
-        <div className="terminal-dots">
-          <div className="t-dot red" />
-          <div className="t-dot yellow" />
-          <div className="t-dot green" />
+        <div className="flex items-center gap-1.5">
+          <div className="w-3 h-3 rounded-full bg-accent-red/80" />
+          <div className="w-3 h-3 rounded-full bg-accent-amber/80" />
+          <div className="w-3 h-3 rounded-full bg-accent-green/80" />
         </div>
       </div>
+
+      {/* Terminal body */}
       <div
-        className="terminal-body"
         ref={bodyRef}
         onClick={() => inputRef.current?.focus()}
         role="log"
         aria-label="Security terminal output"
         aria-live="polite"
+        className="p-4 max-h-80 overflow-y-auto space-y-1 bg-bg-primary/40"
       >
         {lines.map(renderLine)}
-        <div className="t-input-container">
-          <label htmlFor="terminal-input" className="t-prompt">guest@aegis:~$</label>
+        <div className="flex items-center gap-2 mt-2">
+          <label htmlFor="terminal-input" className="text-accent-cyan font-mono text-[13px] font-bold shrink-0">
+            guest@aegis:~$
+          </label>
           <input
             id="terminal-input"
             ref={inputRef}
             type="text"
-            className="t-input"
+            className="flex-1 bg-transparent border-none outline-none font-mono text-[13px] text-accent-green
+              caret-accent-green placeholder:text-text-muted/40"
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={handleKeyDown}
@@ -207,6 +229,7 @@ export default function SecurityTerminal({ terminal }: { terminal: TerminalOutpu
             spellCheck={false}
             autoFocus
             aria-label="Terminal command input"
+            placeholder="type a command..."
           />
         </div>
       </div>

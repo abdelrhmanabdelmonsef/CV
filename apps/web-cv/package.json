@@ -11,19 +11,22 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@vercel/analytics": "^2.0.1",
     "@upstash/redis": "^1.38.2",
+    "@vercel/analytics": "^2.0.1",
     "cv-data": "*",
     "next": "^16.0.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
   },
   "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
     "@types/node": "^26.2.0",
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",
     "eslint": "^9.0.0",
     "eslint-config-next": "^16.0.0",
+    "postcss": "^8.5.23",
+    "tailwindcss": "^4.3.3",
     "typescript": "^5.6.0"
   }
 }

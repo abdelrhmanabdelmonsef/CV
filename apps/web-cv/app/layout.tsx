@@ -4,7 +4,9 @@ import { Inter, JetBrains_Mono } from 'next/font/google';
 import cvData from 'cv-data';
 import { LightboxProvider } from '../contexts/LightboxContext';
 import { MatrixProvider } from '../contexts/MatrixContext';
+import { ThemeProvider } from '../contexts/ThemeContext';
 import ErrorBoundary from '../components/ui/ErrorBoundary';
+import Navbar from '../components/layout/Navbar';
 import { Analytics } from '@vercel/analytics/next';
 
 const inter = Inter({
@@ -68,14 +70,19 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body style={{ fontFamily: 'var(--font-inter), Inter, sans-serif' }}>
+      <body className="font-sans">
         <a href="#main-content" className="skip-to-content">
           Skip to main content
         </a>
         <ErrorBoundary>
-          <MatrixProvider>
-            <LightboxProvider>{children}</LightboxProvider>
-          </MatrixProvider>
+          <ThemeProvider>
+            <MatrixProvider>
+              <LightboxProvider>
+                <Navbar />
+                {children}
+              </LightboxProvider>
+            </MatrixProvider>
+          </ThemeProvider>
         </ErrorBoundary>
         <Analytics />
       </body>

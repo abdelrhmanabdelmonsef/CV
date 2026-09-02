@@ -11,7 +11,7 @@ export default function Home() {
     <>
       <MatrixCanvas />
       <ControlPanel />
-      <main id="main-content" className="wrapper">
+      <main id="main-content" className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 pt-20 pb-12">
         <Header personal={cvData.personal} />
         <SecurityTerminal terminal={cvData.terminal} />
         <CvSections data={cvData} />

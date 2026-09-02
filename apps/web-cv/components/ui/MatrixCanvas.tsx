@@ -10,7 +10,8 @@ export default function MatrixCanvas() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const { matrixActive } = useMatrix();
   const dropsRef = useRef<number[]>([]);
-  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const rafRef = useRef<number | null>(null);
+  const lastDrawRef = useRef(0);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -38,16 +39,26 @@ export default function MatrixCanvas() {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    if (intervalRef.current) {
-      clearInterval(intervalRef.current);
-      intervalRef.current = null;
+    if (rafRef.current) {
+      cancelAnimationFrame(rafRef.current);
+      rafRef.current = null;
     }
 
-    canvas.style.opacity = matrixActive ? '0.12' : '0.04';
+    canvas.style.opacity = matrixActive ? '0.10' : '0.03';
 
     if (!matrixActive) return;
 
-    const draw = () => {
+    const columns = Math.floor(canvas.width / FONT_SIZE);
+    dropsRef.current = Array(columns).fill(1);
+
+    const draw = (timestamp: number) => {
+      // Throttle to ~28fps for performance
+      if (timestamp - lastDrawRef.current < 35) {
+        rafRef.current = requestAnimationFrame(draw);
+        return;
+      }
+      lastDrawRef.current = timestamp;
+
       ctx.fillStyle = 'rgba(6, 9, 14, 0.15)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       ctx.fillStyle = '#00ff88';
@@ -62,14 +73,14 @@ export default function MatrixCanvas() {
         }
         drops[i]++;
       }
+
+      rafRef.current = requestAnimationFrame(draw);
     };
 
-    const columns = Math.floor(canvas.width / FONT_SIZE);
-    dropsRef.current = Array(columns).fill(1);
-    intervalRef.current = setInterval(draw, 35);
+    rafRef.current = requestAnimationFrame(draw);
 
     return () => {
-      if (intervalRef.current) clearInterval(intervalRef.current);
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
     };
   }, [matrixActive]);
 

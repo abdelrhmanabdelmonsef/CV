@@ -16,6 +16,8 @@ dist/
 
 # Logs & OS
 *.log
+*-log.txt
+server-log.txt
 .DS_Store
 Thumbs.db
 
