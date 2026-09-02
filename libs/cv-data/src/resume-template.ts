@@ -16,7 +16,7 @@ export const RESUME_PRINT_SCRIPT = `
 export const RESUME_CSS = `
   @page {
     size: A4 portrait;
-    margin: 5mm 8mm;
+    margin: 6mm 8mm;
   }
   *, *::before, *::after {
     box-sizing: border-box;
@@ -26,7 +26,7 @@ export const RESUME_CSS = `
   html, body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     color: #111827;
-    background: #ffffff;
+    background: #0f172a;
     font-size: 7.9pt;
     line-height: 1.25;
     -webkit-font-smoothing: antialiased;
@@ -40,8 +40,8 @@ export const RESUME_CSS = `
   }
   .resume-shell {
     background: #0f172a;
-    min-height: 100vh;
-    padding: 20px 12px;
+    min-height: calc(100vh - 50px);
+    padding: 24px 12px 40px 12px;
     display: flex;
     justify-content: center;
   }
@@ -49,12 +49,11 @@ export const RESUME_CSS = `
     width: 100%;
     max-width: 210mm;
     min-height: 297mm;
-    max-height: 297mm;
     background: #ffffff;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
-    padding: 16px 22px;
-    border-radius: 2px;
-    overflow: hidden;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.35);
+    padding: 20px 24px;
+    border-radius: 4px;
+    margin: 0 auto;
   }
   .resume-header {
     text-align: center;
@@ -178,35 +177,51 @@ export const RESUME_CSS = `
     margin-top: 1px;
   }
   @media print {
+    @page {
+      size: A4 portrait;
+      margin: 6mm 8mm;
+    }
+    nav, .resume-toolbar, #matrix-canvas, .skip-to-content, footer {
+      display: none !important;
+    }
     html, body {
       background: #ffffff !important;
       color: #111827 !important;
       margin: 0 !important;
       padding: 0 !important;
-      font-size: 7.9pt !important;
-      height: 100% !important;
-      max-height: 297mm !important;
-      overflow: hidden !important;
+      width: 100% !important;
+      height: auto !important;
+      min-height: auto !important;
+      max-height: none !important;
+      overflow: visible !important;
+      font-size: 7.8pt !important;
+      line-height: 1.25 !important;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
     }
     .resume-shell {
       padding: 0 !important;
+      margin: 0 !important;
       min-height: auto !important;
-      height: 100% !important;
+      height: auto !important;
       background: #ffffff !important;
+      display: block !important;
     }
     .resume-page {
+      width: 100% !important;
       max-width: 100% !important;
       min-height: auto !important;
-      max-height: 285mm !important;
+      max-height: none !important;
       margin: 0 !important;
       padding: 0 !important;
       box-shadow: none !important;
       border-radius: 0 !important;
-      overflow: hidden !important;
+      overflow: visible !important;
+      background: #ffffff !important;
     }
     .resume-heading, .resume-name, .item-badge {
-      -webkit-print-color-adjust: exact;
-      print-color-adjust: exact;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
     }
     .resume-block, .item {
       page-break-inside: avoid !important;

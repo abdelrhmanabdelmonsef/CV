@@ -1,5 +1,6 @@
 'use client';
 
+import { usePathname } from 'next/navigation';
 import { useCallback, useEffect, useState } from 'react';
 import { useTheme } from '../../contexts/ThemeContext';
 
@@ -57,9 +58,14 @@ function CloseIcon() {
 }
 
 export default function Navbar() {
+  const pathname = usePathname();
   const { theme, toggleTheme } = useTheme();
   const [activeSection, setActiveSection] = useState('');
   const [mobileOpen, setMobileOpen] = useState(false);
+
+  if (pathname === '/resume') {
+    return null;
+  }
 
   useEffect(() => {
     const observer = new IntersectionObserver(
