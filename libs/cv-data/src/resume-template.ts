@@ -15,8 +15,8 @@ export const RESUME_PRINT_SCRIPT = `
 
 export const RESUME_CSS = `
   @page {
-    size: A4 portrait;
-    margin: 4.5mm 7mm;
+    size: A4;
+    margin: 9mm 11mm;
   }
   *, *::before, *::after {
     box-sizing: border-box;
@@ -25,10 +25,10 @@ export const RESUME_CSS = `
   }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    color: #111827;
+    color: #1a1a1a;
     background: #06090e;
-    font-size: 7.8pt;
-    line-height: 1.24;
+    font-size: 8.6pt;
+    line-height: 1.32;
     -webkit-font-smoothing: antialiased;
   }
   a {
@@ -50,31 +50,29 @@ export const RESUME_CSS = `
   .resume-page {
     width: 100%;
     max-width: 210mm;
-    min-height: 297mm;
     background: #ffffff;
-    box-shadow: 0 0 50px rgba(0, 255, 136, 0.08), 0 20px 50px rgba(0, 0, 0, 0.75);
-    border: 1px solid rgba(0, 229, 255, 0.2);
-    padding: 18px 24px;
-    border-radius: 6px;
+    box-shadow: 0 0 50px rgba(0, 255, 136, 0.08), 0 20px 50px rgba(0, 0, 0, 0.7);
+    border: 1px solid rgba(0, 229, 255, 0.18);
+    padding: 24px 28px;
+    border-radius: 4px;
     position: relative;
   }
   .resume-header {
     text-align: center;
-    margin-bottom: 2px;
+    margin-bottom: 6px;
   }
   .resume-name {
-    font-size: 15pt;
-    font-weight: 800;
+    font-size: 17.5pt;
+    font-weight: 700;
     color: #1e3a8a;
     text-transform: uppercase;
-    letter-spacing: 0.8px;
-    margin-bottom: 1px;
-    line-height: 1.1;
+    letter-spacing: 1px;
+    margin-bottom: 2px;
   }
   .contact-bar {
-    font-size: 7.3pt;
+    font-size: 7.9pt;
     color: #374151;
-    line-height: 1.32;
+    line-height: 1.4;
   }
   .contact-bar a {
     color: #1e3a8a;
@@ -82,32 +80,32 @@ export const RESUME_CSS = `
   }
   .header-rule {
     border: none;
-    border-top: 1.2px solid #93c5fd;
-    margin: 2.5px 0 3px 0;
+    border-top: 1.5px solid #93c5fd;
+    margin: 5px 0 6px 0;
   }
   .resume-block {
-    margin-bottom: 3px;
+    margin-bottom: 6px;
     page-break-inside: avoid;
     break-inside: avoid;
   }
   .resume-heading {
-    font-size: 8.3pt;
+    font-size: 9.2pt;
     font-weight: 700;
     color: #1e3a8a;
     text-transform: uppercase;
-    letter-spacing: 0.4px;
-    border-bottom: 1.2px solid #93c5fd;
-    padding-bottom: 0.5px;
-    margin-bottom: 2px;
+    letter-spacing: 0.5px;
+    border-bottom: 1.5px solid #93c5fd;
+    padding-bottom: 1px;
+    margin-bottom: 4px;
   }
   .resume-summary {
-    font-size: 7.6pt;
+    font-size: 8.3pt;
     color: #1f2937;
     text-align: left;
-    line-height: 1.25;
+    line-height: 1.35;
   }
   .item {
-    margin-bottom: 2px;
+    margin-bottom: 4.5px;
     page-break-inside: avoid;
     break-inside: avoid;
   }
@@ -115,10 +113,10 @@ export const RESUME_CSS = `
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    margin-bottom: 0.5px;
+    margin-bottom: 1px;
   }
   .item-left {
-    font-size: 7.9pt;
+    font-size: 8.6pt;
     color: #111827;
   }
   .role-title {
@@ -131,69 +129,58 @@ export const RESUME_CSS = `
   }
   .item-badge {
     display: inline-block;
-    font-size: 6.6pt;
+    font-size: 7.2pt;
     font-weight: 600;
     color: #1e3a8a;
     background: #dbeafe;
-    padding: 0.2px 3.5px;
-    border-radius: 2px;
-    margin-left: 3px;
+    padding: 0.5px 5px;
+    border-radius: 3px;
+    margin-left: 4px;
     vertical-align: middle;
   }
   .date-range {
-    font-size: 7.4pt;
+    font-size: 8pt;
     font-weight: 600;
     color: #4b5563;
     white-space: nowrap;
     text-align: right;
   }
   .item-sub {
-    font-size: 7.4pt;
+    font-size: 8pt;
     color: #4b5563;
-    margin-bottom: 0.5px;
+    margin-bottom: 1.5px;
   }
   ul.bullets {
-    margin-left: 12px;
-    font-size: 7.5pt;
+    margin-left: 14px;
+    font-size: 8.1pt;
     color: #1f2937;
   }
   ul.bullets li {
-    margin-bottom: 0.3px;
-    line-height: 1.22;
+    margin-bottom: 1px;
+    line-height: 1.3;
   }
   .skills-list {
-    font-size: 7.5pt;
+    font-size: 8.1pt;
     color: #1f2937;
-    line-height: 1.24;
+    line-height: 1.38;
   }
   .skills-row {
-    margin-bottom: 0.8px;
+    margin-bottom: 1.5px;
   }
   .skills-label {
     font-weight: 700;
     color: #111827;
   }
-  .bottom-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin-top: 1px;
-  }
   @media print {
-    @page {
-      size: A4 portrait;
-      margin: 4.5mm 7mm;
-    }
     nav, .resume-toolbar, #matrix-canvas, .skip-to-content, footer {
       display: none !important;
     }
     html, body {
       background: #ffffff !important;
-      color: #111827 !important;
+      color: #1a1a1a !important;
       margin: 0 !important;
       padding: 0 !important;
-      font-size: 7.8pt !important;
-      line-height: 1.24 !important;
+      font-size: 8.6pt !important;
       -webkit-print-color-adjust: exact !important;
       print-color-adjust: exact !important;
     }
@@ -205,9 +192,7 @@ export const RESUME_CSS = `
       display: block !important;
     }
     .resume-page {
-      width: 100% !important;
       max-width: 100% !important;
-      min-height: auto !important;
       margin: 0 !important;
       padding: 0 !important;
       box-shadow: none !important;
@@ -309,7 +294,8 @@ export function buildResumeBodyHtml(data: CvData): string {
     <header class="resume-header">
       <h1 class="resume-name">${p.name}</h1>
       <div class="contact-bar">
-        ${p.location} &bull; ${phonesStr} &bull; ${emailsStr}<br>
+        ${p.location} &bull; ${phonesStr}<br>
+        ${emailsStr}<br>
         <a href="${c.linkedIn}" target="_blank" rel="noreferrer">${formatLinkedIn(c.linkedIn)}</a> &bull;
         <a href="${c.github}" target="_blank" rel="noreferrer">${formatGithub(c.github)}</a>
         ${p.htb ? ` &bull; <a href="${p.htb}" target="_blank" rel="noreferrer">HackTheBox (@0xMonsef)</a>` : ''}
@@ -348,27 +334,25 @@ export function buildResumeBodyHtml(data: CvData): string {
       ${educationHtml}
     </section>
 
-    <div class="bottom-grid">
-      <section class="resume-block" style="margin-bottom:0;">
-        <h2 class="resume-heading">Certifications &amp; Training</h2>
-        <ul class="bullets">
-          <li><strong>Red Hat System Administration I (RH124)</strong> &mdash; Red Hat</li>
-          <li><strong>Google Cybersecurity Professional Cert</strong> &mdash; Google &amp; Coursera</li>
-          <li><strong>McKinsey Forward Program</strong> &mdash; McKinsey &amp; Company</li>
-          <li><strong>OSCP &amp; eWAPT (Active Training)</strong> &mdash; Offensive Security</li>
-          <li><strong>HackTheBox Academy Student Transcript</strong> &mdash; HackTheBox</li>
-        </ul>
-      </section>
+    <section class="resume-block">
+      <h2 class="resume-heading">Certifications &amp; Training</h2>
+      <ul class="bullets">
+        <li><strong>Red Hat System Administration I (RH124)</strong> &mdash; Red Hat Inc.</li>
+        <li><strong>Google Cybersecurity Professional Certificate</strong> &mdash; Google &amp; Coursera (Risk Management, Linux &amp; SQL, Network Security)</li>
+        <li><strong>McKinsey Forward Program</strong> &mdash; McKinsey &amp; Company (Adaptability &amp; Problem Solving)</li>
+        <li><strong>OSCP &amp; eWAPT (Active Training)</strong> &mdash; Offensive Security &amp; eLearnSecurity</li>
+        <li><strong>HackTheBox Academy Student Transcript</strong> &mdash; HackTheBox Academy</li>
+      </ul>
+    </section>
 
-      <section class="resume-block" style="margin-bottom:0;">
-        <h2 class="resume-heading">Languages &amp; Activities</h2>
-        <ul class="bullets">
-          <li><strong>Languages:</strong> ${languagesStr}</li>
-          <li><strong>Leadership:</strong> ${volunteerGrouped}</li>
-          <li><strong>Security Labs:</strong> ${resume.platformLine || 'HackTheBox Pro Rank (30+ Labs) \u2022 TryHackMe (@0xTDS)'}</li>
-        </ul>
-      </section>
-    </div>`;
+    <section class="resume-block" style="margin-bottom:0;">
+      <h2 class="resume-heading">Languages &amp; Activities</h2>
+      <ul class="bullets">
+        <li><strong>Languages:</strong> ${languagesStr}</li>
+        <li><strong>Leadership:</strong> ${volunteerGrouped}</li>
+        <li><strong>Security Labs:</strong> ${resume.platformLine || 'HackTheBox Pro Rank (30+ Labs) \u2022 TryHackMe (@0xTDS)'}</li>
+      </ul>
+    </section>`;
 }
 
 export function buildResumeHtml(data: CvData): string {
