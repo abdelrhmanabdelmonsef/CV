@@ -172,15 +172,20 @@ export const RESUME_CSS = `
     color: #111827;
   }
   @media print {
+    @page {
+      size: A4 portrait;
+      margin: 4mm 6mm;
+    }
     nav, .resume-toolbar, #matrix-canvas, .skip-to-content, footer {
       display: none !important;
     }
     html, body {
       background: #ffffff !important;
-      color: #1a1a1a !important;
+      color: #111827 !important;
       margin: 0 !important;
       padding: 0 !important;
-      font-size: 8.6pt !important;
+      font-size: 7.7pt !important;
+      line-height: 1.22 !important;
       -webkit-print-color-adjust: exact !important;
       print-color-adjust: exact !important;
     }
@@ -192,6 +197,7 @@ export const RESUME_CSS = `
       display: block !important;
     }
     .resume-page {
+      width: 100% !important;
       max-width: 100% !important;
       margin: 0 !important;
       padding: 0 !important;
@@ -200,13 +206,80 @@ export const RESUME_CSS = `
       border-radius: 0 !important;
       background: #ffffff !important;
     }
-    .resume-heading, .resume-name, .item-badge {
+    .resume-header {
+      margin-bottom: 2px !important;
+    }
+    .resume-name {
+      font-size: 14pt !important;
+      line-height: 1.1 !important;
+      margin-bottom: 1px !important;
       -webkit-print-color-adjust: exact !important;
       print-color-adjust: exact !important;
     }
-    .resume-block, .item {
+    .contact-bar {
+      font-size: 7.2pt !important;
+      line-height: 1.28 !important;
+    }
+    .header-rule {
+      margin: 2px 0 2.5px 0 !important;
+      border-top: 1px solid #93c5fd !important;
+    }
+    .resume-block {
+      margin-bottom: 2.2px !important;
       page-break-inside: avoid !important;
       break-inside: avoid !important;
+    }
+    .resume-heading {
+      font-size: 8.1pt !important;
+      font-weight: 700 !important;
+      border-bottom: 1px solid #93c5fd !important;
+      padding-bottom: 0.2px !important;
+      margin-bottom: 1.5px !important;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+    .resume-summary {
+      font-size: 7.4pt !important;
+      line-height: 1.22 !important;
+    }
+    .item {
+      margin-bottom: 1.5px !important;
+      page-break-inside: avoid !important;
+      break-inside: avoid !important;
+    }
+    .item-header {
+      margin-bottom: 0.2px !important;
+    }
+    .item-left, .role-title, .org-name {
+      font-size: 7.7pt !important;
+    }
+    .date-range {
+      font-size: 7.2pt !important;
+    }
+    .item-sub {
+      font-size: 7.2pt !important;
+      margin-bottom: 0.2px !important;
+    }
+    .item-badge {
+      font-size: 6.4pt !important;
+      padding: 0.2px 3px !important;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+    ul.bullets {
+      margin-left: 11px !important;
+      font-size: 7.4pt !important;
+    }
+    ul.bullets li {
+      margin-bottom: 0.2px !important;
+      line-height: 1.2 !important;
+    }
+    .skills-list {
+      font-size: 7.4pt !important;
+      line-height: 1.22 !important;
+    }
+    .skills-row {
+      margin-bottom: 0.5px !important;
     }
   }
 `;
