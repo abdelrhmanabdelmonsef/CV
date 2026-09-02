@@ -26,7 +26,7 @@ export const RESUME_CSS = `
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     color: #1a1a1a;
-    background: #ffffff;
+    background: #06090e;
     font-size: 8.5pt;
     line-height: 1.32;
     -webkit-font-smoothing: antialiased;
@@ -39,19 +39,23 @@ export const RESUME_CSS = `
     text-decoration: underline;
   }
   .resume-shell {
-    background: #f1f5f9;
-    min-height: 100vh;
-    padding: 24px 16px;
+    background: transparent;
+    min-height: calc(100vh - 54px);
+    padding: 30px 16px 60px 16px;
     display: flex;
     justify-content: center;
+    position: relative;
+    z-index: 10;
   }
   .resume-page {
     width: 100%;
     max-width: 210mm;
     background: #ffffff;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    padding: 24px 28px;
-    border-radius: 4px;
+    box-shadow: 0 0 50px rgba(0, 255, 136, 0.08), 0 20px 50px rgba(0, 0, 0, 0.7);
+    border: 1px solid rgba(0, 229, 255, 0.18);
+    padding: 26px 30px;
+    border-radius: 6px;
+    position: relative;
   }
   .resume-header {
     text-align: center;

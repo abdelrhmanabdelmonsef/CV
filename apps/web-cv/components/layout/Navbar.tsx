@@ -63,11 +63,9 @@ export default function Navbar() {
   const [activeSection, setActiveSection] = useState('');
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  if (pathname === '/resume') {
-    return null;
-  }
-
   useEffect(() => {
+    if (pathname === '/resume') return;
+
     const observer = new IntersectionObserver(
       (entries) => {
         const visible = entries
@@ -86,7 +84,7 @@ export default function Navbar() {
     });
 
     return () => observer.disconnect();
-  }, []);
+  }, [pathname]);
 
   const scrollTo = useCallback((id: string) => {
     const el = document.getElementById(id);
@@ -95,6 +93,10 @@ export default function Navbar() {
       setMobileOpen(false);
     }
   }, []);
+
+  if (pathname === '/resume') {
+    return null;
+  }
 
   return (
     <>
