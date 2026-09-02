@@ -16,7 +16,7 @@ export const RESUME_PRINT_SCRIPT = `
 export const RESUME_CSS = `
   @page {
     size: A4;
-    margin: 9mm 11mm;
+    margin: 8mm 10mm;
   }
   *, *::before, *::after {
     box-sizing: border-box;
@@ -27,7 +27,7 @@ export const RESUME_CSS = `
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     color: #1a1a1a;
     background: #06090e;
-    font-size: 8.6pt;
+    font-size: 8.5pt;
     line-height: 1.32;
     -webkit-font-smoothing: antialiased;
   }
@@ -40,22 +40,18 @@ export const RESUME_CSS = `
   }
   .resume-shell {
     background: transparent;
-    min-height: calc(100vh - 54px);
-    padding: 24px 16px 60px 16px;
+    min-height: 100vh;
+    padding: 24px 16px;
     display: flex;
     justify-content: center;
-    position: relative;
-    z-index: 10;
   }
   .resume-page {
     width: 100%;
     max-width: 210mm;
     background: #ffffff;
-    box-shadow: 0 0 50px rgba(0, 255, 136, 0.08), 0 20px 50px rgba(0, 0, 0, 0.7);
-    border: 1px solid rgba(0, 229, 255, 0.18);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     padding: 24px 28px;
     border-radius: 4px;
-    position: relative;
   }
   .resume-header {
     text-align: center;
@@ -172,20 +168,15 @@ export const RESUME_CSS = `
     color: #111827;
   }
   @media print {
-    @page {
-      size: A4 portrait;
-      margin: 4mm 6mm;
-    }
     nav, .resume-toolbar, #matrix-canvas, .skip-to-content, footer {
       display: none !important;
     }
     html, body {
       background: #ffffff !important;
-      color: #111827 !important;
+      color: #1a1a1a !important;
       margin: 0 !important;
       padding: 0 !important;
-      font-size: 7.7pt !important;
-      line-height: 1.22 !important;
+      font-size: 8.5pt !important;
       -webkit-print-color-adjust: exact !important;
       print-color-adjust: exact !important;
     }
@@ -197,89 +188,20 @@ export const RESUME_CSS = `
       display: block !important;
     }
     .resume-page {
-      width: 100% !important;
       max-width: 100% !important;
       margin: 0 !important;
       padding: 0 !important;
       box-shadow: none !important;
-      border: none !important;
       border-radius: 0 !important;
       background: #ffffff !important;
     }
-    .resume-header {
-      margin-bottom: 2px !important;
-    }
-    .resume-name {
-      font-size: 14pt !important;
-      line-height: 1.1 !important;
-      margin-bottom: 1px !important;
+    .resume-heading, .resume-name, .item-badge {
       -webkit-print-color-adjust: exact !important;
       print-color-adjust: exact !important;
     }
-    .contact-bar {
-      font-size: 7.2pt !important;
-      line-height: 1.28 !important;
-    }
-    .header-rule {
-      margin: 2px 0 2.5px 0 !important;
-      border-top: 1px solid #93c5fd !important;
-    }
-    .resume-block {
-      margin-bottom: 2.2px !important;
+    .resume-block, .item {
       page-break-inside: avoid !important;
       break-inside: avoid !important;
-    }
-    .resume-heading {
-      font-size: 8.1pt !important;
-      font-weight: 700 !important;
-      border-bottom: 1px solid #93c5fd !important;
-      padding-bottom: 0.2px !important;
-      margin-bottom: 1.5px !important;
-      -webkit-print-color-adjust: exact !important;
-      print-color-adjust: exact !important;
-    }
-    .resume-summary {
-      font-size: 7.4pt !important;
-      line-height: 1.22 !important;
-    }
-    .item {
-      margin-bottom: 1.5px !important;
-      page-break-inside: avoid !important;
-      break-inside: avoid !important;
-    }
-    .item-header {
-      margin-bottom: 0.2px !important;
-    }
-    .item-left, .role-title, .org-name {
-      font-size: 7.7pt !important;
-    }
-    .date-range {
-      font-size: 7.2pt !important;
-    }
-    .item-sub {
-      font-size: 7.2pt !important;
-      margin-bottom: 0.2px !important;
-    }
-    .item-badge {
-      font-size: 6.4pt !important;
-      padding: 0.2px 3px !important;
-      -webkit-print-color-adjust: exact !important;
-      print-color-adjust: exact !important;
-    }
-    ul.bullets {
-      margin-left: 11px !important;
-      font-size: 7.4pt !important;
-    }
-    ul.bullets li {
-      margin-bottom: 0.2px !important;
-      line-height: 1.2 !important;
-    }
-    .skills-list {
-      font-size: 7.4pt !important;
-      line-height: 1.22 !important;
-    }
-    .skills-row {
-      margin-bottom: 0.5px !important;
     }
   }
 `;
