@@ -3,11 +3,11 @@ import type { CvData } from './types';
 const cvData: CvData = {
   personal: {
     name: 'Abdel-Rahman Abdel-Monsef',
-    title: 'Computers & Systems Engineer | Web Developer & Cybersecurity Enthusiast',
+    title: 'Software Engineer | Full-Stack & Backend Systems | Cybersecurity Enthusiast',
     location: 'Cairo, Egypt',
     phones: ['+20 127 286 2660', '+20 102 070 8385'],
-    email: 'abdelmonsef349@gmail.com',
-    secondaryEmail: 'abdelmonsef348@gmail.com',
+    email: 'a.abdelmonsef@kneraflow.com',
+    secondaryEmail: 'abdelmonsef349@gmail.com',
     linkedIn: 'https://www.linkedin.com/in/abdelrhman-abdelmonsef-48aa281ab/',
     github: 'https://github.com/abdelrhmanabdelmonsef',
     htb: 'https://profile.hackthebox.com/profile/019e8056-cb46-73e2-a8ce-09c8b8aceb7d',
@@ -66,6 +66,20 @@ const cvData: CvData = {
   ],
 
   experience: [
+    {
+      id: 'exp-kneraflow',
+      role: 'Software Engineer',
+      organization: 'Kneraflow (kneraflow.com)',
+      duration: 'Sep 2026 – Present',
+      status: 'Present',
+      statusVariant: 'green',
+      highlights: [
+        'Architecting and developing full-stack web services and robust backend systems using modern TypeScript architectures.',
+        'Designing scalable RESTful APIs, asynchronous job pipelines, and automated cloud workflows.',
+        'Applying secure coding principles, modular microservices patterns, and high-reliability data persistence.',
+        'Collaborating across engineering cycles to deliver high-performance, maintainable software solutions.'
+      ]
+    },
     {
       id: 'exp-smaww-fullstack',
       role: 'Full-Stack Developer Intern (AI-Driven)',
@@ -341,8 +355,8 @@ const cvData: CvData = {
 
   contact: {
     phones: ['+20 127 286 2660', '+20 102 070 8385'],
-    email: 'abdelmonsef349@gmail.com',
-    secondaryEmail: 'abdelmonsef348@gmail.com',
+    email: 'a.abdelmonsef@kneraflow.com',
+    secondaryEmail: 'abdelmonsef349@gmail.com',
     linkedIn: 'https://www.linkedin.com/in/abdelrhman-abdelmonsef-48aa281ab/',
     github: 'https://github.com/abdelrhmanabdelmonsef',
     location: 'Cairo, Egypt'
@@ -366,20 +380,21 @@ const cvData: CvData = {
     whoami: `[+] OPERATIVE IDENTITY DOSSIER:
 =======================================
   Name:        Abdel-Rahman Abdel-Monsef
-  Title:       Computers & Systems Engineer | Cybersecurity Specialist & Web Developer
-  Specialty:   Web Application Penetration Testing, NestJS & Secure Code Analysis
+  Title:       Software Engineer | Full-Stack & Backend Systems
+  Company:     Kneraflow (kneraflow.com)
+  Specialty:   Full-Stack Systems, NestJS, Secure APIs & Web App Pentesting
   HTB Handle:  @0xMonsef (Pro Rank, 30+ Labs)
   THM Handle:  @0xTDS
   Clearance:   Level 1 Guest (Recruiter)
-  Status:      Active - Seeking Global Opportunities
-  Objective:   Acquire robust certifications (OSCP / eWAPT) & secure critical systems.`,
+  Status:      Active — Software Engineer @ Kneraflow
+  Objective:   Build resilient, scalable architectures & secure critical systems.`,
 
     skills: `[+] CONFIDENCE & CAPABILITY MAPPING [100pt Max]:
 ===================================================
   Web Application Pentesting   [████████████████░░░] 85%
   Vulnerability Assessment     [█████████████████░░] 90%
   Burp Suite & Nmap API        [█████████████████░░] 90%
-  TypeScript & NestJS Dev      [██████████████░░░░░] 72%
+  TypeScript & NestJS Dev      [████████████████░░░] 82%
   Linux Server Administration  [███████████████░░░░] 78%
   Python & Bash Automation     [████████████████░░░] 80%
   OWASP Top 10 Exploitation    [█████████████████░░] 88%`,
@@ -399,7 +414,8 @@ const cvData: CvData = {
   - GitHub:     abdelrhmanabdelmonsef
   - HTB:        @0xMonsef
   - TryHackMe:  @0xTDS
-  - Emails:     abdelmonsef349@gmail.com / abdelmonsef348@gmail.com
+  - Work Email: a.abdelmonsef@kneraflow.com
+  - Personal:   abdelmonsef349@gmail.com
   - Mobiles:    +20 127 286 2660 / +20 102 070 8385`,
 
     nmap: `[+] STARTING NMAP SCAN v7.94 AT LOCAL TARGET
@@ -434,10 +450,12 @@ PORT     STATE SERVICE     VERSION
 
     exp: `[+] WORK HISTORY DOSSIER:
 ===========================
-  Role:         Penetration Tester Intern
-  Company:      Hackers For You
-  Duration:     Feb 2024 – May 2024 (3 months)
-  Highlights:   Web App & Network Pentesting, OWASP Top 10 Remediation, Technical Security Reports.`,
+  1. Software Engineer @ Kneraflow (Sep 2026 – Present)
+     - Full-Stack & Backend Systems, REST APIs, Asynchronous Worker Pipelines.
+  2. Full-Stack Developer Intern @ Smaww (Jun 2026 – Sep 2026)
+     - AI-Driven Workflow, Ocean67 Fulfillment Platform, NestJS & Next.js.
+  3. Penetration Tester Intern @ Hackers For You (Feb 2024 – May 2024)
+     - Web App & Network Pentesting, OWASP Top 10 Remediation.`,
 
     edu: `[+] ACADEMIC CREDENTIALS:
 ============================
@@ -448,15 +466,16 @@ PORT     STATE SERVICE     VERSION
   },
 
   seo: {
-    title: 'Abdel-Rahman Abdel-Monsef | Web Developer & Cybersecurity Enthusiast',
+    title: 'Abdel-Rahman Abdel-Monsef | Software Engineer | Full-Stack & Backend Systems',
     description:
-      'Professional portfolio of Abdel-Rahman Abdel-Monsef — Computers & Systems Engineering graduate with growing experience in modern web development and cybersecurity.',
+      'Professional portfolio of Abdel-Rahman Abdel-Monsef — Software Engineer at Kneraflow specializing in modern full-stack development, distributed backend systems, and cybersecurity.',
     keywords:
-      'Web Developer, TypeScript, JavaScript, Node.js, Express, NestJS, Next.js, Cybersecurity, Egypt, Portfolio',
+      'Software Engineer, Kneraflow, TypeScript, JavaScript, Node.js, Express, NestJS, Next.js, Backend Developer, Cybersecurity, Egypt, Portfolio',
     ogUrl: 'https://github.com/abdelrhmanabdelmonsef/CV',
     ogImage: '/photo/pic.jpg',
     knowsAbout: [
-      'Web Development',
+      'Full-Stack Development',
+      'Backend Architecture',
       'TypeScript',
       'JavaScript',
       'Node.js',

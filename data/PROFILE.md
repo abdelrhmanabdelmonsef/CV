@@ -9,12 +9,12 @@
 * **Mobile:** [+201272862660](tel:+201272862660) | [+201020708385](tel:+201020708385)
 * **LinkedIn:** [Abdelrhman Abdelmonsef](https://www.linkedin.com/in/abdelrhman-abdelmonsef-48aa281ab/)
 * **GitHub:** [abdelrhmanabdelmonsef](https://github.com/abdelrhmanabdelmonsef)
-* **Email:** [abdelmonsef349@gmail.com](mailto:abdelmonsef349@gmail.com) | [abdelmonsef348@gmail.com](mailto:abdelmonsef348@gmail.com)
+* **Email:** [a.abdelmonsef@kneraflow.com](mailto:a.abdelmonsef@kneraflow.com) (Work) | [abdelmonsef349@gmail.com](mailto:abdelmonsef349@gmail.com) (Personal)
 
 ---
 
 ## Summary
-Highly motivated **Computers and Systems Engineering graduate** with hands-on experience in **Web Application Penetration Testing** and a robust foundation in networking, operating systems, and scripting. Proven track record of identifying vulnerabilities and performing secure code analysis during a dedicated cybersecurity internship. Active student leader and technical speaker, currently training for advanced certifications including the **OSCP** and **eWAPT**. Exceptional problem-solver who thrives in fast-paced, high-pressure environments.
+Highly motivated **Software Engineer** and **Computers and Systems Engineering graduate** with extensive experience in modern full-stack development (TypeScript, Node.js, NestJS, Next.js) and **Web Application Penetration Testing**. Proven track record of architecting distributed backend services, asynchronous worker queues, and securing mission-critical applications against OWASP Top 10 vulnerabilities. Active technical problem-solver who thrives in building scalable, resilient, and secure architectures.
 
 ---
 
@@ -31,11 +31,18 @@ Highly motivated **Computers and Systems Engineering graduate** with hands-on ex
 * **Tools:** Nmap, Burp Suite, Metasploit, OWASP ZAP, Wireshark, Dirbuster
 * **Operating Systems:** Linux (Red Hat / Kali Linux / Debian), Windows (Server & Client)
 * **Networking:** TCP/IP Protocols, Network Routing & Switching, Network Security Architecture
-* **Programming & Scripting:** Python, Bash, Java, JavaScript, SQL (MySQL)
+* **Programming & Scripting:** Python, Bash, Java, JavaScript, TypeScript, SQL (PostgreSQL / MySQL)
 
 ---
 
 ## Work Experience
+### Software Engineer
+**Kneraflow** *(kneraflow.com)* | *Sep 2026 – Present*
+* Architecting and developing full-stack web services and robust backend systems using modern TypeScript architectures.
+* Designing scalable RESTful APIs, asynchronous job pipelines, and automated cloud workflows.
+* Applying secure coding principles, modular microservices patterns, and high-reliability data persistence.
+* Collaborating across engineering cycles to deliver high-performance, maintainable software solutions.
+
 ### Full-Stack Developer Intern (AI-Driven)
 **Smaww (smaww.net)** | *Jun 1, 2026 - Sep 1, 2026*
 * Engineered full-stack web solutions and modern architectures utilizing Node.js, NestJS, Next.js, and TypeScript within an AI-driven development workflow.
