@@ -1,13 +1,13 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import type { JobMatcherError } from '../../lib/types/job-matcher';
+import type { AIProvider, JobMatcherError } from '../../lib/types/job-matcher';
 
 interface JobEmptyStateProps {
   isLoading: boolean;
   error?: JobMatcherError | null;
   isKeyArmed: boolean;
-  provider?: 'gemini' | 'openai';
+  provider?: AIProvider;
   onOpenKeyDrawer: () => void;
   onRetry: () => void;
   hasJobs: boolean;
@@ -17,28 +17,40 @@ export default function JobEmptyState({
   isLoading,
   error,
   isKeyArmed,
-  provider = 'gemini',
+  provider = 'nvidia',
   onOpenKeyDrawer,
   onRetry,
   hasJobs
 }: JobEmptyStateProps) {
   const [stepIndex, setStepIndex] = useState(0);
 
-  const scanSteps = provider === 'openai' ? [
-    'Establishing secure ephemeral session...',
-    'Ingesting candidate profile from cv-data...',
-    'Initializing OpenAI engine with live web search...',
-    'Scanning active postings on LinkedIn, Wuzzuf & remote portals...',
-    'Parsing job requirements & semantic qualifications...',
-    'Calculating multi-dimensional match scores & skill gaps...'
-  ] : [
-    'Establishing secure ephemeral session...',
-    'Ingesting candidate profile from cv-data...',
-    'Initializing Gemini Flash with Google Search grounding...',
-    'Scanning active postings on LinkedIn, Wuzzuf & remote portals...',
-    'Parsing job requirements & semantic qualifications...',
-    'Calculating multi-dimensional match scores & skill gaps...'
-  ];
+  const scanSteps =
+    provider === 'nvidia'
+      ? [
+          'Establishing secure session with NVIDIA NIM...',
+          'Ingesting candidate profile from cv-data...',
+          'Initializing Moonshot Kimi-K3 deep reasoning engine...',
+          'Scanning 18+ global, Arab, remote & freelance platforms...',
+          'Evaluating technical alignment & system architecture fit...',
+          'Calculating multi-dimensional match scores & skill gaps...'
+        ]
+      : provider === 'openai'
+      ? [
+          'Establishing secure ephemeral session...',
+          'Ingesting candidate profile from cv-data...',
+          'Initializing OpenAI engine with live web search...',
+          'Scanning active postings on LinkedIn, Wuzzuf & remote portals...',
+          'Parsing job requirements & semantic qualifications...',
+          'Calculating multi-dimensional match scores & skill gaps...'
+        ]
+      : [
+          'Establishing secure ephemeral session...',
+          'Ingesting candidate profile from cv-data...',
+          'Initializing Gemini Flash with Google Search grounding...',
+          'Scanning active postings on LinkedIn, Wuzzuf & remote portals...',
+          'Parsing job requirements & semantic qualifications...',
+          'Calculating multi-dimensional match scores & skill gaps...'
+        ];
 
   useEffect(() => {
     if (!isLoading) {
@@ -48,7 +60,7 @@ export default function JobEmptyState({
 
     const interval = setInterval(() => {
       setStepIndex((prev) => (prev < 5 ? prev + 1 : prev));
-    }, 1800);
+    }, 2200);
 
     return () => clearInterval(interval);
   }, [isLoading]);
@@ -74,7 +86,11 @@ export default function JobEmptyState({
         </h4>
 
         <p className="text-xs text-[#94a3b8] max-w-md mx-auto mb-6">
-          Querying live {provider === 'openai' ? 'OpenAI web search' : 'Google search indices'} across LinkedIn, Wuzzuf, and remote engineering platforms.
+          {provider === 'nvidia'
+            ? 'Running deep technical reasoning with Moonshot Kimi-K3 via NVIDIA NIM across active vacancy pools.'
+            : provider === 'openai'
+            ? 'Querying live OpenAI web search across LinkedIn, Wuzzuf, and remote engineering platforms.'
+            : 'Querying live Google search indices across LinkedIn, Wuzzuf, and remote engineering platforms.'}
         </p>
 
         {/* Dynamic Scan Steps Terminal Log */}
@@ -156,7 +172,7 @@ export default function JobEmptyState({
         </div>
 
         <h4 className="text-base md:text-lg font-bold text-[#f1f5f9] uppercase tracking-wider mb-2">
-          ARM YOUR GEMINI API KEY TO BEGIN
+          ARM YOUR AI API KEY TO BEGIN
         </h4>
 
         <p className="text-xs text-[#94a3b8] max-w-lg mx-auto mb-6 leading-relaxed">

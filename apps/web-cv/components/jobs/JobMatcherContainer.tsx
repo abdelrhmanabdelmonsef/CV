@@ -12,6 +12,7 @@ import {
   setSessionProvider
 } from '../../lib/session-storage-key';
 import type {
+  AIProvider,
   JobMatcherError,
   JobOpportunity,
   SearchFilterState
@@ -28,14 +29,16 @@ export default function JobMatcherContainer() {
   const [authenticated, setAuthenticated] = useState<boolean | null>(null);
   const [authConfigured, setAuthConfigured] = useState(true);
   const [serverConfig, setServerConfig] = useState<{
-    hasOpenAI: boolean;
-    hasGemini: boolean;
-    defaultProvider?: 'openai' | 'gemini';
+    hasNvidia?: boolean;
+    hasOpenAI?: boolean;
+    hasGemini?: boolean;
+    defaultProvider?: AIProvider;
   } | null>(null);
 
   const [filters, setFilters] = useState<SearchFilterState>({
     locationFilter: 'all',
     roleFocus: 'all',
+    platformScope: 'all',
     minScore: 50
   });
 
@@ -44,7 +47,7 @@ export default function JobMatcherContainer() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<JobMatcherError | null>(null);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const [provider, setProvider] = useState<'gemini' | 'openai'>('gemini');
+  const [provider, setProvider] = useState<AIProvider>('nvidia');
 
   // Check admin session and server configuration on mount
   const checkSession = useCallback(async () => {
@@ -92,7 +95,7 @@ export default function JobMatcherContainer() {
     setError(null);
   };
 
-  const handleProviderChange = (p: 'gemini' | 'openai') => {
+  const handleProviderChange = (p: AIProvider) => {
     setProvider(p);
     setSessionProvider(p);
   };
@@ -188,7 +191,9 @@ export default function JobMatcherContainer() {
               AI JOB MATCHER
             </h1>
             <p className="text-xs md:text-sm text-[#94a3b8] mt-1">
-              {provider === 'openai'
+              {provider === 'nvidia'
+                ? 'Deep technical matching powered by NVIDIA NIM & Moonshot Kimi-K3 comparing active vacancies against verified competencies.'
+                : provider === 'openai'
                 ? 'Live web search & deep matching via OpenAI GPT-4o comparing active vacancies against verified competencies.'
                 : 'Live web search grounding via Gemini Flash comparing active vacancies against verified competencies.'}
             </p>
@@ -200,6 +205,9 @@ export default function JobMatcherContainer() {
             </span>
             <span className="text-[11px] px-2.5 py-1 rounded bg-[#162438] text-[#00e5ff] border border-[#24354d]">
               {candidateContext.topSkills.length} Verified Skills
+            </span>
+            <span className="text-[11px] px-2.5 py-1 rounded bg-[#a855f7]/15 text-[#d8b4fe] border border-[#a855f7]/40 font-bold">
+              18+ Platforms Indexed
             </span>
             <span className="text-[11px] px-2.5 py-1 rounded bg-[#162438] text-[#00ff88] border border-[#24354d]">
               {candidateContext.experienceHighlights.length} Milestones

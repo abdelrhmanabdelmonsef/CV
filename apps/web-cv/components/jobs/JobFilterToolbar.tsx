@@ -1,17 +1,44 @@
 'use client';
 
-import type { LocationFilter, RoleFocusFilter, SearchFilterState } from '../../lib/types/job-matcher';
+import type {
+  AIProvider,
+  LocationFilter,
+  PlatformScopeFilter,
+  RoleFocusFilter,
+  SearchFilterState
+} from '../../lib/types/job-matcher';
 
 interface JobFilterToolbarProps {
   filters: SearchFilterState;
   onFilterChange: (newFilters: SearchFilterState) => void;
   onSearchTrigger: () => void;
   isLoading: boolean;
-  provider: 'gemini' | 'openai';
-  onProviderChange: (provider: 'gemini' | 'openai') => void;
-  serverConfig?: { hasOpenAI: boolean; hasGemini: boolean };
+  provider: AIProvider;
+  onProviderChange: (provider: AIProvider) => void;
+  serverConfig?: { hasNvidia?: boolean; hasOpenAI?: boolean; hasGemini?: boolean };
   onOpenKeyDrawer: () => void;
 }
+
+const INDEXED_SITES = [
+  'Glassdoor',
+  'Nafezly (نفذلي)',
+  'Forasna (فرصنا)',
+  'Ureed (أريد)',
+  'Baeed (بعيد)',
+  'Bahr (بحر)',
+  'AngelList (Wellfound)',
+  'Indeed',
+  'Khamsat (خمسات)',
+  'Bayt (بيت.كوم)',
+  'Part-Time (بارتايم)',
+  'Workana',
+  'Freelancer.com',
+  'Kafiil (كفيل)',
+  'LinkedIn',
+  'Wuzzuf',
+  'RemoteOK',
+  'WeWorkRemotely'
+];
 
 export default function JobFilterToolbar({
   filters,
@@ -37,7 +64,16 @@ export default function JobFilterToolbar({
     { id: 'cybersecurity', label: 'Cybersecurity' }
   ];
 
+  const platformScopes: { id: PlatformScopeFilter; label: string; tag: string }[] = [
+    { id: 'all', label: 'All 18+ Sites', tag: 'GLOBAL + ARAB' },
+    { id: 'mena', label: 'Egypt & MENA', tag: 'WUZZUF / FORASNA' },
+    { id: 'remote', label: 'Remote Hubs', tag: 'BAEED / REMOTEOK' },
+    { id: 'freelance', label: 'Freelance & Projects', tag: 'NAFEZLY / KHAMSAT' },
+    { id: 'corporate', label: 'Global Tech', tag: 'GLASSDOOR / INDEED' }
+  ];
+
   const minScores: number[] = [50, 65, 75, 85];
+  const activeScope = filters.platformScope || 'all';
 
   return (
     <div className="bg-[#0a0f19] border border-[#162438] rounded-xl p-4 md:p-5 mb-8 shadow-xl font-mono">
@@ -45,7 +81,23 @@ export default function JobFilterToolbar({
       <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 pb-4 border-b border-[#162438]">
         <div className="flex flex-wrap items-center gap-2.5">
           {/* Provider Toggle Pill */}
-          <div className="inline-flex rounded-lg p-1 bg-[#06090e] border border-[#162438]">
+          <div className="inline-flex rounded-lg p-1 bg-[#06090e] border border-[#162438] flex-wrap gap-1">
+            <button
+              type="button"
+              onClick={() => onProviderChange('nvidia')}
+              className={`px-3 py-1 rounded-md text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
+                provider === 'nvidia'
+                  ? 'bg-[#76b900]/20 text-[#76b900] border border-[#76b900]/60 shadow-[0_0_10px_rgba(118,185,0,0.3)]'
+                  : 'text-[#64748b] hover:text-[#94a3b8] border border-transparent'
+              }`}
+            >
+              <span className={`w-1.5 h-1.5 rounded-full ${provider === 'nvidia' ? 'bg-[#76b900]' : 'bg-[#64748b]'}`} />
+              <span>NVIDIA (Kimi-K3)</span>
+              {serverConfig?.hasNvidia && (
+                <span className="text-[9px] px-1 py-0.2 rounded bg-[#76b900]/20 text-[#76b900]">ENV</span>
+              )}
+            </button>
+
             <button
               type="button"
               onClick={() => onProviderChange('gemini')}
@@ -56,7 +108,7 @@ export default function JobFilterToolbar({
               }`}
             >
               <span className={`w-1.5 h-1.5 rounded-full ${provider === 'gemini' ? 'bg-[#00e5ff]' : 'bg-[#64748b]'}`} />
-              <span>Gemini 3.7</span>
+              <span>Gemini</span>
               {serverConfig?.hasGemini && (
                 <span className="text-[9px] px-1 py-0.2 rounded bg-[#00ff88]/20 text-[#00ff88]">ENV</span>
               )}
@@ -72,7 +124,7 @@ export default function JobFilterToolbar({
               }`}
             >
               <span className={`w-1.5 h-1.5 rounded-full ${provider === 'openai' ? 'bg-[#00ff88]' : 'bg-[#64748b]'}`} />
-              <span>OpenAI (GPT-4o)</span>
+              <span>OpenAI</span>
               {serverConfig?.hasOpenAI && (
                 <span className="text-[9px] px-1 py-0.2 rounded bg-[#00ff88]/20 text-[#00ff88]">ENV</span>
               )}
@@ -110,21 +162,21 @@ export default function JobFilterToolbar({
                 <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                 <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
               </svg>
-              <span>SCANNING WEB...</span>
+              <span>SCANNING 18+ PLATFORMS...</span>
             </>
           ) : (
             <>
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
               </svg>
-              <span>SCAN & MATCH OPPORTUNITIES</span>
+              <span>DISCOVER & MATCH ON 18+ SITES</span>
             </>
           )}
         </button>
       </div>
 
       {/* Filter Controls Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 pt-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-4">
         {/* Location Filter */}
         <div>
           <label className="text-[11px] uppercase tracking-wider text-[#94a3b8] block mb-1.5">
@@ -136,7 +188,7 @@ export default function JobFilterToolbar({
                 key={loc.id}
                 type="button"
                 onClick={() => onFilterChange({ ...filters, locationFilter: loc.id })}
-                className={`py-1.5 px-2.5 rounded-lg text-xs font-mono border transition-all cursor-pointer text-left truncate ${
+                className={`py-1.5 px-2 rounded-lg text-xs font-mono border transition-all cursor-pointer text-left truncate ${
                   filters.locationFilter === loc.id
                     ? 'bg-[#00e5ff]/20 text-[#00e5ff] border-[#00e5ff] shadow-[0_0_8px_rgba(0,229,255,0.2)]'
                     : 'bg-[#162438]/40 text-[#94a3b8] hover:text-[#f1f5f9] border-[#24354d]/50'
@@ -159,7 +211,7 @@ export default function JobFilterToolbar({
                 key={role.id}
                 type="button"
                 onClick={() => onFilterChange({ ...filters, roleFocus: role.id })}
-                className={`py-1.5 px-2.5 rounded-lg text-xs font-mono border transition-all cursor-pointer text-left truncate ${
+                className={`py-1.5 px-2 rounded-lg text-xs font-mono border transition-all cursor-pointer text-left truncate ${
                   filters.roleFocus === role.id
                     ? 'bg-[#00ff88]/20 text-[#00ff88] border-[#00ff88] shadow-[0_0_8px_rgba(0,255,136,0.2)]'
                     : 'bg-[#162438]/40 text-[#94a3b8] hover:text-[#f1f5f9] border-[#24354d]/50'
@@ -171,28 +223,65 @@ export default function JobFilterToolbar({
           </div>
         </div>
 
+        {/* Platform Scope Filter */}
+        <div>
+          <label className="text-[11px] uppercase tracking-wider text-[#94a3b8] block mb-1.5">
+            Target Platform Ecosystem:
+          </label>
+          <div className="flex flex-col gap-1">
+            {platformScopes.map((scope) => (
+              <button
+                key={scope.id}
+                type="button"
+                onClick={() => onFilterChange({ ...filters, platformScope: scope.id })}
+                className={`py-1 px-2 rounded-md text-[11px] font-mono border transition-all cursor-pointer flex items-center justify-between ${
+                  activeScope === scope.id
+                    ? 'bg-[#a855f7]/20 text-[#d8b4fe] border-[#a855f7] shadow-[0_0_8px_rgba(168,85,247,0.25)]'
+                    : 'bg-[#162438]/40 text-[#94a3b8] hover:text-[#f1f5f9] border-[#24354d]/50'
+                }`}
+              >
+                <span className="font-bold">{scope.label}</span>
+                <span className="text-[9px] text-[#64748b]">{scope.tag}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+
         {/* Min Score Filter */}
         <div>
           <label className="text-[11px] uppercase tracking-wider text-[#94a3b8] block mb-1.5">
             Minimum Match Fit:
           </label>
-          <div className="grid grid-cols-4 gap-1.5">
+          <div className="grid grid-cols-2 gap-1.5">
             {minScores.map((score) => (
               <button
                 key={score}
                 type="button"
                 onClick={() => onFilterChange({ ...filters, minScore: score })}
-                className={`py-1.5 px-2 rounded-lg text-xs font-mono font-bold border transition-all cursor-pointer text-center ${
+                className={`py-2 px-2 rounded-lg text-xs font-mono font-bold border transition-all cursor-pointer text-center ${
                   filters.minScore === score
                     ? 'bg-[#ffb300]/20 text-[#ffb300] border-[#ffb300] shadow-[0_0_8px_rgba(255,179,0,0.2)]'
                     : 'bg-[#162438]/40 text-[#94a3b8] hover:text-[#f1f5f9] border-[#24354d]/50'
                 }`}
               >
-                ≥{score}%
+                ≥{score}% Match
               </button>
             ))}
           </div>
         </div>
+      </div>
+
+      {/* Indexed Platforms Live Badge Strip */}
+      <div className="mt-4 pt-3 border-t border-[#162438]/60 flex items-center gap-2 flex-wrap text-[10px]">
+        <span className="text-[#64748b] uppercase tracking-wider">INDEXED PLATFORMS:</span>
+        {INDEXED_SITES.map((site, i) => (
+          <span
+            key={i}
+            className="px-1.5 py-0.5 rounded bg-[#06090e] border border-[#162438] text-[#94a3b8] hover:text-[#00e5ff] hover:border-[#00e5ff]/40 transition-colors"
+          >
+            {site}
+          </span>
+        ))}
       </div>
     </div>
   );

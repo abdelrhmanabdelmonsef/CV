@@ -1,6 +1,6 @@
 'use client';
 
-import { EXTERNAL_LINK_PROPS } from '../../lib/job-links';
+import { EXTERNAL_LINK_PROPS, getPlatformMeta } from '../../lib/job-links';
 import type { JobOpportunity } from '../../lib/types/job-matcher';
 
 interface JobCardProps {
@@ -8,6 +8,8 @@ interface JobCardProps {
 }
 
 export default function JobCard({ job }: JobCardProps) {
+  const platformMeta = getPlatformMeta(job.sourcePlatform);
+
   const getScoreColor = (score: number) => {
     if (score >= 80) {
       return {
@@ -42,8 +44,8 @@ export default function JobCard({ job }: JobCardProps) {
         <div className="flex items-start justify-between gap-4 mb-3">
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2 flex-wrap mb-1">
-              <span className="text-[11px] font-mono tracking-wider uppercase px-2 py-0.5 rounded bg-[#162438] text-[#94a3b8] border border-[#24354d]">
-                {job.sourcePlatform || 'WEB'}
+              <span className={`text-[11px] font-mono tracking-wider uppercase px-2 py-0.5 rounded border ${platformMeta.badgeBg} ${platformMeta.badgeText} ${platformMeta.badgeBorder}`}>
+                {platformMeta.name} {platformMeta.arabicName ? `• ${platformMeta.arabicName}` : ''}
               </span>
               {job.isRemote && (
                 <span className="text-[11px] font-mono tracking-wider uppercase px-2 py-0.5 rounded bg-[#00e5ff]/10 text-[#00e5ff] border border-[#00e5ff]/30">
@@ -135,30 +137,34 @@ export default function JobCard({ job }: JobCardProps) {
           <a
             href={job.url}
             {...EXTERNAL_LINK_PROPS}
-            className="flex-1 inline-flex items-center justify-center gap-2 py-2 px-3 rounded-lg text-xs font-mono font-bold tracking-wider uppercase bg-[#00e5ff]/15 hover:bg-[#00e5ff]/25 text-[#00e5ff] border border-[#00e5ff]/40 hover:border-[#00e5ff] transition-all shadow-[0_0_10px_rgba(0,229,255,0.15)]"
+            className="flex-1 inline-flex items-center justify-center gap-2 py-2 px-3 rounded-lg text-xs font-mono font-bold tracking-wider uppercase bg-[#00e5ff]/15 hover:bg-[#00e5ff]/25 text-[#00e5ff] border border-[#00e5ff]/40 hover:border-[#00e5ff] transition-all shadow-[0_0_10px_rgba(0,229,255,0.15)] truncate"
           >
-            <span>Apply Directly</span>
-            <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <span className="truncate">Apply on {platformMeta.name}</span>
+            <svg className="w-3.5 h-3.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
             </svg>
           </a>
         ) : (
-          <div className="flex-1 text-[11px] font-mono text-[#64748b] text-center py-2">
-            [NO DIRECT URL]
-          </div>
+          <a
+            href={platformMeta.buildSearchUrl(job.title, job.company)}
+            {...EXTERNAL_LINK_PROPS}
+            className="flex-1 inline-flex items-center justify-center gap-2 py-2 px-3 rounded-lg text-xs font-mono font-bold tracking-wider uppercase bg-[#162438] hover:bg-[#24354d] text-[#cbd5e1] border border-[#24354d] transition-all truncate"
+          >
+            <span className="truncate">Search on {platformMeta.name}</span>
+          </a>
         )}
 
         <a
           href={job.fallbackSearchUrl}
           {...EXTERNAL_LINK_PROPS}
           title="Search on Google if direct application URL is broken or dynamic"
-          className="inline-flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg text-xs font-mono tracking-wider uppercase bg-[#162438] hover:bg-[#24354d] text-[#cbd5e1] hover:text-[#f1f5f9] border border-[#24354d] hover:border-[#64748b] transition-all"
+          className="inline-flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg text-xs font-mono tracking-wider uppercase bg-[#162438] hover:bg-[#24354d] text-[#cbd5e1] hover:text-[#f1f5f9] border border-[#24354d] hover:border-[#64748b] transition-all shrink-0"
         >
           <svg className="w-3.5 h-3.5 text-[#00e5ff]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
           </svg>
-          <span className="hidden sm:inline">Google Search</span>
-          <span className="sm:hidden">Search</span>
+          <span className="hidden sm:inline">Google</span>
+          <span className="sm:hidden">Web</span>
         </a>
       </div>
     </div>

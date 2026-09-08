@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { formatCandidatePromptContext } from '../../../../lib/candidate-profile';
-import { buildFallbackSearchUrl, sanitizeJobUrl } from '../../../../lib/job-links';
+import { buildFallbackSearchUrl, getPlatformMeta, sanitizeJobUrl } from '../../../../lib/job-links';
 import { isAuthorized } from '../../../../lib/messages-auth';
 import { checkRateLimit, getClientIp } from '../../../../lib/rate-limit';
 import type {
@@ -36,20 +36,50 @@ function buildSearchPrompt(candidate: CandidateProfileContext, filters: SearchFi
     cybersecurity: 'Focus on Cybersecurity roles, Web Application Penetration Tester, Security Engineer, or Application Security (AppSec) roles.'
   };
 
+  const platformScopeInstructions: Record<string, string> = {
+    all: 'Search across all 18+ indexed platforms: Glassdoor, Indeed, LinkedIn, Wellfound (AngelList), Wuzzuf, Forasna (فرصنا), Bayt (بيت), Baeed (بعيد), Nafezly (نفذلي), Khamsat (خمسات), Ureed (أريد), Freelancer, Workana, Kafiil (كفيل), Bahr (بحر), PartTime (بارتايم), RemoteOK, and WeWorkRemotely.',
+    mena: 'Focus specifically on Egypt and Arab regional hiring boards: Wuzzuf, Forasna (فرصنا), Bayt (بيت.كوم), Baeed (بعيد), Bahr (بحر), and Nafezly (نفذلي).',
+    remote: 'Focus specifically on remote tech portals: Baeed (بعيد - premier Arabic remote site), RemoteOK, WeWorkRemotely, and Wellfound (AngelList).',
+    freelance: 'Focus on project-based freelance platforms: Nafezly (نفذلي), Khamsat (خمسات), Ureed (أريد), Freelancer.com, Workana, Kafiil (كفيل), and Bahr (بحر).',
+    corporate: 'Focus on large tech employment boards: LinkedIn, Indeed, Glassdoor, Bayt, Wuzzuf, and PartTime (بارتايم).'
+  };
+
   return `
 You are an expert technical career matcher and executive talent scout.
-Your goal is to use your live Google Search tool to search for real-world, active job openings published recently that match the candidate's verified profile.
+Your goal is to use your live Google Search tool to search for real-world, active job openings published recently that match the candidate's verified profile across verified job boards and freelance ecosystems.
 
 ${profileBlock}
 
 [SEARCH CONSTRAINTS & TARGETING]
 Location Target: ${locationInstructions[filters.locationFilter] || locationInstructions.all}
 Role Specialization Target: ${roleInstructions[filters.roleFocus] || roleInstructions.all}
+Platform Scope Focus: ${platformScopeInstructions[filters.platformScope || 'all']}
 Minimum Desired Match Score: ${filters.minScore}%
 
+[SUPPORTED PLATFORMS & SITES DIRECTORY]
+Sourced roles should be attributed to one of these 18+ platforms:
+1. Glassdoor (Global tech companies & active hiring)
+2. Nafezly / نفذلي (Arab freelance projects & tech micro-contracts)
+3. Forasna / فرصنا (Egypt & MENA diverse tech positions)
+4. Ureed / أريد (High-tier professional freelance platform)
+5. Baeed / بعيد (Premier Arabic remote-first jobs platform)
+6. Bahr / بحر (Saudi Arabia & Gulf freelance projects)
+7. Wellfound / AngelList (Startups & venture-backed tech engineering)
+8. Indeed (Global multi-industry vacancies & enterprise tech)
+9. Khamsat / خمسات (Microservices, programming gigs & freelance requests)
+10. Bayt / بيت.كوم (Top Middle East & North Africa career portal)
+11. Part-Time / بارتايم (Part-time, flexible & hybrid tech opportunities)
+12. Workana (Latin America & international freelance engineering)
+13. Freelancer (Global contracts & technical project bidding)
+14. Kafiil / كفيل (Freelance competitions & project awards)
+15. LinkedIn (Professional network & direct applications)
+16. Wuzzuf (Egypt & MENA enterprise hiring)
+17. RemoteOK (Worldwide remote software roles)
+18. WeWorkRemotely (Premier remote community)
+
 [LIVE SEARCH INSTRUCTIONS]
-1. Use the googleSearch tool to perform live searches for current open positions on job boards such as LinkedIn, Wuzzuf, RemoteOK, and company career portals.
-2. Find between 4 and 8 distinct, active job openings that align with the candidate's skills.
+1. Use the googleSearch tool to perform live searches for current open positions or projects on the above boards.
+2. Find between 4 and 8 distinct, active job openings or projects that align with the candidate's skills.
 3. For each opening found, compare the actual required skills against the candidate's profile:
    - Assign an objective matchScore integer between 0 and 100.
    - Identify 2 to 4 specific matching strengths (skills candidate has that job requires).
@@ -276,11 +306,11 @@ export async function POST(request: NextRequest) {
       const title = item.title || 'Software Engineer';
       const company = item.company || 'Tech Employer';
       const location = item.location || (item.isRemote ? 'Remote' : 'Cairo, Egypt');
+      const platformMeta = getPlatformMeta(item.sourcePlatform);
       const directUrl = sanitizeJobUrl(item.url);
-      const fallbackSearchUrl = buildFallbackSearchUrl(title, company, location);
-
       const resolvedUrl =
-        directUrl || groundingChunks[index]?.web?.uri || undefined;
+        directUrl || groundingChunks[index]?.web?.uri || platformMeta.buildSearchUrl(title, company);
+      const fallbackSearchUrl = buildFallbackSearchUrl(title, company, location, platformMeta.name);
 
       const rawScore = typeof item.matchScore === 'number' ? item.matchScore : 75;
       const matchScore = Math.max(0, Math.min(100, Math.round(rawScore)));
@@ -296,8 +326,8 @@ export async function POST(request: NextRequest) {
         company,
         location,
         isRemote: Boolean(item.isRemote || location.toLowerCase().includes('remote')),
-        sourcePlatform: item.sourcePlatform || 'LinkedIn',
-        url: resolvedUrl,
+        sourcePlatform: platformMeta.name || item.sourcePlatform || 'LinkedIn',
+        url: resolvedUrl || undefined,
         fallbackSearchUrl,
         matchScore,
         strengths:

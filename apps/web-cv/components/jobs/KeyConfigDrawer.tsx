@@ -1,9 +1,11 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import type { AIProvider } from '../../lib/types/job-matcher';
 import {
   clearSessionApiKey,
   DEFAULT_GEMINI_MODEL,
+  DEFAULT_NVIDIA_MODEL,
   DEFAULT_OPENAI_MODEL,
   detectKeyProvider,
   getSessionApiKey,
@@ -20,6 +22,12 @@ interface KeyConfigDrawerProps {
   onClose: () => void;
   onKeySaved: (armed: boolean) => void;
 }
+
+const AVAILABLE_NVIDIA_MODELS = [
+  { id: 'moonshotai/kimi-k3', label: 'Moonshot Kimi-K3', tag: 'RECOMMENDED' },
+  { id: 'meta/llama-3.3-70b-instruct', label: 'Llama 3.3 70B', tag: 'FAST' },
+  { id: 'deepseek-ai/deepseek-r1', label: 'DeepSeek-R1', tag: 'REASONING' }
+];
 
 const AVAILABLE_GEMINI_MODELS = [
   { id: 'gemini-3.7-flash', label: 'Gemini 3.7 Flash', tag: 'RECOMMENDED' },
@@ -43,8 +51,8 @@ export default function KeyConfigDrawer({
   const [apiKeyInput, setApiKeyInput] = useState('');
   const [showKey, setShowKey] = useState(false);
   const [currentArmedKey, setCurrentArmedKey] = useState('');
-  const [provider, setProvider] = useState<'gemini' | 'openai'>('gemini');
-  const [selectedModel, setSelectedModel] = useState(DEFAULT_GEMINI_MODEL);
+  const [provider, setProvider] = useState<AIProvider>('nvidia');
+  const [selectedModel, setSelectedModel] = useState(DEFAULT_NVIDIA_MODEL);
   const [notification, setNotification] = useState<string | null>(null);
 
   useEffect(() => {
@@ -61,7 +69,7 @@ export default function KeyConfigDrawer({
 
   if (!isOpen) return null;
 
-  const handleProviderChange = (newProvider: 'gemini' | 'openai') => {
+  const handleProviderChange = (newProvider: AIProvider) => {
     setProvider(newProvider);
     setSelectedModel(getSessionModel(newProvider));
     setNotification(null);
@@ -73,7 +81,9 @@ export default function KeyConfigDrawer({
     if (detected && detected !== provider) {
       setProvider(detected);
       setSelectedModel(getSessionModel(detected));
-      setNotification(`Detected ${detected === 'openai' ? 'OpenAI' : 'Google Gemini'} key format. Switched provider.`);
+      const providerLabel =
+        detected === 'nvidia' ? 'NVIDIA NIM' : detected === 'openai' ? 'OpenAI' : 'Google Gemini';
+      setNotification(`Detected ${providerLabel} key format. Switched provider.`);
     }
   };
 
@@ -88,8 +98,8 @@ export default function KeyConfigDrawer({
     setSessionApiKey(cleanKey);
     setSessionProvider(provider);
     setSessionModel(selectedModel, provider);
-    setCurrentArmedKey(cleanKey);
-    setNotification(`${provider === 'openai' ? 'OpenAI' : 'Gemini'} key & model armed in session storage.`);
+    const providerName = provider === 'nvidia' ? 'NVIDIA NIM' : provider === 'openai' ? 'OpenAI' : 'Gemini';
+    setNotification(`${providerName} key & model armed in session storage.`);
     onKeySaved(true);
 
     setTimeout(() => {
@@ -157,28 +167,39 @@ export default function KeyConfigDrawer({
             <label className="text-[11px] uppercase tracking-wider text-[#94a3b8] block mb-1.5">
               Target AI Provider:
             </label>
-            <div className="grid grid-cols-2 gap-2">
+            <div className="grid grid-cols-3 gap-2">
+              <button
+                type="button"
+                onClick={() => handleProviderChange('nvidia')}
+                className={`py-2 px-2 rounded-lg text-xs font-bold border transition-all cursor-pointer text-center ${
+                  provider === 'nvidia'
+                    ? 'bg-[#76b900]/20 text-[#76b900] border-[#76b900] shadow-[0_0_10px_rgba(118,185,0,0.25)]'
+                    : 'bg-[#162438]/50 text-[#64748b] border-[#24354d]'
+                }`}
+              >
+                NVIDIA (Kimi-K3)
+              </button>
               <button
                 type="button"
                 onClick={() => handleProviderChange('gemini')}
-                className={`py-2 px-3 rounded-lg text-xs font-bold border transition-all cursor-pointer text-center ${
+                className={`py-2 px-2 rounded-lg text-xs font-bold border transition-all cursor-pointer text-center ${
                   provider === 'gemini'
                     ? 'bg-[#00e5ff]/20 text-[#00e5ff] border-[#00e5ff] shadow-[0_0_10px_rgba(0,229,255,0.2)]'
                     : 'bg-[#162438]/50 text-[#64748b] border-[#24354d]'
                 }`}
               >
-                Google Gemini (Search Tool)
+                Google Gemini
               </button>
               <button
                 type="button"
                 onClick={() => handleProviderChange('openai')}
-                className={`py-2 px-3 rounded-lg text-xs font-bold border transition-all cursor-pointer text-center ${
+                className={`py-2 px-2 rounded-lg text-xs font-bold border transition-all cursor-pointer text-center ${
                   provider === 'openai'
                     ? 'bg-[#00ff88]/20 text-[#00ff88] border-[#00ff88] shadow-[0_0_10px_rgba(0,255,136,0.2)]'
                     : 'bg-[#162438]/50 text-[#64748b] border-[#24354d]'
                 }`}
               >
-                OpenAI (Web Search)
+                OpenAI
               </button>
             </div>
           </div>
@@ -186,17 +207,24 @@ export default function KeyConfigDrawer({
           {/* Model Selection */}
           <div>
             <label className="text-[11px] uppercase tracking-wider text-[#94a3b8] block mb-1.5">
-              {provider === 'gemini' ? 'Gemini Model:' : 'OpenAI Model:'}
+              {provider === 'nvidia' ? 'NVIDIA Model:' : provider === 'gemini' ? 'Gemini Model:' : 'OpenAI Model:'}
             </label>
             <div className="grid grid-cols-2 gap-1.5">
-              {(provider === 'gemini' ? AVAILABLE_GEMINI_MODELS : AVAILABLE_OPENAI_MODELS).map((m) => (
+              {(provider === 'nvidia'
+                ? AVAILABLE_NVIDIA_MODELS
+                : provider === 'gemini'
+                ? AVAILABLE_GEMINI_MODELS
+                : AVAILABLE_OPENAI_MODELS
+              ).map((m) => (
                 <button
                   key={m.id}
                   type="button"
                   onClick={() => setSelectedModel(m.id)}
                   className={`py-1.5 px-2.5 rounded-lg text-xs font-mono border transition-all cursor-pointer text-left flex items-center justify-between ${
                     selectedModel === m.id
-                      ? provider === 'gemini'
+                      ? provider === 'nvidia'
+                        ? 'bg-[#76b900]/20 text-[#76b900] border-[#76b900] shadow-[0_0_8px_rgba(118,185,0,0.25)]'
+                        : provider === 'gemini'
                         ? 'bg-[#00e5ff]/20 text-[#00e5ff] border-[#00e5ff] shadow-[0_0_8px_rgba(0,229,255,0.2)]'
                         : 'bg-[#00ff88]/20 text-[#00ff88] border-[#00ff88] shadow-[0_0_8px_rgba(0,255,136,0.2)]'
                       : 'bg-[#162438]/40 text-[#94a3b8] hover:text-[#f1f5f9] border-[#24354d]/50'
@@ -214,14 +242,14 @@ export default function KeyConfigDrawer({
           {/* Key Input */}
           <div>
             <label className="text-[11px] uppercase tracking-wider text-[#94a3b8] block mb-1.5">
-              {provider === 'gemini' ? 'Gemini API Key:' : 'OpenAI API Key:'}
+              {provider === 'nvidia' ? 'NVIDIA API Key:' : provider === 'gemini' ? 'Gemini API Key:' : 'OpenAI API Key:'}
             </label>
             <div className="relative">
               <input
                 type={showKey ? 'text' : 'password'}
                 value={apiKeyInput}
                 onChange={(e) => handleKeyInputChange(e.target.value)}
-                placeholder={provider === 'gemini' ? 'AIzaSy...' : 'sk-...'}
+                placeholder={provider === 'nvidia' ? 'nvapi-...' : provider === 'gemini' ? 'AIzaSy...' : 'sk-...'}
                 className="w-full bg-[#06090e] border border-[#162438] focus:border-[#00e5ff] rounded-lg py-2.5 pl-3 pr-10 text-xs text-[#f1f5f9] outline-none transition-colors"
                 autoComplete="off"
                 spellCheck="false"

@@ -2,13 +2,35 @@
  * Type definitions and contracts for AI Job Matcher feature
  */
 
+export type JobPlatformType =
+  | 'LinkedIn'
+  | 'Wuzzuf'
+  | 'Glassdoor'
+  | 'Indeed'
+  | 'Bayt'
+  | 'Baeed'
+  | 'Forasna'
+  | 'Nafezly'
+  | 'Khamsat'
+  | 'Wellfound'
+  | 'Freelancer'
+  | 'Workana'
+  | 'Ureed'
+  | 'Kafiil'
+  | 'Bahr'
+  | 'PartTime'
+  | 'RemoteOK'
+  | 'WeWorkRemotely'
+  | 'Other'
+  | string;
+
 export interface JobOpportunity {
   id: string;
   title: string;
   company: string;
   location: string;
   isRemote: boolean;
-  sourcePlatform: 'LinkedIn' | 'Wuzzuf' | 'RemoteOK' | 'WeWorkRemotely' | 'Other' | string;
+  sourcePlatform: JobPlatformType;
   url?: string;
   fallbackSearchUrl: string;
   matchScore: number; // 0 to 100
@@ -29,8 +51,10 @@ export interface CandidateProfileContext {
   certifications: string[];
 }
 
+export type AIProvider = 'nvidia' | 'gemini' | 'openai';
+
 export interface SessionCredentials {
-  provider: 'gemini' | 'openai';
+  provider: AIProvider;
   apiKey: string;
   status: 'unconfigured' | 'ready' | 'invalid';
   lastUsedAt?: number;
@@ -38,10 +62,12 @@ export interface SessionCredentials {
 
 export type LocationFilter = 'all' | 'egypt' | 'mena' | 'remote';
 export type RoleFocusFilter = 'all' | 'fullstack' | 'backend' | 'cybersecurity';
+export type PlatformScopeFilter = 'all' | 'mena' | 'remote' | 'freelance' | 'corporate';
 
 export interface SearchFilterState {
   locationFilter: LocationFilter;
   roleFocus: RoleFocusFilter;
+  platformScope?: PlatformScopeFilter;
   minScore: number;
 }
 

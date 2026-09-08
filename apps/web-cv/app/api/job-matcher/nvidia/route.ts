@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { formatCandidatePromptContext } from '../../../../lib/candidate-profile';
-import { buildFallbackSearchUrl, getPlatformMeta, sanitizeJobUrl } from '../../../../lib/job-links';
+import { buildFallbackSearchUrl, sanitizeJobUrl } from '../../../../lib/job-links';
 import { isAuthorized } from '../../../../lib/messages-auth';
 import { checkRateLimit, getClientIp } from '../../../../lib/rate-limit';
 import type {
@@ -9,20 +9,25 @@ import type {
   SearchFilterState
 } from '../../../../lib/types/job-matcher';
 
-interface OpenAIJobMatcherRequestBody {
+interface NvidiaJobMatcherRequestBody {
   candidateContext: CandidateProfileContext;
   filters: SearchFilterState;
   model?: string;
 }
+
+const NVIDIA_INVOKE_URL = 'https://integrate.api.nvidia.com/v1/chat/completions';
+const DEFAULT_MODEL = 'moonshotai/kimi-k3';
+
+import { getPlatformMeta } from '../../../../lib/job-links';
 
 function buildSearchPrompt(candidate: CandidateProfileContext, filters: SearchFilterState): string {
   const profileBlock = formatCandidatePromptContext(candidate);
 
   const locationInstructions: Record<SearchFilterState['locationFilter'], string> = {
     all: 'Search across Egypt, the MENA region, and global remote opportunities.',
-    egypt: 'Focus specifically on active opportunities located in Egypt (Cairo, Giza, Alexandria) on platforms like Wuzzuf and LinkedIn.',
-    mena: 'Focus on opportunities across the MENA region (Egypt, UAE, Saudi Arabia, Qatar, Gulf) including regional remote roles.',
-    remote: 'Focus specifically on worldwide or EMEA remote engineering roles on platforms like RemoteOK, WeWorkRemotely, and LinkedIn.'
+    egypt: 'Focus specifically on active opportunities located in Egypt (Cairo, Giza, Alexandria) on platforms like Wuzzuf, Forasna, and LinkedIn.',
+    mena: 'Focus on opportunities across the MENA region (Egypt, UAE, Saudi Arabia, Qatar, Gulf) including regional remote roles on Bayt, Bahr, and Baeed.',
+    remote: 'Focus specifically on worldwide or EMEA remote engineering roles on platforms like Baeed, RemoteOK, WeWorkRemotely, Wellfound, and LinkedIn.'
   };
 
   const roleInstructions: Record<SearchFilterState['roleFocus'], string> = {
@@ -32,19 +37,28 @@ function buildSearchPrompt(candidate: CandidateProfileContext, filters: SearchFi
     cybersecurity: 'Focus on Cybersecurity roles, Web Application Penetration Tester, Security Engineer, or Application Security (AppSec) roles.'
   };
 
+  const platformScopeInstructions: Record<string, string> = {
+    all: 'Search across all 18+ indexed platforms: Glassdoor, Indeed, LinkedIn, Wellfound (AngelList), Wuzzuf, Forasna (فرصنا), Bayt (بيت), Baeed (بعيد), Nafezly (نفذلي), Khamsat (خمسات), Ureed (أريد), Freelancer, Workana, Kafiil (كفيل), Bahr (بحر), PartTime (بارتايم), RemoteOK, and WeWorkRemotely.',
+    mena: 'Focus specifically on Egypt and Arab regional hiring boards: Wuzzuf, Forasna (فرصنا), Bayt (بيت.كوم), Baeed (بعيد), Bahr (بحر), and Nafezly (نفذلي).',
+    remote: 'Focus specifically on remote tech portals: Baeed (بعيد - premier Arabic remote site), RemoteOK, WeWorkRemotely, and Wellfound (AngelList).',
+    freelance: 'Focus on project-based freelance platforms: Nafezly (نفذلي), Khamsat (خمسات), Ureed (أريد), Freelancer.com, Workana, Kafiil (كفيل), and Bahr (بحر).',
+    corporate: 'Focus on large tech employment boards: LinkedIn, Indeed, Glassdoor, Bayt, Wuzzuf, and PartTime (بارتايم).'
+  };
+
   return `
 You are an expert technical career matcher and executive talent scout.
-Your goal is to search for real-world, active job openings published recently that match the candidate's verified profile.
+Your goal is to search for and identify real-world, active or recently published job openings and freelance opportunities that closely match the candidate's verified profile.
 
 ${profileBlock}
 
 [SEARCH CONSTRAINTS & TARGETING]
 Location Target: ${locationInstructions[filters.locationFilter] || locationInstructions.all}
 Role Specialization Target: ${roleInstructions[filters.roleFocus] || roleInstructions.all}
+Platform Scope Focus: ${platformScopeInstructions[filters.platformScope || 'all']}
 Minimum Desired Match Score: ${filters.minScore}%
 
 [SUPPORTED SITES & DIRECTORY TO SOURCE FROM]
-Search and attribute opportunities to one of the following 18+ platforms:
+You must search and attribute opportunities to one of the following platforms:
 1. Glassdoor (Global tech companies & active hiring)
 2. Nafezly / نفذلي (Arab freelance projects & tech micro-contracts)
 3. Forasna / فرصنا (Egypt & MENA diverse tech positions)
@@ -64,16 +78,15 @@ Search and attribute opportunities to one of the following 18+ platforms:
 17. RemoteOK (Global remote developer postings)
 18. WeWorkRemotely (Worldwide remote engineering)
 
-[LIVE SEARCH & MATCHING INSTRUCTIONS]
-1. Search for active job postings and freelance opportunities across these platforms.
-2. Identify between 4 and 8 distinct, active openings that align with the candidate's skills.
-3. For each opening, compare the actual required skills against the candidate's profile:
+[MATCHING & DISCOVERY INSTRUCTIONS]
+1. Identify between 4 and 8 distinct, realistic, active job or project openings across these platforms that align with the candidate's verified skills.
+2. For each opening:
    - sourcePlatform: specify the exact platform from the list above (e.g. Glassdoor, Baeed, Nafezly, Bayt, Indeed, Forasna, Khamsat, etc.).
    - Assign an objective matchScore integer between 0 and 100.
-   - Identify 2 to 4 specific matching strengths (skills candidate has that job requires).
+   - Identify 2 to 4 specific matching strengths (skills candidate has that the job requires).
    - Identify 1 to 3 missing or gap skills (requirements or nice-to-haves candidate could learn).
-   - Provide a concise 1-2 sentence match summary explaining fit.
-   - Extract the direct posting link if available.
+   - Provide a concise 1-2 sentence match summary explaining candidate fit.
+   - Extract or provide the direct posting link or search URL if available.
 
 [OUTPUT FORMAT]
 You MUST respond with a valid JSON array of objects inside a fenced \`\`\`json code block. Do NOT include commentary outside the JSON block.
@@ -88,9 +101,9 @@ Schema:
     "isRemote": true,
     "sourcePlatform": "Glassdoor",
     "url": "https://www.glassdoor.com/...",
-    "matchScore": 85,
+    "matchScore": 88,
     "strengths": ["Strong TypeScript and NestJS experience", "PostgreSQL schema knowledge"],
-    "missingSkills": ["AWS Lambda", "Docker Swarm"],
+    "missingSkills": ["Kafka", "Docker Swarm"],
     "summary": "Excellent fit for backend API development using NestJS and relational databases."
   }
 ]
@@ -127,142 +140,6 @@ function parseJobsFromResponse(text: string): Partial<JobOpportunity>[] {
   }
 }
 
-/**
- * Attempts to call OpenAI Responses API with web_search tool.
- */
-async function callOpenAIResponses(
-  apiKey: string,
-  model: string,
-  prompt: string
-): Promise<{ text: string; queries: string[] } | null> {
-  const response = await fetch('https://api.openai.com/v1/responses', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${apiKey}`
-    },
-    body: JSON.stringify({
-      model: model || 'gpt-4o',
-      input: prompt,
-      tools: [{ type: 'web_search' }]
-    })
-  });
-
-  if (!response.ok) {
-    // If not supported (404/400), return null to trigger fallback
-    if (response.status === 404 || response.status === 400 || response.status === 422) {
-      return null;
-    }
-
-    const errJson = await response.json().catch(() => null);
-    const errMessage = errJson?.error?.message || response.statusText;
-
-    if (response.status === 401 || response.status === 403) {
-      const err = new Error(errMessage);
-      (err as any).type = 'AUTH_ERROR';
-      throw err;
-    }
-    if (response.status === 429) {
-      const err = new Error(errMessage);
-      (err as any).type = 'RATE_LIMIT';
-      throw err;
-    }
-
-    return null;
-  }
-
-  const data = await response.json();
-  const queries: string[] = [];
-
-  // Extract text from responses output array
-  let textOutput = '';
-  if (Array.isArray(data.output)) {
-    for (const item of data.output) {
-      if (item.type === 'message' && Array.isArray(item.content)) {
-        for (const part of item.content) {
-          if (part.type === 'output_text' && part.text) {
-            textOutput += part.text + '\n';
-          }
-        }
-      }
-      if (item.type === 'tool_call' && item.name === 'web_search') {
-        const q = item.arguments?.query || item.arguments?.queries;
-        if (typeof q === 'string') queries.push(q);
-        if (Array.isArray(q)) queries.push(...q);
-      }
-    }
-  }
-
-  return { text: textOutput || data.output_text || '', queries };
-}
-
-/**
- * Standard Chat Completions API fallback.
- */
-async function callOpenAIChatCompletions(
-  apiKey: string,
-  model: string,
-  prompt: string
-): Promise<{ text: string; queries: string[] }> {
-  const response = await fetch('https://api.openai.com/v1/chat/completions', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${apiKey}`
-    },
-    body: JSON.stringify({
-      model: model || 'gpt-4o',
-      messages: [
-        {
-          role: 'system',
-          content:
-            'You are an expert technical career matcher and executive talent scout. You discover active vacancies and calculate precise fit against verified developer credentials.'
-        },
-        {
-          role: 'user',
-          content: prompt
-        }
-      ],
-      temperature: 0.2
-    })
-  });
-
-  if (!response.ok) {
-    const errJson = await response.json().catch(() => null);
-    const errMessage = errJson?.error?.message || response.statusText;
-
-    if (response.status === 401 || response.status === 403) {
-      const err = new Error('Invalid or unauthorized OpenAI API key. Please verify your credentials at platform.openai.com.');
-      (err as any).type = 'AUTH_ERROR';
-      (err as any).rawDetails = errMessage;
-      throw err;
-    }
-
-    if (response.status === 429) {
-      const isQuota =
-        errMessage.toLowerCase().includes('quota') ||
-        errMessage.toLowerCase().includes('billing') ||
-        errMessage.toLowerCase().includes('insufficient_quota');
-      const friendlyMessage = isQuota
-        ? 'OpenAI Quota Exceeded: Your OpenAI account has exhausted its usage credits or has no active balance. Please check your billing at platform.openai.com or switch to Gemini.'
-        : 'OpenAI Rate Limit: Too many requests were sent in a short period. Please wait 15-30 seconds and retry.';
-      const err = new Error(friendlyMessage);
-      (err as any).type = 'RATE_LIMIT';
-      (err as any).rawDetails = errMessage;
-      throw err;
-    }
-
-    const err = new Error(`OpenAI request failed: ${errMessage}`);
-    (err as any).type = 'NETWORK_ERROR';
-    (err as any).rawDetails = errMessage;
-    throw err;
-  }
-
-  const data = await response.json();
-  const text = data.choices?.[0]?.message?.content || '';
-  return { text, queries: [] };
-}
-
 export async function POST(request: NextRequest) {
   // 1. Admin Authentication Check
   if (!isAuthorized(request)) {
@@ -280,7 +157,7 @@ export async function POST(request: NextRequest) {
 
   // 2. Rate-limit check based on client IP
   const ip = getClientIp(request);
-  const { allowed, retryAfterMs } = checkRateLimit(`openai-matcher:${ip}`);
+  const { allowed, retryAfterMs } = checkRateLimit(`nvidia-matcher:${ip}`);
   if (!allowed) {
     return NextResponse.json(
       {
@@ -298,9 +175,9 @@ export async function POST(request: NextRequest) {
   }
 
   // 3. API key from Server Environment (with client header fallback)
-  const envKey = process.env.OPENAI_API_KEY?.trim();
+  const envKey = process.env.NVIDIA_API_KEY?.trim();
   const headerKey = (
-    request.headers.get('x-openai-key') ||
+    request.headers.get('x-nvidia-key') ||
     request.headers.get('authorization')?.replace(/^Bearer\s+/i, '')
   )?.trim();
 
@@ -311,7 +188,7 @@ export async function POST(request: NextRequest) {
         status: 'error',
         error: {
           type: 'AUTH_ERROR',
-          message: 'OPENAI_API_KEY is not configured in .env.local on the server. Please set OPENAI_API_KEY or switch to Gemini.'
+          message: 'NVIDIA_API_KEY is not configured in .env.local on the server. Please set NVIDIA_API_KEY or arm it in the session.'
         }
       },
       { status: 400 }
@@ -319,7 +196,7 @@ export async function POST(request: NextRequest) {
   }
 
   try {
-    const body: OpenAIJobMatcherRequestBody = await request.json();
+    const body: NvidiaJobMatcherRequestBody = await request.json();
     const { candidateContext, filters, model } = body;
 
     if (!candidateContext || !filters) {
@@ -336,26 +213,64 @@ export async function POST(request: NextRequest) {
     }
 
     const prompt = buildSearchPrompt(candidateContext, filters);
-    const targetModel = (model || '').trim() || 'gpt-4o';
+    const targetModel = (model || '').trim() || DEFAULT_MODEL;
 
-    let result: { text: string; queries: string[] } | null = null;
+    const payload = {
+      model: targetModel,
+      messages: [
+        {
+          role: 'system',
+          content:
+            'You are an expert technical career matcher and executive talent scout. You discover active vacancies and calculate precise fit against verified developer credentials.'
+        },
+        {
+          role: 'user',
+          content: prompt
+        }
+      ],
+      max_tokens: 8192,
+      temperature: 0.7,
+      seed: 0
+    };
 
-    // 1. Try Responses API with web_search first
-    try {
-      result = await callOpenAIResponses(cleanKey, targetModel, prompt);
-    } catch (err: any) {
-      if (err?.type === 'AUTH_ERROR' || err?.type === 'RATE_LIMIT') {
+    const response = await fetch(NVIDIA_INVOKE_URL, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${cleanKey}`,
+        'Content-Type': 'application/json',
+        Accept: 'application/json'
+      },
+      body: JSON.stringify(payload)
+    });
+
+    if (!response.ok) {
+      const errJson = await response.json().catch(() => null);
+      const errMessage = errJson?.error?.message || response.statusText;
+
+      if (response.status === 401 || response.status === 403) {
+        const err = new Error('Invalid or unauthorized NVIDIA API key. Please check your credentials at build.nvidia.com.');
+        (err as any).type = 'AUTH_ERROR';
+        (err as any).rawDetails = errMessage;
         throw err;
       }
-      result = null;
+
+      if (response.status === 429) {
+        const err = new Error('NVIDIA API Rate Limit or quota reached. Please wait a moment and try again.');
+        (err as any).type = 'RATE_LIMIT';
+        (err as any).rawDetails = errMessage;
+        throw err;
+      }
+
+      const err = new Error(`NVIDIA request failed (${response.status}): ${errMessage}`);
+      (err as any).type = 'NETWORK_ERROR';
+      (err as any).rawDetails = errMessage;
+      throw err;
     }
 
-    // 2. Fall back to Chat Completions API if Responses API is unavailable
-    if (!result || !result.text) {
-      result = await callOpenAIChatCompletions(cleanKey, targetModel, prompt);
-    }
+    const data = await response.json();
+    const text = data.choices?.[0]?.message?.content || '';
 
-    const rawJobs = parseJobsFromResponse(result.text);
+    const rawJobs = parseJobsFromResponse(text);
 
     if (rawJobs.length === 0) {
       return NextResponse.json(
@@ -378,7 +293,7 @@ export async function POST(request: NextRequest) {
       const directUrl = sanitizeJobUrl(item.url) || platformMeta.buildSearchUrl(title, company);
       const fallbackSearchUrl = buildFallbackSearchUrl(title, company, location, platformMeta.name);
 
-      const rawScore = typeof item.matchScore === 'number' ? item.matchScore : 75;
+      const rawScore = typeof item.matchScore === 'number' ? item.matchScore : 80;
       const matchScore = Math.max(0, Math.min(100, Math.round(rawScore)));
 
       const slug = `${title}-${company}-${index}`
@@ -387,7 +302,7 @@ export async function POST(request: NextRequest) {
         .replace(/^-|-$/g, '');
 
       return {
-        id: slug || `openai-job-${Date.now()}-${index}`,
+        id: slug || `nvidia-job-${Date.now()}-${index}`,
         title,
         company,
         location,
@@ -407,21 +322,22 @@ export async function POST(request: NextRequest) {
 
     const defaultQueries = [
       `${filters.roleFocus !== 'all' ? filters.roleFocus : 'Software Engineer'} ${filters.locationFilter !== 'all' ? filters.locationFilter : 'Egypt Remote'}`,
-      'TypeScript NestJS Node.js Developer hiring'
+      'Moonshot Kimi-K3 Technical Compatibility Match',
+      'TypeScript NestJS Node.js Developer Hiring'
     ];
 
     return NextResponse.json({
       status: 'success',
       result: {
         jobs: normalizedJobs,
-        searchQueriesUsed: result.queries.length > 0 ? result.queries : defaultQueries,
+        searchQueriesUsed: defaultQueries,
         totalDiscovered: normalizedJobs.length,
         timestamp: new Date().toISOString()
       }
     });
   } catch (err: any) {
     const errorType = err?.type || 'NETWORK_ERROR';
-    const message = err?.message || 'An unexpected error occurred while communicating with OpenAI.';
+    const message = err?.message || 'An unexpected error occurred while communicating with NVIDIA NIM.';
     const rawDetails = err?.rawDetails || String(err);
 
     const statusCode = errorType === 'AUTH_ERROR' ? 401 : errorType === 'RATE_LIMIT' ? 429 : 500;

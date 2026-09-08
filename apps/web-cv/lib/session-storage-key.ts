@@ -8,9 +8,13 @@ const STORAGE_KEY = 'cyber_hud_job_matcher_api_key';
 const PROVIDER_KEY = 'cyber_hud_job_matcher_provider';
 const MODEL_KEY = 'cyber_hud_job_matcher_model';
 
+import type { AIProvider } from './types/job-matcher';
+
+export const DEFAULT_NVIDIA_MODEL = 'moonshotai/kimi-k3';
 export const DEFAULT_GEMINI_MODEL = 'gemini-3.7-flash';
 export const DEFAULT_OPENAI_MODEL = 'gpt-4o';
 
+const MODEL_KEY_NVIDIA = 'cyber_hud_job_matcher_model_nvidia';
 const MODEL_KEY_GEMINI = 'cyber_hud_job_matcher_model_gemini';
 const MODEL_KEY_OPENAI = 'cyber_hud_job_matcher_model_openai';
 
@@ -60,11 +64,14 @@ export function clearSessionApiKey(): void {
 }
 
 /**
- * Detects whether an API key appears to be OpenAI or Gemini based on standard prefixes.
+ * Detects whether an API key appears to be NVIDIA, OpenAI, or Gemini based on standard prefixes.
  */
-export function detectKeyProvider(key: string): 'gemini' | 'openai' | null {
+export function detectKeyProvider(key: string): AIProvider | null {
   const trimmed = (key || '').trim();
   if (!trimmed) return null;
+  if (trimmed.startsWith('nvapi-')) {
+    return 'nvidia';
+  }
   if (trimmed.startsWith('sk-') || trimmed.startsWith('org-')) {
     return 'openai';
   }
@@ -75,22 +82,25 @@ export function detectKeyProvider(key: string): 'gemini' | 'openai' | null {
 }
 
 /**
- * Retrieves the preferred AI provider.
+ * Retrieves the preferred AI provider. Defaults to 'nvidia'.
  */
-export function getSessionProvider(): 'gemini' | 'openai' {
-  if (!isBrowser()) return 'gemini';
+export function getSessionProvider(): AIProvider {
+  if (!isBrowser()) return 'nvidia';
   try {
     const p = window.sessionStorage.getItem(PROVIDER_KEY);
-    return p === 'openai' ? 'openai' : 'gemini';
+    if (p === 'nvidia' || p === 'openai' || p === 'gemini') {
+      return p;
+    }
+    return 'nvidia';
   } catch {
-    return 'gemini';
+    return 'nvidia';
   }
 }
 
 /**
  * Stores the preferred AI provider.
  */
-export function setSessionProvider(provider: 'gemini' | 'openai'): void {
+export function setSessionProvider(provider: AIProvider): void {
   if (!isBrowser()) return;
   try {
     window.sessionStorage.setItem(PROVIDER_KEY, provider);
@@ -102,10 +112,17 @@ export function setSessionProvider(provider: 'gemini' | 'openai'): void {
 /**
  * Retrieves the preferred model ID for the given or current provider.
  */
-export function getSessionModel(provider?: 'gemini' | 'openai'): string {
-  if (!isBrowser()) return DEFAULT_GEMINI_MODEL;
+export function getSessionModel(provider?: AIProvider): string {
+  if (!isBrowser()) return DEFAULT_NVIDIA_MODEL;
   try {
     const activeProvider = provider || getSessionProvider();
+    if (activeProvider === 'nvidia') {
+      return (
+        window.sessionStorage.getItem(MODEL_KEY_NVIDIA) ||
+        window.sessionStorage.getItem(MODEL_KEY) ||
+        DEFAULT_NVIDIA_MODEL
+      );
+    }
     if (activeProvider === 'openai') {
       return (
         window.sessionStorage.getItem(MODEL_KEY_OPENAI) ||
@@ -119,25 +136,29 @@ export function getSessionModel(provider?: 'gemini' | 'openai'): string {
       DEFAULT_GEMINI_MODEL
     );
   } catch {
-    return provider === 'openai' ? DEFAULT_OPENAI_MODEL : DEFAULT_GEMINI_MODEL;
+    if (provider === 'openai') return DEFAULT_OPENAI_MODEL;
+    if (provider === 'gemini') return DEFAULT_GEMINI_MODEL;
+    return DEFAULT_NVIDIA_MODEL;
   }
 }
 
 /**
  * Stores the preferred model ID for the given or current provider.
  */
-export function setSessionModel(model: string, provider?: 'gemini' | 'openai'): void {
+export function setSessionModel(model: string, provider?: AIProvider): void {
   if (!isBrowser()) return;
   try {
     const activeProvider = provider || getSessionProvider();
     const cleanModel = (model || '').trim();
-    if (activeProvider === 'openai') {
+    if (activeProvider === 'nvidia') {
+      window.sessionStorage.setItem(MODEL_KEY_NVIDIA, cleanModel || DEFAULT_NVIDIA_MODEL);
+    } else if (activeProvider === 'openai') {
       window.sessionStorage.setItem(MODEL_KEY_OPENAI, cleanModel || DEFAULT_OPENAI_MODEL);
     } else {
       window.sessionStorage.setItem(MODEL_KEY_GEMINI, cleanModel || DEFAULT_GEMINI_MODEL);
     }
     // Also update legacy key for backwards compatibility
-    window.sessionStorage.setItem(MODEL_KEY, cleanModel || DEFAULT_GEMINI_MODEL);
+    window.sessionStorage.setItem(MODEL_KEY, cleanModel || DEFAULT_NVIDIA_MODEL);
   } catch {
     // Ignore
   }
