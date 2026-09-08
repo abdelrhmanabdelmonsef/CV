@@ -3,7 +3,7 @@ import type { CvData } from './types';
 const cvData: CvData = {
   personal: {
     name: 'Abdel-Rahman Abdel-Monsef',
-    title: 'Software Engineer | Full-Stack & Backend Systems | Cybersecurity Enthusiast',
+    title: 'Software Engineer | Scalable Backend & Distributed Systems | AppSec',
     location: 'Cairo, Egypt',
     phones: ['+20 127 286 2660', '+20 102 070 8385'],
     email: 'a.abdelmonsef@kneraflow.com',
@@ -11,42 +11,47 @@ const cvData: CvData = {
     linkedIn: 'https://www.linkedin.com/in/abdelrhman-abdelmonsef-48aa281ab/',
     github: 'https://github.com/abdelrhmanabdelmonsef',
     htb: 'https://profile.hackthebox.com/profile/019e8056-cb46-73e2-a8ce-09c8b8aceb7d',
-    tryHackMe: 'https://tryhackme.com/p/0xTDS'
+    tryHackMe: 'https://tryhackme.com/p/0xTDS',
+    militaryStatus: 'Completed / Exempted'
   },
 
   summary:
-    'Highly motivated Computers & Systems Engineering graduate with growing hands-on experience in modern web development — especially TypeScript, JavaScript, Node.js, Express, NestJS, and Next.js — combined with a proven foundation in web application penetration testing from a dedicated cybersecurity internship. I am building solid backend and frontend skills through asynchronous Node.js patterns, REST APIs, middleware, and module-based architecture, while maintaining strong interest in cybersecurity, secure coding, and OWASP-aware web application security. Known for problem-solving, teamwork, and a fast-learning mindset.',
+    'Software Engineer with a Bachelor’s in Computers & Systems Engineering (Al-Azhar University), specializing in scalable TypeScript/Node.js backend architectures, NestJS microservices, and modern Next.js applications. Experienced in engineering resilient distributed systems featuring asynchronous worker queues (BullMQ/Redis), multi-tenant PostgreSQL schemas, and secure payment/telecom webhook ingestion. Combines enterprise full-stack development with an offensive security foundation (OWASP Top 10, penetration testing, secure code review) to build hardened, production-ready platforms.',
 
   resume: {
     summary:
-      'Computers & Systems Engineering graduate with hands-on experience in modern web development (TypeScript, Node.js, NestJS, Next.js) and a solid foundation in cybersecurity from a dedicated penetration testing internship. Applies OWASP-aware secure coding practices and is actively pursuing OSCP and eWAPT certifications.',
+      'Software Engineer with a Bachelor’s in Computers & Systems Engineering, specializing in scalable Node.js/NestJS backend architectures, TypeScript, and modern Next.js applications. Experienced in designing resilient distributed systems featuring asynchronous queues (BullMQ/Redis), multi-tenant PostgreSQL persistence, and secure webhook pipelines. Combines full-stack development expertise with an offensive security foundation (OWASP Top 10, penetration testing, secure code review) to deliver hardened, production-ready software.',
     skills: [
-      'Web App Pentesting',
-      'OWASP Top 10',
       'TypeScript',
       'Node.js',
-      'Express',
       'NestJS',
-      'Next.js',
+      'Next.js (App Router)',
+      'Express.js',
       'PostgreSQL',
       'Redis',
       'BullMQ',
+      'Docker Compose',
+      'RESTful APIs',
+      'TypeORM',
+      'Microservices',
+      'Jest',
+      'Testcontainers',
+      'Web App Pentesting',
+      'OWASP Top 10',
       'Burp Suite',
-      'Nmap',
+      'Red Hat Linux (RH124)',
       'Kali Linux',
-      'Red Hat Linux',
       'Python',
-      'Bash',
-      'Docker'
+      'Bash'
     ],
     platformLine: 'TryHackMe (@0xTDS) & HackTheBox (@0xMonsef — Pro Rank, 30+ Labs)'
   },
 
   learningHighlights: [
-    'Developing large-scale TypeScript applications with secure webhook ingestion, queue-based fulfillment, and RBAC-driven operations.',
-    'Focused on full-stack JavaScript with TypeScript, Node.js, Express, NestJS, and Next.js.',
-    'Practicing secure web development by applying secure coding principles and OWASP-aware patterns.',
-    'Building backend APIs and frontend dashboards while exploring NestJS architecture, async jobs, and modern deployment tooling.'
+    'Designing high-throughput TypeScript/Node.js architectures with decoupled BullMQ worker pipelines and Redis caching.',
+    'Engineering multi-tenant relational databases in PostgreSQL with UUIDv7 primary keys and composite idempotency constraints.',
+    'Hardening full-stack web applications against OWASP Top 10 vulnerabilities (BOLA/IDOR, SQLi, CSRF, broken access control).',
+    'Building high-performance bilingual (Arabic RTL & English) administrative dashboards with Next.js 16 App Router and Tailwind CSS.'
   ],
 
   education: [
@@ -74,10 +79,10 @@ const cvData: CvData = {
       status: 'Present',
       statusVariant: 'green',
       highlights: [
-        'Architecting and developing full-stack web services and robust backend systems using modern TypeScript architectures.',
-        'Designing scalable RESTful APIs, asynchronous job pipelines, and automated cloud workflows.',
-        'Applying secure coding principles, modular microservices patterns, and high-reliability data persistence.',
-        'Collaborating across engineering cycles to deliver high-performance, maintainable software solutions.'
+        'Architecting production-grade RESTful APIs and distributed backend services in TypeScript/Node.js, optimizing endpoint latency and database query efficiency.',
+        'Designing asynchronous job pipelines and event-driven workflows, ensuring resilient background processing and reliable third-party integrations.',
+        'Applying security-first engineering patterns across microservices, conducting internal code audits for authorization controls, input sanitization, and rate limiting.',
+        'Collaborating across engineering cycles to maintain high-reliability cloud deployments, automated testing, and maintainable modular codebases.'
       ]
     },
     {
@@ -89,10 +94,10 @@ const cvData: CvData = {
       status: 'Completed',
       statusVariant: 'green',
       highlights: [
-        'Engineered full-stack web solutions and modern architectures utilizing Node.js, NestJS, Next.js, and TypeScript within an AI-driven development workflow.',
-        'Contributed to the core revamp of the Ocean67 platform, building scalable backend APIs, async worker pipelines, and responsive frontend components.',
-        'Applied modular software patterns, secure API integrations, and robust error handling to enhance platform reliability.',
-        'Leveraged AI-assisted development tooling to accelerate feature delivery, code quality review, and automated testing.'
+        'Architected asynchronous fulfillment pipelines using NestJS, BullMQ, and Redis for the Ocean67 digital fulfillment platform, decoupling webhook ingestion from provider fulfillment across 10+ third-party APIs (Salla, STC, Taqnyat SMS).',
+        'Designed multi-tenant PostgreSQL data architecture utilizing time-ordered UUIDv7 primary keys, composite uniqueness constraints for webhook idempotency, and AES-256-GCM encryption for stored provider credentials.',
+        'Implemented comprehensive testing and observability suites with ~85 automated unit and integration tests (Jest & Testcontainers), Prometheus metrics (prom-client), and structured Pino logging with correlation IDs.',
+        'Developed high-performance bilingual (Arabic RTL / English) operations and admin dashboards using Next.js 16 (App Router), Tailwind CSS, and Zod-validated server actions with granular RBAC permissions.'
       ]
     },
     {
@@ -104,10 +109,10 @@ const cvData: CvData = {
       status: 'Completed',
       statusVariant: 'green',
       highlights: [
-        'Collaborated with senior penetration testers to perform comprehensive security assessments and web application/network penetration tests.',
-        'Executed targeted reconnaissance, vulnerability scanning, and manual exploitation of flaws to secure applications against OWASP Top 10 vulnerabilities.',
-        'Analyzed test results, drafted detailed technical remediation reports, and presented actionable security recommendations to developers.',
-        'Participated in continuous training and threat modeling sessions to align security controls with modern cybersecurity best practices.'
+        'Executed comprehensive web application penetration tests and vulnerability assessments across staging and production client environments.',
+        'Identified and demonstrated exploitation of critical OWASP Top 10 vulnerabilities, including Broken Object-Level Authorization (BOLA), IDOR, SQL injection, and CSRF.',
+        'Drafted actionable technical remediation roadmaps and paired directly with software engineers to patch vulnerabilities and implement secure authorization patterns.',
+        'Conducted threat modeling and secure code reviews to align application controls with modern enterprise cybersecurity standards.'
       ],
       certificateUrl: '/certificates/Hackers_For_you_intern_cert.png',
       certificateTitle: 'Hackers For You - Internship Certificate'
@@ -116,103 +121,112 @@ const cvData: CvData = {
 
   projects: [
     {
-      id: 'proj-grad',
-      title: '🔐 Automated Web Pentest Tool',
-      link: 'https://github.com/abdelrhmanabdelmonsef/web-app-vuln-scanner',
-      description:
-        'Developed a custom penetration testing toolkit designed for automated web application security assessments. The tool performs reconnaissance, service enumeration, vulnerability identification, and generates structured PDF reports for remediation guidance.',
-      tags: ['Python', 'Bash', 'OWASP Top 10', 'Nmap API', 'Burp API'],
-      featuredTags: ['Python', 'OWASP Top 10']
-    },
-    {
       id: 'proj-ocean67',
       title: '🚀 Ocean67 Fulfillment Platform',
       associatedWith: 'Smaww Internship',
       isPrivate: true,
       description:
-        'Engineered during the Full-Stack Internship at Smaww (smaww.net) — a unified digital-goods fulfillment platform revamp built with TypeScript, NestJS, and Next.js, featuring secure webhook ingestion, async BullMQ workers, RBAC, PostgreSQL/Redis workflows, provider integration logic, and ~85 automated tests.',
-      tags: ['TypeScript', 'NestJS', 'Next.js', 'BullMQ', 'PostgreSQL', 'Redis', 'Webhook Security', 'RBAC', 'Jest', 'AI-Driven Workflow'],
-      featuredTags: ['TypeScript', 'NestJS', 'Next.js']
+        'Unified digital-goods fulfillment platform monorepo engineered at Smaww (smaww.net). Built with TypeScript, NestJS, and Next.js 16 App Router, featuring secure webhook ingestion, async BullMQ workers, multi-tenant PostgreSQL with UUIDv7, AES-256-GCM encrypted credentials, granular RBAC, and ~85 automated tests with Jest & Testcontainers.',
+      tags: ['TypeScript', 'NestJS', 'Next.js 16', 'BullMQ', 'Redis', 'PostgreSQL', 'UUIDv7', 'Webhook Security', 'RBAC', 'Jest', 'Testcontainers'],
+      featuredTags: ['TypeScript', 'NestJS', 'Next.js 16', 'BullMQ']
     },
     {
       id: 'proj-tasks-notes',
       title: '📋 Tasks & Notes App',
       link: 'https://github.com/abdelrhmanabdelmonsef/tasks-notes-app',
       description:
-        'Full-stack monorepo featuring a NestJS REST API with JWT auth, RBAC, PostgreSQL persistence via TypeORM, class-validator DTOs, bcrypt password hashing, BullMQ async queues, and a Next.js frontend scaffold.',
-      tags: ['TypeScript', 'NestJS', 'Node.js', 'PostgreSQL', 'TypeORM', 'JWT', 'Passport', 'Next.js', 'Tailwind CSS'],
-      featuredTags: ['TypeScript', 'NestJS']
+        'Full-stack monorepo featuring a NestJS REST API with JWT authentication (access & refresh tokens), RBAC, PostgreSQL persistence via TypeORM, class-validator DTOs, bcrypt password hashing, BullMQ asynchronous queues, and a responsive Next.js frontend scaffold.',
+      tags: ['TypeScript', 'NestJS', 'Node.js', 'PostgreSQL', 'TypeORM', 'BullMQ', 'JWT / RBAC', 'Next.js', 'Tailwind CSS'],
+      featuredTags: ['TypeScript', 'NestJS', 'PostgreSQL']
+    },
+    {
+      id: 'proj-grad',
+      title: '🔐 Automated Web Pentest Tool',
+      link: 'https://github.com/abdelrhmanabdelmonsef/web-app-vuln-scanner',
+      description:
+        'Custom automated penetration testing toolkit developed for university graduation project. Performs multi-stage reconnaissance, port discovery, OWASP Top 10 vulnerability scanning, and automated structured remediation report generation in Python and Bash.',
+      tags: ['Python', 'Bash Scripting', 'OWASP Top 10', 'Nmap API', 'Burp API', 'Linux'],
+      featuredTags: ['Python', 'OWASP Top 10']
     }
   ],
 
   skillCategories: [
     {
-      id: 'skill-web-security',
-      title: 'Web Security',
-      color: 'green',
-      tags: [
-        'Penetration Testing',
-        'OWASP Top 10 Audit',
-        'Vulnerability Assessment',
-        'Secure Coding',
-        'RBAC & Access Control',
-        'Webhook Security',
-        'Account Protection',
-        'Threat Modeling'
-      ]
-    },
-    {
-      id: 'skill-tools',
-      title: 'Pentesting Tools',
-      color: 'blue',
-      tags: ['Burp Suite', 'Nmap', 'Metasploit', 'OWASP ZAP', 'Wireshark', 'SQLMap', 'Gobuster', 'Hydra', 'Dirbuster']
-    },
-    {
-      id: 'skill-os',
-      title: 'Operating Systems',
-      color: 'purple',
-      tags: ['Kali Linux', 'Parrot OS', 'Red Hat Linux', 'Debian', 'Windows Server']
-    },
-    {
-      id: 'skill-networking',
-      title: 'Networking & Core Code',
-      color: 'gray',
-      tags: ['TCP/IP Protocols', 'Routing & Switching', 'Network Security', 'Python', 'Bash Scripting', 'Java', 'Git']
-    },
-    {
-      id: 'skill-backend-devops',
-      title: 'Backend & DevOps',
+      id: 'skill-backend-systems',
+      title: 'Backend & Distributed Systems',
       color: 'blue',
       tags: [
         'Node.js',
-        'Express.js',
         'NestJS',
-        'PostgreSQL',
-        'TypeORM',
-        'Redis',
+        'Express.js',
+        'TypeScript',
         'BullMQ',
-        'REST APIs',
-        'JWT Auth',
-        'Passport.js',
-        'Docker Compose',
-        'Jest',
-        'Testcontainers',
-        'Nx Workspace',
-        'pnpm'
+        'Redis',
+        'RESTful APIs',
+        'Microservices',
+        'Webhook Architecture',
+        'Event-Driven Systems'
       ]
     },
     {
-      id: 'skill-web-dev',
-      title: 'Web Development',
+      id: 'skill-db-infra',
+      title: 'Databases & Data Architecture',
+      color: 'purple',
+      tags: [
+        'PostgreSQL',
+        'TypeORM',
+        'UUIDv7',
+        'Database Migrations',
+        'Redis Caching',
+        'Idempotency Nonces',
+        'Multi-Tenancy',
+        'Data Encryption (AES-256-GCM)'
+      ]
+    },
+    {
+      id: 'skill-frontend',
+      title: 'Frontend & UI Architecture',
       color: 'green',
-      tags: ['TypeScript', 'JavaScript (ES6+)', 'Next.js', 'React', 'Tailwind CSS', 'HTML5 / CSS3'],
-      progress: [
-        { name: 'TypeScript', label: 'Intermediate', width: 72 },
-        { name: 'JavaScript', label: 'Intermediate', width: 75 },
-        { name: 'Node.js', label: 'Intermediate', width: 70 },
-        { name: 'Express.js', label: 'Foundational', width: 60 },
-        { name: 'NestJS', label: 'Intermediate', width: 70 },
-        { name: 'Next.js', label: 'Intermediate', width: 68 }
+      tags: [
+        'Next.js 16 (App Router)',
+        'React 19',
+        'Tailwind CSS',
+        'Zod Validation',
+        'React Hook Form',
+        'Zustand',
+        'Arabic RTL & English i18n',
+        'Radix UI / shadcn'
+      ]
+    },
+    {
+      id: 'skill-web-security',
+      title: 'Application Security & Systems',
+      color: 'green',
+      tags: [
+        'OWASP Top 10 Auditing',
+        'Web App Pentesting',
+        'Secure Code Review',
+        'RBAC & Access Control',
+        'JWT / OAuth2 Strategies',
+        'Burp Suite',
+        'Nmap',
+        'Kali Linux',
+        'Red Hat Enterprise Linux'
+      ]
+    },
+    {
+      id: 'skill-devops-testing',
+      title: 'DevOps, Testing & Observability',
+      color: 'blue',
+      tags: [
+        'Docker Compose',
+        'Jest',
+        'Testcontainers',
+        'Prometheus (prom-client)',
+        'Structured Pino Logging',
+        'Git & GitHub Workflows',
+        'Linux Server Administration',
+        'Nx Monorepo'
       ]
     }
   ],
@@ -359,7 +373,8 @@ const cvData: CvData = {
     secondaryEmail: 'abdelmonsef349@gmail.com',
     linkedIn: 'https://www.linkedin.com/in/abdelrhman-abdelmonsef-48aa281ab/',
     github: 'https://github.com/abdelrhmanabdelmonsef',
-    location: 'Cairo, Egypt'
+    location: 'Cairo, Egypt',
+    militaryStatus: 'Completed / Exempted'
   },
 
   terminal: {

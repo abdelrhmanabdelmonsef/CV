@@ -7,7 +7,7 @@
   <style>
   @page {
     size: A4;
-    margin: 9mm 11mm;
+    margin: 8mm 10mm;
   }
   *, *::before, *::after {
     box-sizing: border-box;
@@ -17,8 +17,8 @@
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     color: #1a1a1a;
-    background: #ffffff;
-    font-size: 8.6pt;
+    background: #06090e;
+    font-size: 8.5pt;
     line-height: 1.32;
     -webkit-font-smoothing: antialiased;
   }
@@ -30,7 +30,7 @@
     text-decoration: underline;
   }
   .resume-shell {
-    background: #f1f5f9;
+    background: transparent;
     min-height: 100vh;
     padding: 24px 16px;
     display: flex;
@@ -73,6 +73,7 @@
   .resume-block {
     margin-bottom: 6px;
     page-break-inside: avoid;
+    break-inside: avoid;
   }
   .resume-heading {
     font-size: 9.2pt;
@@ -93,6 +94,7 @@
   .item {
     margin-bottom: 4.5px;
     page-break-inside: avoid;
+    break-inside: avoid;
   }
   .item-header {
     display: flex;
@@ -157,17 +159,24 @@
     color: #111827;
   }
   @media print {
+    nav, .resume-toolbar, #matrix-canvas, .skip-to-content, footer {
+      display: none !important;
+    }
     html, body {
       background: #ffffff !important;
       color: #1a1a1a !important;
       margin: 0 !important;
       padding: 0 !important;
-      font-size: 8.6pt !important;
+      font-size: 8.5pt !important;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
     }
     .resume-shell {
       padding: 0 !important;
+      margin: 0 !important;
       min-height: auto !important;
       background: #ffffff !important;
+      display: block !important;
     }
     .resume-page {
       max-width: 100% !important;
@@ -175,13 +184,15 @@
       padding: 0 !important;
       box-shadow: none !important;
       border-radius: 0 !important;
+      background: #ffffff !important;
     }
     .resume-heading, .resume-name, .item-badge {
-      -webkit-print-color-adjust: exact;
-      print-color-adjust: exact;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
     }
     .resume-block, .item {
-      page-break-inside: avoid;
+      page-break-inside: avoid !important;
+      break-inside: avoid !important;
     }
   }
 </style>
@@ -193,8 +204,8 @@
     <header class="resume-header">
       <h1 class="resume-name">Abdel-Rahman Abdel-Monsef</h1>
       <div class="contact-bar">
-        Cairo, Egypt &bull; +20 127 286 2660 • +20 102 070 8385<br>
-        abdelmonsef349@gmail.com • abdelmonsef348@gmail.com<br>
+        Cairo, Egypt &bull; Military: Completed / Exempted &bull; +20 127 286 2660 • +20 102 070 8385<br>
+        a.abdelmonsef@kneraflow.com • abdelmonsef349@gmail.com<br>
         <a href="https://www.linkedin.com/in/abdelrhman-abdelmonsef-48aa281ab/" target="_blank" rel="noreferrer">linkedin.com/in/abdelrhman-abdelmonsef-48aa281ab</a> &bull;
         <a href="https://github.com/abdelrhmanabdelmonsef" target="_blank" rel="noreferrer">github.com/abdelrhmanabdelmonsef</a>
          &bull; <a href="https://profile.hackthebox.com/profile/019e8056-cb46-73e2-a8ce-09c8b8aceb7d" target="_blank" rel="noreferrer">HackTheBox (@0xMonsef)</a>
@@ -205,16 +216,17 @@
 
     <section class="resume-block">
       <h2 class="resume-heading">Professional Summary</h2>
-      <p class="resume-summary">Computers &amp; Systems Engineering graduate with hands-on experience in modern web development (TypeScript, Node.js, NestJS, Next.js) and a solid foundation in cybersecurity from a dedicated penetration testing internship. Applies OWASP-aware secure coding practices and is actively pursuing OSCP and eWAPT certifications.</p>
+      <p class="resume-summary">Software Engineer with a Bachelor’s in Computers & Systems Engineering, specializing in scalable Node.js/NestJS backend architectures, TypeScript, and modern Next.js applications. Experienced in designing resilient distributed systems featuring asynchronous queues (BullMQ/Redis), multi-tenant PostgreSQL persistence, and secure webhook pipelines. Combines full-stack development expertise with an offensive security foundation (OWASP Top 10, penetration testing, secure code review) to deliver hardened, production-ready software.</p>
     </section>
 
     <section class="resume-block">
       <h2 class="resume-heading">Technical Skills</h2>
       <div class="skills-list">
-        <div class="skills-row"><span class="skills-label">Languages &amp; Core:</span> TypeScript, JavaScript (ES6+), Node.js, Python, Bash, SQL, Java</div>
-        <div class="skills-row"><span class="skills-label">Frameworks &amp; Web:</span> NestJS, Next.js (App Router), Express.js, React, Tailwind CSS, HTML5/CSS3</div>
-        <div class="skills-row"><span class="skills-label">Backend &amp; DevOps:</span> REST APIs, Asynchronous Queues (BullMQ), Redis, PostgreSQL, TypeORM, Docker, Jest, Webhooks, RBAC</div>
-        <div class="skills-row"><span class="skills-label">Security &amp; Pentesting:</span> Web App Pentesting, OWASP Top 10, Burp Suite, Nmap, Vulnerability Assessment, Kali Linux, Red Hat Enterprise Linux</div>
+        <div class="skills-row"><span class="skills-label">Backend &amp; Distributed Systems:</span> Node.js, NestJS, Express.js, TypeScript, RESTful APIs, Microservices, BullMQ, Redis, Webhook Architecture</div>
+        <div class="skills-row"><span class="skills-label">Databases &amp; Caching:</span> PostgreSQL, TypeORM, UUIDv7, Composite Indexing, Migrations, Redis Caching, Idempotency Nonces</div>
+        <div class="skills-row"><span class="skills-label">Frontend &amp; UI Architecture:</span> Next.js 16 (App Router), React 19, Tailwind CSS, Zod, React Hook Form, Zustand, Arabic RTL &amp; English i18n</div>
+        <div class="skills-row"><span class="skills-label">Application Security &amp; Systems:</span> OWASP Top 10 Auditing, Web App Pentesting, Secure Code Review, RBAC, JWT / RS256, Burp Suite, Nmap, Kali Linux, Red Hat Enterprise Linux</div>
+        <div class="skills-row"><span class="skills-label">DevOps, Testing &amp; Observability:</span> Docker Compose, Jest, Testcontainers, Prometheus (prom-client), Structured Pino Logging, Git &amp; GitHub</div>
       </div>
     </section>
 
@@ -223,11 +235,20 @@
       
     <div class="item">
       <div class="item-header">
+        <div class="item-left"><span class="role-title">Software Engineer</span> &bull; <span class="org-name">Kneraflow (kneraflow.com)</span></div>
+        <div class="date-range">Sep 2026 – Present</div>
+      </div>
+      <ul class="bullets">
+        <li>Architecting production-grade RESTful APIs and distributed backend services in TypeScript/Node.js, optimizing endpoint latency and database query efficiency.</li><li>Designing asynchronous job pipelines and event-driven workflows, ensuring resilient background processing and reliable third-party integrations.</li><li>Applying security-first engineering patterns across microservices, conducting internal code audits for authorization controls, input sanitization, and rate limiting.</li><li>Collaborating across engineering cycles to maintain high-reliability cloud deployments, automated testing, and maintainable modular codebases.</li>
+      </ul>
+    </div>
+    <div class="item">
+      <div class="item-header">
         <div class="item-left"><span class="role-title">Full-Stack Developer Intern (AI-Driven)</span> &bull; <span class="org-name">Smaww (smaww.net)</span></div>
         <div class="date-range">Jun 2026 – Sep 2026</div>
       </div>
       <ul class="bullets">
-        <li>Engineered full-stack web solutions and modern architectures utilizing Node.js, NestJS, Next.js, and TypeScript within an AI-driven development workflow.</li><li>Contributed to the core revamp of the Ocean67 platform, building scalable backend APIs, async worker pipelines, and responsive frontend components.</li><li>Applied modular software patterns, secure API integrations, and robust error handling to enhance platform reliability.</li><li>Leveraged AI-assisted development tooling to accelerate feature delivery, code quality review, and automated testing.</li>
+        <li>Architected asynchronous fulfillment pipelines using NestJS, BullMQ, and Redis for the Ocean67 digital fulfillment platform, decoupling webhook ingestion from provider fulfillment across 10+ third-party APIs (Salla, STC, Taqnyat SMS).</li><li>Designed multi-tenant PostgreSQL data architecture utilizing time-ordered UUIDv7 primary keys, composite uniqueness constraints for webhook idempotency, and AES-256-GCM encryption for stored provider credentials.</li><li>Implemented comprehensive testing and observability suites with ~85 automated unit and integration tests (Jest & Testcontainers), Prometheus metrics (prom-client), and structured Pino logging with correlation IDs.</li><li>Developed high-performance bilingual (Arabic RTL / English) operations and admin dashboards using Next.js 16 (App Router), Tailwind CSS, and Zod-validated server actions with granular RBAC permissions.</li>
       </ul>
     </div>
     <div class="item">
@@ -236,13 +257,13 @@
         <div class="date-range">Feb 2024 – May 2024</div>
       </div>
       <ul class="bullets">
-        <li>Collaborated with senior penetration testers to perform comprehensive security assessments and web application/network penetration tests.</li><li>Executed targeted reconnaissance, vulnerability scanning, and manual exploitation of flaws to secure applications against OWASP Top 10 vulnerabilities.</li><li>Analyzed test results, drafted detailed technical remediation reports, and presented actionable security recommendations to developers.</li><li>Participated in continuous training and threat modeling sessions to align security controls with modern cybersecurity best practices.</li>
+        <li>Executed comprehensive web application penetration tests and vulnerability assessments across staging and production client environments.</li><li>Identified and demonstrated exploitation of critical OWASP Top 10 vulnerabilities, including Broken Object-Level Authorization (BOLA), IDOR, SQL injection, and CSRF.</li><li>Drafted actionable technical remediation roadmaps and paired directly with software engineers to patch vulnerabilities and implement secure authorization patterns.</li><li>Conducted threat modeling and secure code reviews to align application controls with modern enterprise cybersecurity standards.</li>
       </ul>
     </div>
     </section>
 
     <section class="resume-block">
-      <h2 class="resume-heading">Technical Projects</h2>
+      <h2 class="resume-heading">Featured Engineering Projects</h2>
       
     <div class="item">
       <div class="item-header">
@@ -250,11 +271,24 @@
           <span class="role-title">Ocean67 Fulfillment Platform</span>
           <span class="item-badge">Smaww Internship</span>
         </div>
-        <div class="date-range">Private Project</div>
+        <div class="date-range">Production Platform</div>
       </div>
       <ul class="bullets">
-        <li>Engineered during the Full-Stack Internship at Smaww (smaww.net) — a unified digital-goods fulfillment platform revamp built with TypeScript, NestJS, and Next.js, featuring secure webhook ingestion, async BullMQ workers, RBAC, PostgreSQL/Redis workflows, provider integration logic, and ~85 automated tests.</li>
-        <li><strong>Tech Stack:</strong> TypeScript, NestJS, Next.js, BullMQ, PostgreSQL, Redis, Webhook Security, RBAC, Jest, AI-Driven Workflow</li>
+        <li>Unified digital-goods fulfillment platform monorepo engineered at Smaww (smaww.net). Built with TypeScript, NestJS, and Next.js 16 App Router, featuring secure webhook ingestion, async BullMQ workers, multi-tenant PostgreSQL with UUIDv7, AES-256-GCM encrypted credentials, granular RBAC, and ~85 automated tests with Jest & Testcontainers.</li>
+        <li><strong>Tech Stack:</strong> TypeScript, NestJS, Next.js 16, BullMQ, Redis, PostgreSQL, UUIDv7, Webhook Security, RBAC, Jest, Testcontainers</li>
+      </ul>
+    </div>
+    <div class="item">
+      <div class="item-header">
+        <div class="item-left">
+          <span class="role-title">Tasks & Notes App</span>
+          
+        </div>
+        <div class="date-range"><a href="https://github.com/abdelrhmanabdelmonsef/tasks-notes-app" target="_blank" rel="noreferrer">github.com/abdelrhmanabdelmonsef/tasks-notes-app</a></div>
+      </div>
+      <ul class="bullets">
+        <li>Full-stack monorepo featuring a NestJS REST API with JWT authentication (access & refresh tokens), RBAC, PostgreSQL persistence via TypeORM, class-validator DTOs, bcrypt password hashing, BullMQ asynchronous queues, and a responsive Next.js frontend scaffold.</li>
+        <li><strong>Tech Stack:</strong> TypeScript, NestJS, Node.js, PostgreSQL, TypeORM, BullMQ, JWT / RBAC, Next.js, Tailwind CSS</li>
       </ul>
     </div>
     <div class="item">
@@ -266,21 +300,8 @@
         <div class="date-range"><a href="https://github.com/abdelrhmanabdelmonsef/web-app-vuln-scanner" target="_blank" rel="noreferrer">github.com/abdelrhmanabdelmonsef/web-app-vuln-scanner</a></div>
       </div>
       <ul class="bullets">
-        <li>Developed a custom penetration testing toolkit designed for automated web application security assessments. The tool performs reconnaissance, service enumeration, vulnerability identification, and generates structured PDF reports for remediation guidance.</li>
-        <li><strong>Tech Stack:</strong> Python, Bash, OWASP Top 10, Nmap API, Burp API</li>
-      </ul>
-    </div>
-    <div class="item">
-      <div class="item-header">
-        <div class="item-left">
-          <span class="role-title">Tasks &amp; Notes App</span>
-          
-        </div>
-        <div class="date-range"><a href="https://github.com/abdelrhmanabdelmonsef/tasks-notes-app" target="_blank" rel="noreferrer">github.com/abdelrhmanabdelmonsef/tasks-notes-app</a></div>
-      </div>
-      <ul class="bullets">
-        <li>Full-stack monorepo featuring a NestJS REST API with JWT auth, RBAC, PostgreSQL persistence via TypeORM, class-validator DTOs, bcrypt password hashing, BullMQ async queues, and a Next.js frontend scaffold.</li>
-        <li><strong>Tech Stack:</strong> TypeScript, NestJS, Node.js, PostgreSQL, TypeORM, JWT, Passport, Next.js, Tailwind CSS</li>
+        <li>Custom automated penetration testing toolkit developed for university graduation project. Performs multi-stage reconnaissance, port discovery, OWASP Top 10 vulnerability scanning, and automated structured remediation report generation in Python and Bash.</li>
+        <li><strong>Tech Stack:</strong> Python, Bash Scripting, OWASP Top 10, Nmap API, Burp API, Linux</li>
       </ul>
     </div>
     </section>
@@ -290,24 +311,24 @@
       
     <div class="item">
       <div class="item-header">
-        <div class="item-left"><span class="role-title">Bachelor of Science — Computers &amp; Systems Engineering</span></div>
+        <div class="item-left"><span class="role-title">Bachelor of Science — Computers & Systems Engineering</span></div>
         <div class="date-range">Oct 2019 – Jun 2024</div>
       </div>
-      <div class="item-sub">Al-Azhar University, Faculty of Computers &amp; Systems Engineering &bull; <strong>Grade: Very Good (A Equivalent)</strong></div>
+      <div class="item-sub">Al-Azhar University, Faculty of Computers & Systems Engineering &bull; <strong>Grade: Very Good (A Equivalent)</strong></div>
       <ul class="bullets">
-        <li>Strong foundation in cybersecurity, networking protocols, operating systems, and software engineering.</li>
+        <li>Strong foundation in cybersecurity, networking protocols, operating systems, and software engineering.</li><li>Completed graduation project developing a cybersecurity penetration testing tool with automated scanning and reporting capabilities.</li>
       </ul>
     </div>
     </section>
 
     <section class="resume-block">
-      <h2 class="resume-heading">Certifications &amp; Training</h2>
+      <h2 class="resume-heading">Certifications &amp; Credentials</h2>
       <ul class="bullets">
-        <li><strong>Red Hat System Administration I (RH124)</strong> &mdash; Red Hat Inc.</li>
-        <li><strong>Google Cybersecurity Professional Certificate</strong> &mdash; Google &amp; Coursera (Risk Management, Linux &amp; SQL, Network Security)</li>
-        <li><strong>McKinsey Forward Program</strong> &mdash; McKinsey &amp; Company (Adaptability &amp; Problem Solving)</li>
-        <li><strong>OSCP &amp; eWAPT (Active Training)</strong> &mdash; Offensive Security &amp; eLearnSecurity</li>
-        <li><strong>HackTheBox Academy Student Transcript</strong> &mdash; HackTheBox Academy</li>
+        <li><strong>Red Hat System Administration I (RH124)</strong> &mdash; Red Hat Inc. (Enterprise Linux systems, storage &amp; security)</li>
+        <li><strong>Google Cybersecurity Professional Certificate</strong> &mdash; Google &amp; Coursera (Network Security, Linux, SQL &amp; Risk Management)</li>
+        <li><strong>McKinsey Forward Program</strong> &mdash; McKinsey &amp; Company (Leadership, Adaptability &amp; Problem Solving)</li>
+        <li><strong>HackTheBox Academy Student Transcript</strong> &mdash; HackTheBox Academy (Advanced web application security &amp; penetration testing)</li>
+        <li><strong>OSCP &amp; eWAPT Prep</strong> &mdash; Ongoing application security &amp; offensive security specialization</li>
       </ul>
     </section>
 
@@ -316,7 +337,7 @@
       <ul class="bullets">
         <li><strong>Languages:</strong> Arabic (Native / C2), English (Professional / B2)</li>
         <li><strong>Leadership:</strong> Vice-Head, Cybersecurity Team (Google Developer Student Clubs (GDSC)); Vice-Head, Cybersecurity Team (AZ-SEnCS); Member, Java Development Team (AZ-SEnCS)</li>
-        <li><strong>Security Labs:</strong> HackTheBox Pro Rank (30+ Labs) • TryHackMe (@0xTDS)</li>
+        <li><strong>Security Labs:</strong> TryHackMe (@0xTDS) & HackTheBox (@0xMonsef — Pro Rank, 30+ Labs)</li>
       </ul>
     </section>
     </main>

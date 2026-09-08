@@ -228,6 +228,7 @@ export function buildResumeBodyHtml(data: CvData): string {
 
   const emailsStr = [c.email, c.secondaryEmail].filter(Boolean).join(' \u2022 ');
   const phonesStr = (c.phones || []).join(' \u2022 ');
+  const militaryStr = c.militaryStatus ? ` &bull; Military: ${c.militaryStatus}` : '';
 
   const volunteerGrouped = (data.volunteer || [])
     .map((vol) => `${vol.role} (${vol.org.split('\u2014')[0].trim()})`)
@@ -259,7 +260,7 @@ export function buildResumeBodyHtml(data: CvData): string {
           <span class="role-title">${proj.title.replace(/^[^a-zA-Z0-9]+/, '').trim()}</span>
           ${proj.associatedWith ? `<span class="item-badge">${proj.associatedWith}</span>` : ''}
         </div>
-        <div class="date-range">${proj.link ? `<a href="${proj.link}" target="_blank" rel="noreferrer">${formatGithub(proj.link)}</a>` : 'Private Project'}</div>
+        <div class="date-range">${proj.link ? `<a href="${proj.link}" target="_blank" rel="noreferrer">${formatGithub(proj.link)}</a>` : 'Production Platform'}</div>
       </div>
       <ul class="bullets">
         <li>${proj.description}</li>
@@ -289,7 +290,7 @@ export function buildResumeBodyHtml(data: CvData): string {
     <header class="resume-header">
       <h1 class="resume-name">${p.name}</h1>
       <div class="contact-bar">
-        ${p.location} &bull; ${phonesStr}<br>
+        ${p.location}${militaryStr} &bull; ${phonesStr}<br>
         ${emailsStr}<br>
         <a href="${c.linkedIn}" target="_blank" rel="noreferrer">${formatLinkedIn(c.linkedIn)}</a> &bull;
         <a href="${c.github}" target="_blank" rel="noreferrer">${formatGithub(c.github)}</a>
@@ -307,10 +308,11 @@ export function buildResumeBodyHtml(data: CvData): string {
     <section class="resume-block">
       <h2 class="resume-heading">Technical Skills</h2>
       <div class="skills-list">
-        <div class="skills-row"><span class="skills-label">Languages &amp; Core:</span> TypeScript, JavaScript (ES6+), Node.js, Python, Bash, SQL, Java</div>
-        <div class="skills-row"><span class="skills-label">Frameworks &amp; Web:</span> NestJS, Next.js (App Router), Express.js, React, Tailwind CSS, HTML5/CSS3</div>
-        <div class="skills-row"><span class="skills-label">Backend &amp; DevOps:</span> REST APIs, Asynchronous Queues (BullMQ), Redis, PostgreSQL, TypeORM, Docker, Jest, Webhooks, RBAC</div>
-        <div class="skills-row"><span class="skills-label">Security &amp; Pentesting:</span> Web App Pentesting, OWASP Top 10, Burp Suite, Nmap, Vulnerability Assessment, Kali Linux, Red Hat Enterprise Linux</div>
+        <div class="skills-row"><span class="skills-label">Backend &amp; Distributed Systems:</span> Node.js, NestJS, Express.js, TypeScript, RESTful APIs, Microservices, BullMQ, Redis, Webhook Architecture</div>
+        <div class="skills-row"><span class="skills-label">Databases &amp; Caching:</span> PostgreSQL, TypeORM, UUIDv7, Composite Indexing, Migrations, Redis Caching, Idempotency Nonces</div>
+        <div class="skills-row"><span class="skills-label">Frontend &amp; UI Architecture:</span> Next.js 16 (App Router), React 19, Tailwind CSS, Zod, React Hook Form, Zustand, Arabic RTL &amp; English i18n</div>
+        <div class="skills-row"><span class="skills-label">Application Security &amp; Systems:</span> OWASP Top 10 Auditing, Web App Pentesting, Secure Code Review, RBAC, JWT / RS256, Burp Suite, Nmap, Kali Linux, Red Hat Enterprise Linux</div>
+        <div class="skills-row"><span class="skills-label">DevOps, Testing &amp; Observability:</span> Docker Compose, Jest, Testcontainers, Prometheus (prom-client), Structured Pino Logging, Git &amp; GitHub</div>
       </div>
     </section>
 
@@ -320,7 +322,7 @@ export function buildResumeBodyHtml(data: CvData): string {
     </section>
 
     <section class="resume-block">
-      <h2 class="resume-heading">Technical Projects</h2>
+      <h2 class="resume-heading">Featured Engineering Projects</h2>
       ${projectsHtml}
     </section>
 
@@ -330,13 +332,13 @@ export function buildResumeBodyHtml(data: CvData): string {
     </section>
 
     <section class="resume-block">
-      <h2 class="resume-heading">Certifications &amp; Training</h2>
+      <h2 class="resume-heading">Certifications &amp; Credentials</h2>
       <ul class="bullets">
-        <li><strong>Red Hat System Administration I (RH124)</strong> &mdash; Red Hat Inc.</li>
-        <li><strong>Google Cybersecurity Professional Certificate</strong> &mdash; Google &amp; Coursera (Risk Management, Linux &amp; SQL, Network Security)</li>
-        <li><strong>McKinsey Forward Program</strong> &mdash; McKinsey &amp; Company (Adaptability &amp; Problem Solving)</li>
-        <li><strong>OSCP &amp; eWAPT (Active Training)</strong> &mdash; Offensive Security &amp; eLearnSecurity</li>
-        <li><strong>HackTheBox Academy Student Transcript</strong> &mdash; HackTheBox Academy</li>
+        <li><strong>Red Hat System Administration I (RH124)</strong> &mdash; Red Hat Inc. (Enterprise Linux systems, storage &amp; security)</li>
+        <li><strong>Google Cybersecurity Professional Certificate</strong> &mdash; Google &amp; Coursera (Network Security, Linux, SQL &amp; Risk Management)</li>
+        <li><strong>McKinsey Forward Program</strong> &mdash; McKinsey &amp; Company (Leadership, Adaptability &amp; Problem Solving)</li>
+        <li><strong>HackTheBox Academy Student Transcript</strong> &mdash; HackTheBox Academy (Advanced web application security &amp; penetration testing)</li>
+        <li><strong>OSCP &amp; eWAPT Prep</strong> &mdash; Ongoing application security &amp; offensive security specialization</li>
       </ul>
     </section>
 

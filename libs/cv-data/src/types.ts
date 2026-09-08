@@ -9,6 +9,7 @@ export type CvPersonal = {
   github: string;
   htb?: string;
   tryHackMe?: string;
+  militaryStatus?: string;
 };
 
 export type CvEducation = {
@@ -141,6 +142,7 @@ export type CvData = {
     linkedIn: string;
     github: string;
     location: string;
+    militaryStatus?: string;
   };
   terminal: TerminalOutputs;
   seo: CvSeo;

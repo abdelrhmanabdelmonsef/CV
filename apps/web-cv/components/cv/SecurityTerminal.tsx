@@ -22,8 +22,8 @@ const INITIAL_LINES: TerminalLine[] = [
  ██   ██ ███████  ██████  ███████ ███████  INTELLIGENT SHELL
 ===========================================================`
   },
-  { type: 'output', content: 'Welcome, cybersecurity recruiter! Live console operational.' },
-  { type: 'output', content: 'Type help to view available security commands.' }
+  { type: 'output', content: 'Welcome, tech recruiter or engineering lead! Interactive shell operational.' },
+  { type: 'output', content: 'Type help to view available system commands and project telemetry.' }
 ];
 
 function renderLine(line: TerminalLine, index: number) {

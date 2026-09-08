@@ -6,8 +6,10 @@
     "libs/*"
   ],
   "scripts": {
+    "dev": "npm run dev:web",
     "dev:web": "npm run dev -w web-cv",
     "dev:api": "npm run dev -w api-cv",
+    "dev:all": "concurrently \"npm run dev:web\" \"npm run dev:api\"",
     "sync-assets": "node scripts/sync-assets.mjs",
     "generate-pdf": "node scripts/generate-resume-pdf.mjs",
     "build:cv-data": "npm --workspace cv-data run build",

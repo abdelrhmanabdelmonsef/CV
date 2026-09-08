@@ -14,7 +14,7 @@
 ---
 
 ## Summary
-Highly motivated **Software Engineer** and **Computers and Systems Engineering graduate** with extensive experience in modern full-stack development (TypeScript, Node.js, NestJS, Next.js) and **Web Application Penetration Testing**. Proven track record of architecting distributed backend services, asynchronous worker queues, and securing mission-critical applications against OWASP Top 10 vulnerabilities. Active technical problem-solver who thrives in building scalable, resilient, and secure architectures.
+Software Engineer with a Bachelor’s in Computers & Systems Engineering (Al-Azhar University), specializing in scalable TypeScript/Node.js backend architectures, NestJS microservices, and modern Next.js applications. Experienced in engineering resilient distributed systems featuring asynchronous worker queues (BullMQ/Redis), multi-tenant PostgreSQL schemas, and secure payment/telecom webhook ingestion. Combines enterprise full-stack development with an offensive security foundation (OWASP Top 10, penetration testing, secure code review) to build hardened, production-ready platforms.
 
 ---
 
@@ -27,45 +27,45 @@ Highly motivated **Software Engineer** and **Computers and Systems Engineering g
 ---
 
 ## Technical Skills & Tools
-* **Web Security:** Penetration Testing, OWASP Top 10, Reconnaissance, Port Scanning, Host Discovery, Service Enumeration
-* **Tools:** Nmap, Burp Suite, Metasploit, OWASP ZAP, Wireshark, Dirbuster
-* **Operating Systems:** Linux (Red Hat / Kali Linux / Debian), Windows (Server & Client)
-* **Networking:** TCP/IP Protocols, Network Routing & Switching, Network Security Architecture
-* **Programming & Scripting:** Python, Bash, Java, JavaScript, TypeScript, SQL (PostgreSQL / MySQL)
+* **Backend & Distributed Systems:** Node.js, NestJS, Express.js, TypeScript, RESTful APIs, Microservices, BullMQ, Redis, Webhook Architecture
+* **Databases & Data Architecture:** PostgreSQL, TypeORM, UUIDv7, Composite Indexing, Database Migrations, Redis Caching, Idempotency Nonces, AES-256-GCM Encryption
+* **Frontend & UI Architecture:** Next.js 16 (App Router), React 19, Tailwind CSS, Zod, React Hook Form, Zustand, Arabic RTL & English i18n
+* **Application Security & Systems:** OWASP Top 10 Auditing, Web App Pentesting, Secure Code Review, RBAC, JWT / RS256, Burp Suite, Nmap, Kali Linux, Red Hat Enterprise Linux
+* **DevOps, Testing & Observability:** Docker Compose, Jest, Testcontainers, Prometheus (prom-client), Structured Pino Logging, Git & GitHub
 
 ---
 
 ## Work Experience
 ### Software Engineer
 **Kneraflow** *(kneraflow.com)* | *Sep 2026 – Present*
-* Architecting and developing full-stack web services and robust backend systems using modern TypeScript architectures.
-* Designing scalable RESTful APIs, asynchronous job pipelines, and automated cloud workflows.
-* Applying secure coding principles, modular microservices patterns, and high-reliability data persistence.
-* Collaborating across engineering cycles to deliver high-performance, maintainable software solutions.
+* Architecting production-grade RESTful APIs and distributed backend services in TypeScript/Node.js, optimizing endpoint latency and database query efficiency.
+* Designing asynchronous job pipelines and event-driven workflows, ensuring resilient background processing and reliable third-party integrations.
+* Applying security-first engineering patterns across microservices, conducting internal code audits for authorization controls, input sanitization, and rate limiting.
+* Collaborating across engineering cycles to maintain high-reliability cloud deployments, automated testing, and maintainable modular codebases.
 
 ### Full-Stack Developer Intern (AI-Driven)
 **Smaww (smaww.net)** | *Jun 1, 2026 - Sep 1, 2026*
-* Engineered full-stack web solutions and modern architectures utilizing Node.js, NestJS, Next.js, and TypeScript within an AI-driven development workflow.
-* Contributed to the core revamp of the Ocean67 platform, building scalable backend APIs, async worker pipelines, and responsive frontend components.
-* Applied modular software patterns, secure API integrations, and robust error handling to enhance platform reliability.
-* Leveraged AI-assisted development tooling to accelerate feature delivery, code quality review, and automated testing.
+* Architected asynchronous fulfillment pipelines using NestJS, BullMQ, and Redis for the Ocean67 digital fulfillment platform, decoupling webhook ingestion from provider fulfillment across 10+ third-party APIs (Salla, STC, Taqnyat SMS).
+* Designed multi-tenant PostgreSQL data architecture utilizing time-ordered UUIDv7 primary keys, composite uniqueness constraints for webhook idempotency, and AES-256-GCM encryption for stored provider credentials.
+* Implemented comprehensive testing and observability suites with ~85 automated unit and integration tests (Jest & Testcontainers), Prometheus metrics (prom-client), and structured Pino logging with correlation IDs.
+* Developed high-performance bilingual (Arabic RTL / English) operations and admin dashboards using Next.js 16 (App Router), Tailwind CSS, and Zod-validated server actions with granular RBAC permissions.
 
 ### Penetration Tester Intern
 **Hackers For You** | *Feb 2, 2024 - May 5, 2024* | [Internship Certificate](../legacy/certificates/Hackers_For_you_intern_cert.png)
-* Collaborated with senior penetration testers to perform comprehensive security assessments and web application/network penetration tests.
-* Executed targeted reconnaissance, vulnerability scanning, and manual exploitation of flaws to secure applications against OWASP Top 10 vulnerabilities.
-* Analyzed test results, drafted detailed technical remediation reports, and presented actionable security recommendations to developers.
-* Participated in continuous training and threat modeling sessions to align security controls with modern cybersecurity best practices.
+* Executed comprehensive web application penetration tests and vulnerability assessments across staging and production client environments.
+* Identified and demonstrated exploitation of critical OWASP Top 10 vulnerabilities, including Broken Object-Level Authorization (BOLA), IDOR, SQL injection, and CSRF.
+* Drafted actionable technical remediation roadmaps and paired directly with software engineers to patch vulnerabilities and implement secure authorization patterns.
+* Conducted threat modeling and secure code reviews to align application controls with modern enterprise cybersecurity standards.
 
 ---
 
 ## Projects & Engineering Builds
-* **Ocean67 Fulfillment Platform** *(Engineered during Smaww Internship)*
-  * Built a unified full-stack digital-goods fulfillment platform using TypeScript, NestJS, Next.js, PostgreSQL, Redis, and BullMQ with ~85 automated tests.
+* **Ocean67 Fulfillment Platform** *(Production System — Engineered during Smaww Internship)*
+  * Built a unified full-stack digital-goods fulfillment platform monorepo using TypeScript, NestJS, Next.js 16 App Router, PostgreSQL, Redis, and BullMQ with ~85 automated tests.
+* **Tasks & Notes App** | [GitHub](https://github.com/abdelrhmanabdelmonsef/tasks-notes-app)
+  * Full-stack monorepo featuring a NestJS REST API with JWT auth, RBAC, PostgreSQL persistence via TypeORM, class-validator DTOs, BullMQ async queues, and a Next.js frontend.
 * **Automated Web Pentest Tool** | [GitHub](https://github.com/abdelrhmanabdelmonsef/web-app-vuln-scanner)
   * Developed a custom automated penetration testing toolkit for web security assessments with reporting in Python and Bash.
-* **Tasks & Notes App** | [GitHub](https://github.com/abdelrhmanabdelmonsef/tasks-notes-app)
-  * Full-stack monorepo featuring NestJS REST API with JWT auth, RBAC, TypeORM, BullMQ, and Next.js frontend.
 
 ---
 

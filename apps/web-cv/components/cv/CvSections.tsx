@@ -118,20 +118,6 @@ export default function CvSections({ data }: { data: CvData }) {
         </div>
       </SectionBlock>
 
-      {/* ── LEARNING HIGHLIGHTS ── */}
-      <SectionBlock id="learning-highlights-section" title="Learning Highlights" icon={<ClockIcon />}>
-        <div className="rounded-xl border border-border-subtle bg-bg-card/60 backdrop-blur-sm p-5 sm:p-6">
-          <ul className="space-y-2.5">
-            {data.learningHighlights.map((item) => (
-              <li key={item} className="flex items-start gap-2.5 text-sm text-text-secondary">
-                <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-accent-green shrink-0" />
-                {item}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </SectionBlock>
-
       {/* ── EXPERIENCE ── */}
       <SectionBlock id="experience-section" title="Work Experience" icon={<BriefcaseIcon />}>
         <div className="rounded-xl border border-border-subtle bg-bg-card/60 backdrop-blur-sm p-5 sm:p-6">
@@ -187,48 +173,8 @@ export default function CvSections({ data }: { data: CvData }) {
         </div>
       </SectionBlock>
 
-      {/* ── EDUCATION ── */}
-      <SectionBlock id="education-section" title="Education" icon={<EducationIcon />}>
-        <div className="rounded-xl border border-border-subtle bg-bg-card/60 backdrop-blur-sm p-5 sm:p-6">
-          <div className="relative pl-6 border-l-2 border-accent-cyan/20 space-y-8">
-            {data.education.map((edu) => (
-              <div key={edu.degree} id="edu-card" className="relative group">
-                <div className="absolute -left-[31px] top-1 w-3.5 h-3.5 rounded-full border-2 border-accent-cyan bg-bg-primary
-                  group-hover:shadow-[0_0_12px_rgba(0,229,255,0.4)] transition-shadow duration-300" />
-
-                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-2">
-                  <div>
-                    <h3 className="text-base font-bold text-text-primary">{edu.degree}</h3>
-                    <h4 className="text-sm text-accent-cyan font-medium">{edu.institution}</h4>
-                    <div className="flex flex-wrap items-center gap-2 mt-1 text-xs text-text-muted">
-                      <span>🗓️ {edu.duration}</span>
-                      <span className="text-border-subtle">●</span>
-                      <span>{edu.location}</span>
-                      <span className="text-border-subtle">●</span>
-                      <span className="text-accent-green font-semibold">Grade: {edu.grade}</span>
-                    </div>
-                  </div>
-                  {edu.certificateUrl && edu.certificateTitle && (
-                    <CertLinkButton url={edu.certificateUrl} title={edu.certificateTitle} label="View Degree" />
-                  )}
-                </div>
-
-                <ul className="space-y-1.5 mt-3">
-                  {edu.highlights.map((h) => (
-                    <li key={h} className="flex items-start gap-2 text-sm text-text-secondary">
-                      <span className="mt-1.5 w-1 h-1 rounded-full bg-text-muted shrink-0" />
-                      {h}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </div>
-      </SectionBlock>
-
       {/* ── PROJECTS ── */}
-      <SectionBlock id="projects-section" title="Security Projects" icon={<CodeIcon />}>
+      <SectionBlock id="projects-section" title="Featured Projects & Systems" icon={<CodeIcon />}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {data.projects.map((project) => (
             <div
@@ -258,8 +204,8 @@ export default function CvSections({ data }: { data: CvData }) {
                   </a>
                 ) : project.isPrivate ? (
                   <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-[10px] font-semibold uppercase tracking-wider
-                    bg-white/5 text-text-muted border border-white/10 shrink-0 opacity-60">
-                    🔒 Private
+                    bg-accent-cyan/10 text-accent-cyan border border-accent-cyan/20 shrink-0">
+                    🚀 Production Platform
                   </span>
                 ) : null}
               </div>
@@ -315,8 +261,62 @@ export default function CvSections({ data }: { data: CvData }) {
         </div>
       </SectionBlock>
 
+      {/* ── CORE ARCHITECTURAL COMPETENCIES ── */}
+      <SectionBlock id="learning-highlights-section" title="Core Engineering Competencies" icon={<ClockIcon />}>
+        <div className="rounded-xl border border-border-subtle bg-bg-card/60 backdrop-blur-sm p-5 sm:p-6">
+          <ul className="space-y-2.5">
+            {data.learningHighlights.map((item) => (
+              <li key={item} className="flex items-start gap-2.5 text-sm text-text-secondary">
+                <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-accent-green shrink-0" />
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </SectionBlock>
+
+      {/* ── EDUCATION ── */}
+      <SectionBlock id="education-section" title="Education" icon={<EducationIcon />}>
+        <div className="rounded-xl border border-border-subtle bg-bg-card/60 backdrop-blur-sm p-5 sm:p-6">
+          <div className="relative pl-6 border-l-2 border-accent-cyan/20 space-y-8">
+            {data.education.map((edu) => (
+              <div key={edu.degree} id="edu-card" className="relative group">
+                <div className="absolute -left-[31px] top-1 w-3.5 h-3.5 rounded-full border-2 border-accent-cyan bg-bg-primary
+                  group-hover:shadow-[0_0_12px_rgba(0,229,255,0.4)] transition-shadow duration-300" />
+
+                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-2">
+                  <div>
+                    <h3 className="text-base font-bold text-text-primary">{edu.degree}</h3>
+                    <h4 className="text-sm text-accent-cyan font-medium">{edu.institution}</h4>
+                    <div className="flex flex-wrap items-center gap-2 mt-1 text-xs text-text-muted">
+                      <span>🗓️ {edu.duration}</span>
+                      <span className="text-border-subtle">●</span>
+                      <span>{edu.location}</span>
+                      <span className="text-border-subtle">●</span>
+                      <span className="text-accent-green font-semibold">Grade: {edu.grade}</span>
+                    </div>
+                  </div>
+                  {edu.certificateUrl && edu.certificateTitle && (
+                    <CertLinkButton url={edu.certificateUrl} title={edu.certificateTitle} label="View Degree" />
+                  )}
+                </div>
+
+                <ul className="space-y-1.5 mt-3">
+                  {edu.highlights.map((h) => (
+                    <li key={h} className="flex items-start gap-2 text-sm text-text-secondary">
+                      <span className="mt-1.5 w-1 h-1 rounded-full bg-text-muted shrink-0" />
+                      {h}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </SectionBlock>
+
       {/* ── PLATFORMS ── */}
-      <SectionBlock id="platforms-section" title="Hacking Profiles" icon={<PlatformIcon />}>
+      <SectionBlock id="platforms-section" title="Security Labs & Technical Profiles" icon={<PlatformIcon />}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {data.platforms.map((platform) =>
             platform.id === 'htb-card' ? (

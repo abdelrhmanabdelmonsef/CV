@@ -1,7 +1,7 @@
 import { execSync } from 'node:child_process';
 import { copyFileSync, existsSync, mkdirSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const cvDataDist = join(root, 'libs/cv-data/dist/index.js');
@@ -13,7 +13,7 @@ if (!existsSync(cvDataDist)) {
   execSync('npm --workspace cv-data run build', { cwd: root, stdio: 'inherit' });
 }
 
-const pkg = await import(cvDataDist);
+const pkg = await import(pathToFileURL(cvDataDist).href);
 const cvData = pkg.default?.default || pkg.default || pkg;
 const buildResumeHtml = pkg.buildResumeHtml;
 
